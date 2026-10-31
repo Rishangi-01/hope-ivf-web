@@ -74,7 +74,7 @@ export default function ServicesSection() {
               {services.map((service, index) => (
                 <motion.a
                   key={service.number}
-                  href="#contact"
+                  href="/services/service-details"
                   initial={{
                     opacity: 0,
                     y: reduceMotion ? 0 : 24,
@@ -102,29 +102,6 @@ export default function ServicesSection() {
                 </motion.a>
               ))}
             </div>
-
-            
-            <motion.div
-              initial={{ opacity: 0, y: reduceMotion ? 0 : 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{
-                duration: reduceMotion ? 0 : 0.6,
-                delay: 0.3,
-              }}
-              className="mt-8 sm:mt-9"
-            >
-              <a
-                href="#all-services"
-                className="group inline-flex min-w-[116px] items-center justify-center gap-2 rounded-full border border-[#52745f] px-6 py-2.5 text-sm text-[#345345] transition-all duration-300 hover:border-[#8c5b53] hover:bg-[#8c5b53] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8c5b53] focus-visible:ring-offset-2"
-              >
-                View All
-                <ArrowUpRight
-                  size={15}
-                  className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                />
-              </a>
-            </motion.div>
           </div>
         </div>
       </div>

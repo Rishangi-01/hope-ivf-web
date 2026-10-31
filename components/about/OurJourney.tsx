@@ -48,7 +48,7 @@ export default function OurJourney() {
           className="relative z-10 max-w-[550px]"
         >
           <div className="flex items-center gap-3">
-            <span className="font-serif text-base font-semibold text-[#593c35] sm:text-lg">
+            <span className="font-serif text-base font-semibold text-[#593c35] lg:text-xl">
               Our Journey
             </span>
 
@@ -79,7 +79,7 @@ export default function OurJourney() {
               delay: reduceMotion ? 0 : 0.12,
               ease: [0.22, 1, 0.36, 1],
             }}
-            className="mt-6 font-serif text-[clamp(2.5rem,4.1vw,4.25rem)] leading-[1.04] tracking-[-0.045em] text-[#783f36]"
+            className="mt-6 font-serif text-7xl leading-[1.04] tracking-[-0.045em] text-[#783f36]"
           >
             Growing Together
             <br className="hidden sm:block" /> for a Healthier Future
@@ -128,7 +128,7 @@ export default function OurJourney() {
             >
               <Link
                 href="/about-us"
-                className="group inline-flex items-center gap-3 rounded-full bg-[#8c5b53] px-6 py-3.5 text-sm font-semibold text-white shadow-[0_8px_20px_rgba(140,91,83,0.18)] transition-colors duration-300 hover:bg-[#75473f] sm:px-7 sm:text-base"
+                className="group inline-flex items-center gap-3 rounded-full bg-[#8c5b53] px-6 py-3.5 text-sm font-semibold text-white shadow-[0_8px_20px_rgba(140,91,83,0.18)] transition-colors duration-300 hover:bg-[#75473f] sm:px-7 lg:text-xl"
               >
                 Learn More
 

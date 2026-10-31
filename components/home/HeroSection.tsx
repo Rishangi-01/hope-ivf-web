@@ -80,24 +80,6 @@ export default function HeroSection() {
         >
 
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#fff9f6]/35 via-transparent to-transparent lg:bg-gradient-to-r lg:from-[#fff9f6]/30 lg:via-transparent lg:to-transparent" />
-
-          
-          <motion.div
-            aria-hidden="true"
-            animate={
-              shouldReduceMotion
-                ? {}
-                : { y: [0, -8, 0], rotate: [0, 3, 0] }
-            }
-            transition={{
-              duration: 5,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-            className="absolute right-5 top-5 grid h-12 w-12 place-items-center rounded-full border border-white/60 bg-white/75 text-[#a66d65] shadow-lg backdrop-blur-sm sm:right-8 sm:top-8"
-          >
-            <Heart size={21} strokeWidth={1.5} />
-          </motion.div>
         </motion.div>
       </div>
     </section>

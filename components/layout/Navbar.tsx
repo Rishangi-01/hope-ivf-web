@@ -25,7 +25,7 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-white">
+    <header className="top-0 z-50 w-full bg-white">
       <div className="border-b border-[#fdf2f7] bg-[#fdf2f7]">
         <div className="mx-auto flex max-w-[1500px] items-center justify-between gap-4 px-5 py-2.5 lg:px-10 xl:px-14">
           <motion.div

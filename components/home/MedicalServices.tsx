@@ -41,15 +41,15 @@ export default function MedicalServices() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-[#fff8f7] via-[#fdf0ef] to-[#f9e8e7] w-[100%]">
+    <section className="relative overflow-x-clip bg-gradient-to-br from-[#fff8f7] via-[#fdf0ef] to-[#f9e8e7] w-full">
       <div
         aria-hidden="true"
         className="pointer-events-none absolute -left-32 top-20 h-80 w-80 rounded-full bg-[#8c5b53]/[0.06] blur-3xl"
       />
 
-      <div className="relative mx-auto max-w-[1600px] px-4 py-6 sm:px-6 sm:py-10 lg:px-8 lg:py-24">
+      <div className="relative mx-auto max-w-[1600px] px-4 py-6 sm:px-6 sm:py-10 md:py-8 lg:px-8 lg:py-24">
         <div className="grid grid-cols-1 gap-7 md:grid-cols-[0.9fr_1.1fr] md:gap-5 lg:grid-cols-[0.95fr_1.6fr] lg:gap-12">
-          <div className="min-w-0 md:sticky md:top-6 md:flex md:h-[calc(100vh-3rem)] md:flex-col md:self-start lg:top-8 lg:h-[calc(100vh-4rem)]">
+          <div className="min-w-0 md:sticky md:top-6 md:flex md:h-[calc(100vh-4rem)] md:flex-col md:self-start lg:top-8 lg:h-[calc(100vh-1rem)]">
             <motion.div
               initial={{ opacity: 0, y: reduceMotion ? 0 : 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -57,17 +57,17 @@ export default function MedicalServices() {
               className="shrink-0 pb-5 sm:pb-7"
             >
 
-              <h2 className="max-w-md font-serif text-[30px] font-normal leading-[1.12] tracking-[-0.035em] text-[#352c29] sm:text-4xl lg:text-[5rem]">
+              <h2 className="max-w-full font-serif text-[30px] font-normal leading-[1.12] tracking-[-0.035em] text-[#352c29] lg:text-5xl">
                 Comprehensive
                 <br />
-                <span className="text-[#8c5b53]">Fertility</span> Treatments
+                <span className="text-[#8c5b53] text-[35px] lg:text-8xl">Fertility</span> Treatments
               </h2>
 
-              <div className="mt-4 h-px w-full max-w-[300px] bg-[#8c5b53]/40" />
-              <div className="mt-1.5 h-px w-[72%] max-w-[240px] bg-[#8c5b53]/25" />
+              <div className="mt-6 h-px w-full max-w-[300px] bg-[#8c5b53]/40" />
+              <div className="mt-1.5 h-px w-[72%] mb-5 max-w-[240px] bg-[#8c5b53]/25" />
             </motion.div>
 
-            <div className="grid flex-1 grid-cols-2 gap-3 md:min-h-0 md:grid-cols-1 md:grid-rows-2 md:gap-3">
+            <div className="grid flex-1 gap-3 md:min-h-0 md:gap-3">
               <motion.div
                 initial={{
                   opacity: 0,
@@ -78,7 +78,7 @@ export default function MedicalServices() {
                   duration: reduceMotion ? 0 : 0.8,
                   delay: 0.12,
                 }}
-                className="group relative min-h-[190px] overflow-hidden rounded-xl lg:min-h-[460px] md:min-h-0 md:h-full md:rounded-lg"
+                className="group relative min-h-[190px] overflow-hidden rounded-xl md:h-full md:min-h-0 md:rounded-lg"
               >
                 <Image
                   src="/images/home/wellness4.png"
@@ -93,7 +93,7 @@ export default function MedicalServices() {
             </div>
           </div>
           <div
-            className="min-w-0 md:h-[calc(100vh-3rem)] md:overflow-y-auto md:overscroll-contain md:pr-1 lg:h-[calc(100vh-4rem)] lg:pr-2"
+            className="min-w-0 md:h-[calc(100vh-4rem)] md:overflow-y-auto md:overscroll-contain md:pr-3 lg:h-[calc(100vh-1rem)] lg:pr-2"
             style={{
               scrollbarWidth: "thin",
               scrollbarColor: "#d9b9b3 transparent",

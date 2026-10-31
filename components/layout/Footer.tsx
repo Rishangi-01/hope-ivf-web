@@ -1,284 +1,224 @@
 
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import {
-  FaFacebookF,
   FaInstagram,
-  FaLinkedinIn,
   FaYoutube,
+  FaTiktok,
+  FaPinterestP,
 } from "react-icons/fa";
-import {
-  ArrowRight,
-  MapPin,
-  Phone,
-  Mail,
-  Clock3,
-  Heart,
-} from "lucide-react";
-
-const quickLinks = [
-  { label: "Home", href: "/" },
-  { label: "About Us", href: "/about-us" },
-  { label: "Our Services", href: "/services" },
-  { label: "Success Stories", href: "/success-stories" },
-  { label: "Blog", href: "/blog" },
-  { label: "Contact", href: "/contact-us" },
-];
-
-const services = [
-  { label: "IVF Treatment", href: "/services/ivf-treatment" },
-  { label: "ICSI Treatment", href: "/services/icsi-treatment" },
-  { label: "IUI Treatment", href: "/services/iui-treatment" },
-  { label: "Egg Freezing", href: "/services/egg-freezing" },
-  { label: "Donor Program", href: "/services/donor-program" },
-  {
-    label: "Fertility Evaluation",
-    href: "/services/fertility-evaluation",
-  },
-];
 
 const socialLinks = [
   {
-    label: "Facebook",
-    href: "https://www.facebook.com/",
-    icon: FaFacebookF,
-  },
-  {
-    label: "Instagram",
+    name: "Instagram",
     href: "https://www.instagram.com/",
     icon: FaInstagram,
   },
   {
-    label: "LinkedIn",
-    href: "https://www.linkedin.com/",
-    icon: FaLinkedinIn,
-  },
-  {
-    label: "YouTube",
+    name: "YouTube",
     href: "https://www.youtube.com/",
     icon: FaYoutube,
   },
-];
-
-const contactDetails = [
   {
-    icon: MapPin,
-    text: "Sector 62, Noida, UP",
-    href: "https://maps.google.com/?q=Sector+62+Noida",
+    name: "TikTok",
+    href: "https://www.tiktok.com/",
+    icon: FaTiktok,
   },
   {
-    icon: Phone,
-    text: "+91 98765 43210",
-    href: "tel:+919876543210",
-  },
-  {
-    icon: Mail,
-    text: "hello@hopeivf.com",
-    href: "mailto:hello@hopeivf.com",
+    name: "Pinterest",
+    href: "https://www.pinterest.com/",
+    icon: FaPinterestP,
   },
 ];
 
-const footerVariants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.65, ease: "easeOut" as const },
+const policyLinks = [
+  { label: "About US", href: "" },
+  { label: "Our Services", href: "" },
+  { label: "BLog", href: "" },
+  {
+    label: "Contact",
+    href: "",
   },
-};
+];
 
 export default function Footer() {
   const reduceMotion = useReducedMotion();
 
+  const reveal = {
+    hidden: {
+      opacity: 0,
+      y: reduceMotion ? 0 : 24,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: reduceMotion ? 0 : 0.7,
+        ease: [0.22, 1, 0.36, 1] as const,
+      },
+    },
+  };
+
   return (
-    <footer className="relative overflow-hidden bg-gradient-to-br from-[#4a1631] via-[#4a1631] to-[#4a1631] text-white">
-      {/* Subtle background decoration */}
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -right-24 -top-32 h-80 w-80 rounded-full bg-[#d43a79]/15 blur-3xl" />
-        <div className="absolute -bottom-40 left-[20%] h-80 w-80 rounded-full bg-[#b11b55]/10 blur-3xl" />
-      </div>
+    <footer
+      className="relative isolate overflow-hidden bg-[#8c5b53] text-[#f7f0e9]"
+      aria-label="Website footer"
+    >
+      {/* Decorative background glow */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -right-40 -top-40 h-96 w-96 rounded-full bg-white/[0.06] blur-3xl"
+      />
 
-      <div className="relative mx-auto max-w-[1500px] px-5 sm:px-8 lg:px-12">
-        {/* Main footer */}
+      <div className="relative mx-auto max-w-[1800px] px-6 pb-7 pt-8 sm:px-10 sm:pt-10 lg:px-[3.8%] lg:pt-7">
+        {/* Large brand name */}
         <motion.div
-          initial={reduceMotion ? false : "hidden"}
+          variants={reveal}
+          initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.12 }}
-          variants={footerVariants}
-          className="grid grid-cols-1 gap-10 py-12 sm:grid-cols-2 lg:grid-cols-[1.45fr_0.85fr_1fr_1.15fr] lg:gap-12 lg:py-14"
+          viewport={{ once: true, amount: 0.2 }}
         >
-          
-          <div className="max-w-[360px]">
-            <Link
-              href="/"
-              aria-label="Hope IVF home"
-              className="inline-flex items-center gap-3 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
-            >
-              <div className="relative h-[54px] w-[80px] lg:h-[54px] lg:w-[211px] shrink-0">
-                <Image
-                  src="/images/white-logo.png"
-                  alt="Hope IVF"
-                  fill
-                  sizes="52px"
-                  className="object-contain"
-                />
-              </div>
-            </Link>
+          <Link
+            href="/"
+            aria-label="logo"
+            className="inline-block font-sans text-5xl font-normal tracking-[-0.055em] transition-opacity duration-300 hover:opacity-75 sm:text-6xl lg:text-[76px] xl:text-[84px]"
+          >
+            Hope IVF 
+          </Link>
+           <p className="text-sm lg:text-lg"> Science Care New Beginnings </p>
+        </motion.div>
 
-            <p className="mt-5 max-w-[335px] text-sm leading-[1.8] text-white/75">
-              Your trusted partner in fertility and parenthood.
-              We combine advanced technology with compassionate
-              care to help you build your family.
-            </p>
+        <div className="mt-16 grid grid-cols-1 gap-12 sm:mt-20 sm:grid-cols-2 sm:gap-10 lg:mt-24 lg:grid-cols-[1fr_1fr] lg:gap-16">
+          {/* Contact details */}
+          <motion.div
+            variants={reveal}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            className="flex flex-col items-start"
+          >
+            <div className="space-y-1 text-base leading-relaxed sm:text-lg">
+              <a
+                href="tel:1234567890"
+                className="block w-fit transition-colors duration-300 hover:text-white"
+              >
+                123-456-7890
+              </a>
 
-            {/* Social media */}
-            <div className="mt-6 flex items-center gap-3">
-              {socialLinks.map((social) => {
+              <a
+                href="mailto:info@mysite.com"
+                className="block w-fit transition-colors duration-300 hover:text-white"
+              >
+                info@mysite.com
+              </a>
+            </div>
+
+            <address className="mt-7 not-italic text-base leading-relaxed sm:text-lg">
+              500 Terry Francine St.
+              <br />
+              San Francisco, CA 94158
+            </address>
+
+            {/* Social icons */}
+            <div className="mt-10 flex flex-wrap items-center gap-3 sm:mt-16">
+              {socialLinks.map((social, index) => {
                 const Icon = social.icon;
 
                 return (
                   <motion.a
-                    key={social.label}
+                    key={social.name}
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label={social.label}
+                    aria-label={social.name}
+                    initial={{
+                      opacity: 0,
+                      y: reduceMotion ? 0 : 12,
+                    }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{
+                      duration: reduceMotion ? 0 : 0.4,
+                      delay: reduceMotion ? 0 : index * 0.08,
+                    }}
                     whileHover={
                       reduceMotion
                         ? undefined
-                        : { y: -4, scale: 1.08 }
+                        : { y: -5, scale: 1.08 }
                     }
-                    whileTap={reduceMotion ? undefined : { scale: 0.94 }}
-                    className="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-white text-[#5b1d3d] transition-colors duration-300 hover:bg-[#fce7f3] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#4a1631]"
+                    whileTap={
+                      reduceMotion ? undefined : { scale: 0.92 }
+                    }
+                    className="flex h-9 w-9 items-center justify-center rounded-full bg-[#f7f0e9] text-[#65514a] transition-colors duration-300 hover:bg-white sm:h-10 sm:w-10"
                   >
-                    <Icon size={16} />
+                    <Icon size={19} />
                   </motion.a>
                 );
               })}
             </div>
-          </div>
+          </motion.div>
 
-          {/* Quick links */}
-          <div>
-            <h2 className="mb-5 font-serif text-lg font-bold text-white">
-              Quick Links
-            </h2>
-
-            <ul className="space-y-2.5">
-              {quickLinks.map((item) => (
-                <li key={item.label}>
+          {/* Policy links */}
+          <motion.div
+            variants={reveal}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            className="flex flex-col items-start sm:pt-0"
+          >
+            <nav
+              aria-label="Legal and policy links"
+              className="flex flex-col items-start gap-1.5 text-base sm:text-lg"
+            >
+              {policyLinks.map((policy, index) => (
+                <motion.div
+                  key={policy.label}
+                  initial={{
+                    opacity: 0,
+                    x: reduceMotion ? 0 : 14,
+                  }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{
+                    duration: reduceMotion ? 0 : 0.45,
+                    delay: reduceMotion ? 0 : index * 0.09,
+                  }}
+                >
                   <Link
-                    href={item.href}
-                    className="group inline-flex items-center gap-2 text-sm text-white/75 transition-colors duration-300 hover:text-[#f4a8c6]"
+                    href={policy.href}
+                    className="group relative inline-block py-0.5 transition-colors duration-300 hover:text-white"
                   >
-                    <ArrowRight
-                      size={14}
-                      className="shrink-0 transition-transform duration-300 group-hover:translate-x-1"
-                    />
-                    <span>{item.label}</span>
+                    {policy.label}
+                    <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-white transition-all duration-300 group-hover:w-full" />
                   </Link>
-                </li>
+                </motion.div>
               ))}
-            </ul>
-          </div>
+            </nav>
+          </motion.div>
+        </div>
 
-          {/* Services */}
-          <div>
-            <h2 className="mb-5 font-serif text-lg font-bold text-white">
-              Our Services
-            </h2>
-
-            <ul className="space-y-2.5">
-              {services.map((service) => (
-                <li key={service.label}>
-                  <Link
-                    href={service.href}
-                    className="group inline-flex items-center gap-2 text-sm text-white/75 transition-colors duration-300 hover:text-[#f4a8c6]"
-                  >
-                    <ArrowRight
-                      size={14}
-                      className="shrink-0 transition-transform duration-300 group-hover:translate-x-1"
-                    />
-                    <span>{service.label}</span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Contact information */}
-          <div>
-            <h2 className="mb-5 font-serif text-lg font-bold text-white">
-              Contact Us
-            </h2>
-
-            <ul className="space-y-4">
-              {contactDetails.map((item) => {
-                const Icon = item.icon;
-
-                return (
-                  <li key={item.text}>
-                    <a
-                      href={item.href}
-                      className="group flex items-start gap-3 text-sm leading-6 text-white/75 transition-colors duration-300 hover:text-[#f4a8c6]"
-                    >
-                      <Icon
-                        size={19}
-                        className="mt-0.5 shrink-0 text-white transition-transform duration-300 group-hover:scale-110"
-                      />
-                      <span>{item.text}</span>
-                    </a>
-                  </li>
-                );
-              })}
-
-              <li className="flex items-start gap-3 text-sm leading-6 text-white/75">
-                <Clock3
-                  size={19}
-                  className="mt-0.5 shrink-0 text-white"
-                />
-                <span>Mon - Sat: 9:00 AM - 6:00 PM</span>
-              </li>
-            </ul>
+        {/* Bottom copyright */}
+        <motion.div
+          initial={{
+            opacity: 0,
+            y: reduceMotion ? 0 : 15,
+          }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{
+            duration: reduceMotion ? 0 : 0.6,
+            delay: reduceMotion ? 0 : 0.15,
+          }}
+          className="mt-12 border-t border-white/15 pt-6 sm:mt-14 lg:mt-16 lg:border-t-0 lg:pt-0"
+        >
+          <div className="flex flex-col gap-3 text-sm leading-relaxed sm:text-base lg:flex-row lg:items-center lg:justify-end lg:pr-[22%]">
+            <p>
+              Copyright © 2026. All Rights Reserved. Powered By Lestow.
+            </p>
           </div>
         </motion.div>
-
-        {/* Bottom divider */}
-        <div className="border-t border-white/15" />
-
-        {/* Copyright bar */}
-        <div className="flex flex-col gap-4 py-5 text-xs text-white/70 sm:flex-row sm:items-center sm:justify-between sm:gap-6 sm:text-sm">
-          <p>
-            © {2026} Hope IVF. All rights reserved.
-          </p>
-
-          <div className="flex flex-wrap items-center gap-3">
-            <Link
-              href="/privacy-policy"
-              className="transition-colors hover:text-white"
-            >
-              Privacy Policy
-            </Link>
-
-            <span className="text-white/35">|</span>
-
-            <Link
-              href="/terms-and-conditions"
-              className="transition-colors hover:text-white"
-            >
-              Terms &amp; Conditions
-            </Link>
-
-            <Heart
-              size={19}
-              fill="currentColor"
-              className="ml-1 text-white transition-transform duration-300 hover:scale-125"
-            />
-          </div>
-        </div>
       </div>
     </footer>
   );

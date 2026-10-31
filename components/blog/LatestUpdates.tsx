@@ -15,7 +15,6 @@ type BlogPost = {
   category: string;
   title: string;
   date: string;
-  comments: string;
   image: string;
   alt: string;
   href: string;
@@ -26,7 +25,6 @@ const posts: BlogPost[] = [
     category: "Fertility Insights",
     title: "How lifestyle choices can improve your chances of conception",
     date: "Oct 16, 2026",
-    comments: "2 Comments",
     image: "/images/home/success-story1.png",
     alt: "Mother holding her baby in a bright, peaceful setting",
     href: "/blog/blog-details",
@@ -35,7 +33,6 @@ const posts: BlogPost[] = [
     category: "IVF Guides",
     title: "What to expect during your IVF treatment journey",
     date: "Oct 16, 2026",
-    comments: "No Comments",
     image: "/images/home/success-story2.png",
     alt: "Patient looking at an ultrasound image with medical guidance",
     href: "/blog/blog-details",
@@ -44,7 +41,6 @@ const posts: BlogPost[] = [
     category: "Women's Health",
     title: "Understanding PCOS and its impact on fertility",
     date: "Oct 16, 2026",
-    comments: "2 Comments",
     image: "/images/home/success-story3.png",
     alt: "Doctor discussing women's health with a patient",
     href: "/blog/blog-details",
@@ -143,14 +139,6 @@ export default function LatestUpdates() {
                       className="text-[#8c5b53]"
                     />
                     {post.date}
-                  </span>
-
-                  <span className="inline-flex items-center gap-2">
-                    <MessageCircle
-                      size={16}
-                      className="text-[#8c5b53]"
-                    />
-                    {post.comments}
                   </span>
                 </div>
 

@@ -30,7 +30,7 @@ export default function ServicesSection() {
   return (
     <section className="overflow-hidden bg-[#eeece5] px-5 py-14 sm:px-8 sm:py-20 lg:px-12 lg:py-24 w-[100%]">
       <div className="mx-auto max-w-[1400px]">
-        {/* Section heading */}
+        
         <motion.h2
           initial={{ opacity: 0, y: reduceMotion ? 0 : 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -68,7 +68,7 @@ export default function ServicesSection() {
             <div className="absolute inset-0 bg-gradient-to-t from-[#263c35]/20 to-transparent opacity-70 transition-opacity duration-500 group-hover:opacity-100" />
           </motion.div>
 
-          {/* Right services */}
+          
           <div className="flex flex-col justify-center">
             <div className="grid grid-cols-1 gap-x-8 sm:grid-cols-2 sm:gap-x-8 lg:gap-x-10">
               {services.map((service, index) => (
@@ -89,7 +89,7 @@ export default function ServicesSection() {
                   className="group relative flex min-h-[172px] flex-col border-b border-[#52745f] py-6 outline-none transition-colors duration-300 first:pt-3 sm:min-h-[190px] sm:py-8 sm:first:pt-3 focus-visible:ring-2 focus-visible:ring-[#8c5b53] focus-visible:ring-offset-4 focus-visible:ring-offset-[#eeece5]"
                 >
                   <div className="flex items-center justify-between gap-3">
-                    <h3 className="font-serif text-xl font-normal text-[#263c35] transition-colors duration-300 group-hover:text-[#8c5b53] lg:text-[4rem]">
+                    <h3 className="font-serif text-xl font-normal text-[#263c35] transition-colors duration-300 group-hover:text-[#8c5b53] lg:text-[3rem]">
                       {service.title}
                     </h3>
 
@@ -103,7 +103,7 @@ export default function ServicesSection() {
               ))}
             </div>
 
-            {/* View all button */}
+            
             <motion.div
               initial={{ opacity: 0, y: reduceMotion ? 0 : 12 }}
               whileInView={{ opacity: 1, y: 0 }}

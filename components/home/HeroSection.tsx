@@ -57,7 +57,7 @@ export default function HeroSection() {
 
           <motion.h1
             variants={fadeUp}
-            className="max-w-[620px] font-serif text-[43px] font-normal leading-[1.08] tracking-[-0.035em] text-[#8c5b53] lg:text-8xl"
+            className="max-w-[620px] font-serif text-[43px] font-normal leading-[1.08] tracking-[-0.035em] text-[#8c5b53] lg:text-8xl xl:text-7xl"
           >
             Your Journey
             <br />

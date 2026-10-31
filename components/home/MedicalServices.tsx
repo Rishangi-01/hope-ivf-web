@@ -30,11 +30,6 @@ const services = [
     image: "/images/home/wellness5.png",
     description: "Movement, rehabilitation, and recovery support.",
   },
-  {
-    title: "Nutrition",
-    image: "/images/home/wellness6.png",
-    description: "Practical nutrition guidance for everyday wellness.",
-  },
 ];
 
 export default function MedicalServices() {
@@ -49,14 +44,13 @@ export default function MedicalServices() {
 
       <div className="relative mx-auto max-w-[1600px] px-4 py-6 sm:px-6 sm:py-10 md:py-8 lg:px-8 lg:py-24">
         <div className="grid grid-cols-1 gap-7 md:grid-cols-[0.9fr_1.1fr] md:gap-5 lg:grid-cols-[0.95fr_1.6fr] lg:gap-12">
-          <div className="min-w-0 md:sticky md:top-6 md:flex md:h-[calc(100vh-4rem)] md:flex-col md:self-start lg:top-8 lg:h-[calc(100vh-1rem)]">
+          <div className="min-w-0 lg:sticky lg:top-8 lg:h-fit lg:self-start">
             <motion.div
               initial={{ opacity: 0, y: reduceMotion ? 0 : 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: reduceMotion ? 0 : 0.7 }}
               className="shrink-0 pb-5 sm:pb-7"
             >
-
               <h2 className="max-w-full font-serif text-[30px] font-normal leading-[1.12] tracking-[-0.035em] text-[#352c29] lg:text-5xl">
                 Comprehensive
                 <br />
@@ -67,7 +61,7 @@ export default function MedicalServices() {
               <div className="mt-1.5 h-px w-[72%] mb-5 max-w-[240px] bg-[#8c5b53]/25" />
             </motion.div>
 
-            <div className="grid flex-1 gap-3 md:min-h-0 md:gap-3">
+            <div className="grid gap-3">
               <motion.div
                 initial={{
                   opacity: 0,
@@ -78,7 +72,7 @@ export default function MedicalServices() {
                   duration: reduceMotion ? 0 : 0.8,
                   delay: 0.12,
                 }}
-                className="group relative min-h-[190px] overflow-hidden rounded-xl md:h-full md:min-h-0 md:rounded-lg"
+                className="group relative h-[220px] overflow-hidden rounded-xl sm:h-[280px] md:h-[min(45vw,420px)] lg:h-[min(45svh,420px)] lg:rounded-lg"
               >
                 <Image
                   src="/images/home/wellness4.png"
@@ -92,57 +86,54 @@ export default function MedicalServices() {
               </motion.div>
             </div>
           </div>
-          <div
-            className="min-w-0 md:h-[calc(100vh-4rem)] md:overflow-y-auto md:overscroll-contain md:pr-3 lg:h-[calc(100vh-1rem)] lg:pr-2"
-            style={{
-              scrollbarWidth: "thin",
-              scrollbarColor: "#d9b9b3 transparent",
-            }}
-          >
-            <div className="flex flex-col gap-3 sm:gap-4">
+          <div className="min-w-0">
+            <div className="flex flex-col gap-4 sm:gap-5 lg:gap-6">
               {services.map((service, index) => (
                 <motion.a
                   key={service.title}
                   href="#contact"
                   initial={{
                     opacity: 0,
-                    x: reduceMotion ? 0 : 25,
+                    y: reduceMotion ? 0 : 36,
                   }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, amount: 0.15 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
                   transition={{
-                    duration: reduceMotion ? 0 : 0.55,
-                    delay: reduceMotion ? 0 : (index % 3) * 0.08,
+                    duration: reduceMotion ? 0 : 0.65,
+                    delay: reduceMotion ? 0 : (index % 2) * 0.08,
                     ease: [0.22, 1, 0.36, 1],
                   }}
-                  className="group flex min-h-[112px] items-center justify-between gap-3 rounded-xl border border-white/80 bg-white/90 p-3 shadow-[0_4px_20px_rgba(140,91,83,0.035)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#8c5b53]/25 hover:bg-white hover:shadow-[0_10px_30px_rgba(140,91,83,0.10)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8c5b53] lg:min-h-[340px] sm:gap-4 sm:p-4"
+                  className="group flex min-h-[300px] flex-col justify-between gap-5 rounded-2xl border border-white/80 bg-white/90 p-4 shadow-[0_4px_20px_rgba(140,91,83,0.035)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#8c5b53]/25 hover:bg-white hover:shadow-[0_10px_30px_rgba(140,91,83,0.10)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8c5b53] sm:p-5 md:min-h-[360px] md:flex-row md:items-center md:gap-4 lg:min-h-[65svh] lg:gap-6 lg:rounded-3xl lg:p-8"
                 >
-                  <div className="min-w-0 flex-1 py-1 pl-1 sm:pl-2">
-                    <h3 className="font-serif text-[16px] font-normal leading-snug text-[#352c29] transition-colors duration-300 group-hover:text-[#8c5b53] lg:text-[4rem]">
-                      {service.title}
-                    </h3>
-
-                    <div className="mt-2 h-px w-8 bg-[#8c5b53]/45 transition-all duration-300 group-hover:w-14 group-hover:bg-[#8c5b53]" />
+                  <div className="flex min-w-0 flex-1 items-start justify-between gap-3 py-1 md:pl-2 lg:gap-5">
+                    <div>
+                      <span className="text-xs font-medium tracking-[0.2em] text-[#8c5b53]/70">
+                        0{index + 1}
+                      </span>
+                      <h3 className="mt-2 font-serif text-2xl font-normal leading-tight text-[#352c29] transition-colors duration-300 group-hover:text-[#8c5b53] sm:text-3xl lg:text-5xl">
+                        {service.title}
+                      </h3>
+                      <div className="mt-4 h-px w-10 bg-[#8c5b53]/45 transition-all duration-300 group-hover:w-16 group-hover:bg-[#8c5b53]" />
+                      <p className="mt-4 max-w-md text-sm leading-6 text-[#665854] sm:text-base">
+                        {service.description}
+                      </p>
+                    </div>
+                    <ArrowUpRight
+                      size={20}
+                      className="mt-1 shrink-0 text-[#8c5b53] transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
+                    />
                   </div>
 
-                  {/* Service image */}
-                  <div className="relative h-[82px] w-[82px] shrink-0 overflow-hidden rounded-lg bg-[#f3e8e5] lg:h-[322px] lg:w-[322px]">
+                  <div className="relative h-48 w-full shrink-0 overflow-hidden rounded-xl bg-[#f3e8e5] sm:h-56 md:h-64 md:w-[42%] lg:h-[min(42svh,520px)] lg:w-[44%] lg:rounded-2xl">
                     <Image
                       src={service.image}
-                      alt=""
+                      alt={`${service.title} at Hope IVF`}
                       fill
-                      sizes="112px"
+                      sizes="(max-width: 767px) 100vw, (max-width: 1023px) 42vw, 40vw"
                       className="object-cover transition-transform duration-500 group-hover:scale-110"
                     />
-
                     <div className="absolute inset-0 bg-[#8c5b53]/0 transition-colors duration-300 group-hover:bg-[#8c5b53]/10" />
                   </div>
-
-                  {/* Hover arrow */}
-                  <ArrowUpRight
-                    size={16}
-                    className="hidden shrink-0 text-[#8c5b53] opacity-0 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100 sm:block"
-                  />
                 </motion.a>
               ))}
             </div>

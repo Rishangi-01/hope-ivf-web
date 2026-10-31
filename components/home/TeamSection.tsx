@@ -105,7 +105,7 @@ export default function TeamSection() {
 
               <div className="flex items-start justify-between gap-2 px-1 pt-6">
                 <div>
-                  <h3 className="font-serif text-2xl leading-tight tracking-[-0.025em] sm:text-3xl xl:text-[45px]">
+                  <h3 className="font-serif text-2xl leading-tight tracking-[-0.025em] sm:text-3xl xl:text-[40px]">
                     {member.name}
                   </h3>
 

@@ -33,7 +33,7 @@ export default function AboutSection() {
 
   return (
     <section className="relative isolate overflow-hidden bg-[#8c5b53] px-5 py-14 text-white sm:px-8 sm:py-20 lg:min-h-[620px] lg:px-12 lg:py-10 w-[100%]">
-      {/* Subtle background accents */}
+
       <div
         aria-hidden="true"
         className="pointer-events-none absolute -left-32 -top-32 h-96 w-96 rounded-full bg-white/[0.06] blur-3xl"
@@ -44,8 +44,8 @@ export default function AboutSection() {
         className="pointer-events-none absolute -bottom-40 right-0 h-96 w-96 rounded-full bg-[#5f3832]/20 blur-3xl"
       />
 
-      <div className="relative mx-auto grid max-w-[1400px] grid-cols-1 items-center gap-12 md:grid-cols-[1fr_1fr] md:gap-8 lg:min-h-[540px] lg:grid-cols-[1fr_1.1fr] lg:gap-14">
-        {/* Left content */}
+      <div className="relative mx-auto grid max-w-[1400px] grid-cols-1 items-center gap-12 md:grid-cols-[1fr_1fr] md:gap-8 lg:min-h-[540px] lg:grid-cols-[1.1fr_1fr] lg:gap-14">
+        
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -58,9 +58,9 @@ export default function AboutSection() {
               },
             },
           }}
-          className="relative z-10 max-w-[630px]"
+          className="relative z-10 max-w-[650px]"
         >
-          {/* Eyebrow label */}
+          
           <motion.div
             variants={{
               hidden: {
@@ -93,7 +93,7 @@ export default function AboutSection() {
                 },
               },
             }}
-            className="mt-8 font-serif lg:text-[7rem] font-normal leading-[1.02] tracking-[-0.035em] text-[#fffaf3]"
+            className="mt-8 font-serif lg:text-[6rem] font-normal leading-[1.02] tracking-[-0.035em] text-[#fffaf3]"
           >
             Passion-Driven
             <br />

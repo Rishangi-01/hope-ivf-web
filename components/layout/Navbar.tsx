@@ -37,7 +37,7 @@ export default function Navbar() {
 
         <nav
           aria-label="Main navigation"
-          className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-1 rounded-full bg-[#fdf2f7]/95 px-3 py-2 shadow-sm backdrop-blur-md xl:flex"
+          className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-1 rounded-full bg-[#fdf2f7]/95 px-3 py-2 shadow-sm backdrop-blur-md lg:flex"
         >
           {navLinks.map((link, index) => (
             <motion.div
@@ -62,7 +62,7 @@ export default function Navbar() {
         </nav>
 
         <motion.div
-          className="relative z-10 hidden xl:block"
+          className="relative z-10 hidden lg:block"
           initial={{ opacity: 0, x: 12 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.4, delay: 0.25 }}
@@ -80,7 +80,7 @@ export default function Navbar() {
           aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
           aria-expanded={menuOpen}
           onClick={() => setMenuOpen((open) => !open)}
-          className="relative z-10 flex h-11 w-11 items-center justify-center rounded-full border border-[#f9dce9] bg-white/90 text-[#8c5b53] shadow-sm transition-colors hover:bg-[#fdf2f7] xl:hidden"
+          className="relative z-10 flex h-11 w-11 items-center justify-center rounded-full border border-[#f9dce9] bg-white/90 text-[#8c5b53] shadow-sm transition-colors hover:bg-[#fdf2f7] lg:hidden"
         >
           <AnimatePresence mode="wait" initial={false}>
             <motion.span
@@ -105,7 +105,7 @@ export default function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="mx-4 overflow-hidden rounded-2xl border border-[#f9dce9] bg-white/95 shadow-lg backdrop-blur-md sm:mx-6 xl:hidden"
+            className="mx-4 overflow-hidden rounded-2xl border border-[#f9dce9] bg-white/95 shadow-lg backdrop-blur-md sm:mx-6 lg:hidden"
           >
             <div className="px-5 pb-5 pt-2">
               {navLinks.map((link, index) => (

@@ -44,7 +44,7 @@ export default function AboutSection() {
         className="pointer-events-none absolute -bottom-40 right-0 h-96 w-96 rounded-full bg-[#5f3832]/20 blur-3xl"
       />
 
-      <div className="relative mx-auto grid max-w-[1250px] grid-cols-1 items-center gap-12 md:grid-cols-[1fr_1fr] md:gap-8 lg:min-h-[540px] lg:grid-cols-[1fr_1.1fr] lg:gap-14">
+      <div className="relative mx-auto grid max-w-[1400px] grid-cols-1 items-center gap-12 md:grid-cols-[1fr_1fr] md:gap-8 lg:min-h-[540px] lg:grid-cols-[1fr_1.1fr] lg:gap-14">
         {/* Left content */}
         <motion.div
           initial="hidden"
@@ -58,7 +58,7 @@ export default function AboutSection() {
               },
             },
           }}
-          className="relative z-10 max-w-[510px]"
+          className="relative z-10 max-w-[630px]"
         >
           {/* Eyebrow label */}
           <motion.div
@@ -93,7 +93,7 @@ export default function AboutSection() {
                 },
               },
             }}
-            className="mt-8 font-serif lg:text-[5rem] font-normal leading-[1.02] tracking-[-0.035em] text-[#fffaf3]"
+            className="mt-8 font-serif lg:text-[7rem] font-normal leading-[1.02] tracking-[-0.035em] text-[#fffaf3]"
           >
             Passion-Driven
             <br />

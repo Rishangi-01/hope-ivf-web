@@ -34,9 +34,9 @@ const socialLinks = [
 ];
 
 const policyLinks = [
-  { label: "About US", href: "" },
-  { label: "Our Services", href: "" },
-  { label: "BLog", href: "" },
+  { label: "About US", href: "/about-us" },
+  { label: "Our Services", href: "/services" },
+  { label: "BLog", href: "/blog" },
   {
     label: "Contact",
     href: "",

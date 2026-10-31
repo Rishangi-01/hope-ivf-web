@@ -111,10 +111,6 @@ export default function Testimonials() {
           transition={{ duration: reduceMotion ? 0 : 0.7 }}
           className="mx-auto mb-12 max-w-4xl text-center sm:mb-16"
         >
-          <span className="inline-flex items-center gap-2 rounded-full border border-[#8c5b53]/20 bg-white/80 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#8c5b53] sm:text-sm">
-            <Heart size={16} />
-            Stories of Care
-          </span>
 
           <h2 className="mt-6 font-serif text-4xl leading-[1.12] tracking-tight text-[#713c34] sm:text-5xl md:text-6xl lg:text-[3.75rem]">
             Words from the Heart,

@@ -53,7 +53,6 @@ export default function BookNowForm() {
   const [selectedDate, setSelectedDate] = useState("");
   const [selectedTime, setSelectedTime] = useState("");
 
-  const today = new Date().toLocaleDateString("en-CA");
 
   const fadeUp: Variants = {
     hidden: {
@@ -388,7 +387,6 @@ export default function BookNowForm() {
                       id="date"
                       name="date"
                       type="date"
-                      min={today}
                       value={selectedDate}
                       onChange={(event) => {
                         setSelectedDate(event.target.value);

@@ -2,15 +2,13 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
-import { useState } from "react";
 import {
   motion,
   useReducedMotion,
 } from "framer-motion";
+import { site } from "@/data";
 
 export default function TeamHero() {
-  const [menuOpen, setMenuOpen] = useState(false);
   const reduceMotion = useReducedMotion();
 
   const transition = {
@@ -37,8 +35,8 @@ export default function TeamHero() {
           className="absolute inset-0 -z-20"
         >
           <Image
-            src="/images/about/maternity-hero.png"
-            alt="Expecting mother relaxing comfortably at home"
+            src={site.site.heroImage}
+            alt={site.site.heroImageAlt}
             fill
             priority
             sizes="100vw"
@@ -63,7 +61,7 @@ export default function TeamHero() {
             className="max-w-[750px]"
           >
             <h1 className="font-serif text-[clamp(4.2rem,9vw,8.5rem)] leading-[0.98] tracking-[-0.055em] text-[#7c443a]">
-              Our Teams
+              {site.Insurance.sections.Team.variants.InsuranceTeam1.heroTitle}
             </h1>
 
             <motion.div

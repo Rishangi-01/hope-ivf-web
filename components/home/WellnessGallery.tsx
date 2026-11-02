@@ -3,36 +3,18 @@
 
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import { site } from "@/data";
 
-const galleryItems = [
-  {
-    src: "/images/home/wellness1.png",
-    alt: "Woman enjoying a peaceful moment with a book",
-    position: "mt-16 lg:mt-20",
-    delay: 0.1,
-  },
-  {
-    src: "/images/home/wellness2.png",
-    alt: "Large green tropical leaf surrounded by nature",
-    position: "mt-0 lg:-mt-1",
-    delay: 0.25,
-  },
-  {
-    src: "/images/home/wellness3.png",
-    alt: "Incense smoke rising in a softly lit room",
-    position: "mt-16 lg:mt-20",
-    delay: 0.4,
-  },
-  {
-    src: "/images/home/wellness4.png",
-    alt: "Woman enjoying a quiet moment in nature",
-    position: "mt-0 lg:-mt-1",
-    delay: 0.55,
-  },
+const itemPositions = [
+  "mt-16 lg:mt-20",
+  "mt-0 lg:-mt-1",
+  "mt-16 lg:mt-20",
+  "mt-0 lg:-mt-1",
 ];
 
 export default function WellnessGallery() {
+  const galleryItems =
+    site.Insurance.sections.Gallery.variants.InsuranceGallery1.items;
   const reduceMotion = useReducedMotion();
 
   return (
@@ -57,10 +39,10 @@ export default function WellnessGallery() {
               viewport={{ once: true, amount: 0.15 }}
               transition={{
                 duration: reduceMotion ? 0 : 0.8,
-                delay: reduceMotion ? 0 : item.delay,
+                delay: reduceMotion ? 0 : 0.1 + index * 0.15,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className={`group relative w-full overflow-hidden bg-[#e7e3df] ${item.position}`}
+              className={`group relative w-full overflow-hidden bg-[#e7e3df] ${itemPositions[index]}`}
             >
               <div
                 className={`relative w-full overflow-hidden ${

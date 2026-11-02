@@ -2,11 +2,12 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowRight, Heart } from "lucide-react";
+import { Heart } from "lucide-react";
+import { site } from "@/data";
 
 export default function OurValuesSection() {
+  const content = site.about.values;
   const reduceMotion = useReducedMotion();
 
   const transition = {
@@ -46,7 +47,7 @@ export default function OurValuesSection() {
         >
           <div className="mb-5 flex items-center gap-3">
             <span className="font-serif text-lg font-semibold text-[#51352f] lg:text-2xl">
-              Our Values
+              {content.eyebrow}
             </span>
 
             <motion.span
@@ -77,7 +78,7 @@ export default function OurValuesSection() {
             }}
             className="max-w-[560px] font-serif text-4xl leading-[1.08] tracking-[-0.04em] text-[#783f36] sm:text-5xl md:text-6xl lg:text-[clamp(2.5rem,3.5vw,4rem)] xl:text-[6rem]"
           >
-            What Drives Us
+            {content.title}
           </motion.h2>
 
           <motion.p
@@ -96,8 +97,7 @@ export default function OurValuesSection() {
             }}
             className="mt-5 max-w-[440px] text-base leading-7 text-[#76625c] sm:text-xl sm:leading-8"
           >
-            We are guided by compassion, trust and a deep
-            commitment to your well-being.
+            {content.text}
           </motion.p>
         </motion.div>
 
@@ -121,8 +121,8 @@ export default function OurValuesSection() {
         >
           <div className="relative aspect-[1.8/1] w-full overflow-hidden rounded-[28px] bg-[#f0dfd7] shadow-[0_20px_65px_rgba(104,61,51,0.10)] sm:rounded-[36px] lg:aspect-[1.65/1] xl:aspect-[1.8/1]">
             <Image
-              src="/images/home/success-story3.png"
-              alt="A parent gently holding their baby's tiny hand"
+              src={content.image}
+              alt={content.imageAlt}
               fill
               priority
               sizes="(max-width: 1023px) 100vw, 65vw"

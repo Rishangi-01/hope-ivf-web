@@ -12,31 +12,19 @@ import {
   UsersRound,
   ArrowUpRight,
 } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
+import { site } from "@/data";
 
-const features = [
-  {
-    title: "Compassionate Care",
-    subtitle: "With heart at every step",
-    Icon: HeartPulse,
-  },
-  {
-    title: "Expert Team",
-    subtitle: "Skilled and experienced",
-    Icon: UserRound,
-  },
-  {
-    title: "Advanced Technology",
-    subtitle: "For better care",
-    Icon: MonitorCheck,
-  },
-  {
-    title: "Personalized Approach",
-    subtitle: "Because you are unique",
-    Icon: UsersRound,
-  },
-];
+const featureIcons: Record<string, LucideIcon> = {
+  "heart-pulse": HeartPulse,
+  "user-round": UserRound,
+  "monitor-check": MonitorCheck,
+  "users-round": UsersRound,
+};
 
 export default function WhyChooseUs() {
+  const content = site.whyChooseUs;
+  const features = content.items.slice(0, content.homeItemCount);
   const reduceMotion = useReducedMotion();
 
   const reveal = {
@@ -91,7 +79,7 @@ export default function WhyChooseUs() {
             />
 
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#8c5b53] sm:text-sm md:text-base">
-              Why Choose Us
+              {content.eyebrow}
             </p>
 
             <motion.span
@@ -106,19 +94,23 @@ export default function WhyChooseUs() {
           </div>
 
           <h2 className="mx-auto max-w-5xl font-serif text-4xl leading-[1.12] tracking-[-0.035em] text-[#783f36] sm:text-5xl md:text-6xl lg:text-7xl">
-            Because You Deserve
-            <br className="hidden lg:block" /> the Best Care
+            {content.title}
+            <br className="hidden lg:block" /> {content.titleLine2}{" "}
+            {content.highlight}
           </h2>
         </motion.div>
 
         {/* Feature cards */}
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-8 lg:grid-cols-4 lg:gap-0">
           {features.map((feature, index) => {
-            const Icon = feature.Icon;
+            const Icon = featureIcons[feature.icon];
+            if (!Icon) {
+              throw new Error(`Unknown feature icon: ${feature.icon}`);
+            }
 
             return (
               <motion.article
-                key={feature.title}
+                key={feature.title.join(" ")}
                 variants={reveal}
                 initial="hidden"
                 whileInView="visible"
@@ -160,11 +152,11 @@ export default function WhyChooseUs() {
 
                 {/* Feature title: 3rem on large desktop */}
                 <h3 className="max-w-sm font-serif text-2xl leading-tight tracking-[-0.025em] text-[#693b33] transition-colors duration-300 group-hover:text-[#8c5b53] sm:text-3xl lg:text-[clamp(1.5rem,2.3vw,3rem)]">
-                  {feature.title}
+                  {feature.title.join(" ")}
                 </h3>
 
                 <p className="mt-3 text-base leading-7 text-[#79645d] transition-colors duration-300 group-hover:text-[#5e4943] sm:text-lg">
-                  {feature.subtitle}
+                  {feature.text.join(" ")}
                 </p>
 
                 <motion.div

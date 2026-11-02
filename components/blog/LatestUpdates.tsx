@@ -10,44 +10,15 @@ import {
   MessageCircle,
   Sparkles,
 } from "lucide-react";
-
-type BlogPost = {
-  category: string;
-  title: string;
-  date: string;
-  image: string;
-  alt: string;
-  href: string;
-};
-
-const posts: BlogPost[] = [
-  {
-    category: "Fertility Insights",
-    title: "How lifestyle choices can improve your chances of conception",
-    date: "Oct 16, 2026",
-    image: "/images/home/success-story1.png",
-    alt: "Mother holding her baby in a bright, peaceful setting",
-    href: "/blog/blog-details",
-  },
-  {
-    category: "IVF Guides",
-    title: "What to expect during your IVF treatment journey",
-    date: "Oct 16, 2026",
-    image: "/images/home/success-story2.png",
-    alt: "Patient looking at an ultrasound image with medical guidance",
-    href: "/blog/blog-details",
-  },
-  {
-    category: "Women's Health",
-    title: "Understanding PCOS and its impact on fertility",
-    date: "Oct 16, 2026",
-    image: "/images/home/success-story3.png",
-    alt: "Doctor discussing women's health with a patient",
-    href: "/blog/blog-details",
-  },
-];
+import { site } from "@/data";
 
 export default function LatestUpdates() {
+  const content = site.blogs;
+  const posts = content.posts.slice(0, content.homeCount);
+  const detailsHref = site.Insurance.commerce.blog.detailsHref;
+  if (!detailsHref) {
+    throw new Error("Blog detail route is missing");
+  }
   const reduceMotion = useReducedMotion();
 
   return (
@@ -81,9 +52,9 @@ export default function LatestUpdates() {
         >
 
           <h2 className="text-4xl font-bold leading-[1.1] tracking-tight text-[#172c59] sm:text-5xl md:text-6xl lg:text-[4rem]">
-            Latest updates and
+            {content.title}
             <span className="mt-2 block text-[#8c5b53]">
-              expert fertility insights
+              {content.highlight}
             </span>
           </h2>
         </motion.div>
@@ -111,13 +82,16 @@ export default function LatestUpdates() {
               className="group flex h-full flex-col overflow-hidden rounded-[22px] border border-[#8c5b53]/10 bg-white shadow-[0_8px_35px_rgba(74,47,40,0.05)] transition-shadow duration-500 hover:shadow-[0_24px_55px_rgba(100,57,47,0.13)]"
             >
               <Link
-                href={post.href}
-                aria-label={`Read ${post.title}`}
+                href={detailsHref}
+                aria-label={content.readAriaLabelTemplate.replace(
+                  "{title}",
+                  post.title,
+                )}
                 className="relative block aspect-[1.48/1] overflow-hidden bg-[#f1e5df]"
               >
                 <Image
                   src={post.image}
-                  alt={post.alt}
+                  alt={post.imageAlt ?? post.title}
                   fill
                   priority={index === 0}
                   sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw"
@@ -143,16 +117,16 @@ export default function LatestUpdates() {
                 </div>
 
                 <h3 className="text-2xl font-semibold leading-snug tracking-tight text-[#172c59] transition-colors duration-300 group-hover:text-[#8c5b53] sm:text-[1.7rem]">
-                  <Link href={post.href} className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8c5b53]">
+                  <Link href={detailsHref} className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8c5b53]">
                     {post.title}
                   </Link>
                 </h3>
 
                 <Link
-                  href={post.href}
+                  href={detailsHref}
                   className="mt-7 inline-flex w-fit items-center gap-3 rounded-full py-2 pr-2 text-base font-semibold text-[#8c5b53] transition-all duration-300 hover:gap-5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8c5b53] focus-visible:ring-offset-4"
                 >
-                  Read Article
+                  {content.readLabel}
                   <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#f5e7e1] transition-all duration-300 group-hover:bg-[#8c5b53] group-hover:text-white">
                     <ArrowRight
                       size={21}
@@ -176,10 +150,10 @@ export default function LatestUpdates() {
           className="mt-12 flex justify-center sm:mt-16"
         >
           <Link
-            href="/blog/blog-details"
+            href={detailsHref}
             className="group inline-flex items-center gap-3 rounded-full bg-[#8c5b53] px-8 py-4 text-sm font-semibold text-white shadow-lg shadow-[#8c5b53]/20 transition-all duration-300 hover:-translate-y-1 hover:bg-[#70443c] hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8c5b53] focus-visible:ring-offset-4 sm:text-base"
           >
-            Explore All Articles
+            {content.buttonLabel}
             <ArrowRight
               size={20}
               className="transition-transform duration-300 group-hover:translate-x-1"

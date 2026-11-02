@@ -4,31 +4,17 @@
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 
-const careImages = [
-  {
-    src: "/images/home/wellness1.png",
-    alt: "A father sharing a joyful moment with his child",
-    className:
-      "left-0 top-[25%] h-[245px] w-[220px] sm:h-[270px] sm:w-[235px] lg:left-0 lg:top-[30%] lg:h-[300px] lg:w-[284px]",
-    delay: 0.15,
-  },
-  {
-    src: "/images/home/wellness2.png",
-    alt: "A caregiver gently holding an older person's hands",
-    className:
-      "right-[3%] top-0 h-[215px] w-[180px] sm:h-[235px] sm:w-[200px] lg:right-[5%] lg:top-0 lg:h-[288px] lg:w-[270px]",
-    delay: 0.3,
-  },
-  {
-    src: "/images/home/wellness3.png",
-    alt: "A healthcare professional supporting an older adult",
-    className:
-      "right-0 bottom-0 h-[225px] w-[185px] sm:h-[250px] sm:w-[205px] lg:right-0 lg:bottom-0 lg:h-[330px] lg:w-[294px]",
-    delay: 0.45,
-  },
+import { site } from "@/data";
+
+const collageLayout = [
+  "left-0 top-[25%] h-[245px] w-[220px] sm:h-[270px] sm:w-[235px] lg:left-0 lg:top-[30%] lg:h-[300px] lg:w-[284px]",
+  "right-[3%] top-0 h-[215px] w-[180px] sm:h-[235px] sm:w-[200px] lg:right-[5%] lg:top-0 lg:h-[288px] lg:w-[270px]",
+  "right-0 bottom-0 h-[225px] w-[185px] sm:h-[250px] sm:w-[205px] lg:right-0 lg:bottom-0 lg:h-[330px] lg:w-[294px]",
 ];
 
 export default function AboutSection() {
+  const homeAbout = site.about.homeSection;
+  const careImages = site.Insurance.sections.Gallery.variants.InsuranceGallery1.items.slice(0, 3);
   const reduceMotion = useReducedMotion();
 
   return (
@@ -75,7 +61,7 @@ export default function AboutSection() {
             }}
             className="inline-flex items-center rounded-full bg-[#f0f1d9] px-7 py-2 text-sm font-semibold text-[#754840] sm:text-base"
           >
-            About Us
+            {homeAbout.eyebrow}
           </motion.div>
 
           <motion.h2
@@ -95,10 +81,14 @@ export default function AboutSection() {
             }}
             className="mt-8 font-serif lg:text-[6rem] font-normal leading-[1.02] tracking-[-0.035em] text-[#fffaf3]"
           >
-            Passion-Driven
-            <br />
-            Care, Delivered
-            <br className="hidden lg:block" /> to Your Door
+            {homeAbout.title.map((line, index) => (
+              <span key={line}>
+                {index > 0 && (
+                  <br className={index === 2 ? "hidden lg:block" : undefined} />
+                )}
+                {line}
+              </span>
+            ))}
           </motion.h2>
 
           {/* Decorative line */}
@@ -116,7 +106,7 @@ export default function AboutSection() {
 
         {/* Right collage */}
         <div className="relative mx-auto h-[480px] w-full max-w-[630px] sm:h-[540px] md:h-[500px] lg:h-[690px]">
-          {careImages.map((item) => (
+          {careImages.map((item, index) => (
             <motion.div
               key={item.src}
               initial={{
@@ -132,13 +122,13 @@ export default function AboutSection() {
               viewport={{ once: true, amount: 0.2 }}
               transition={{
                 duration: reduceMotion ? 0 : 0.8,
-                delay: reduceMotion ? 0 : item.delay,
+                delay: reduceMotion ? 0 : 0.15 + index * 0.15,
                 ease: [0.22, 1, 0.36, 1],
               }}
               whileHover={
                 reduceMotion ? {} : { y: -5, scale: 1.02 }
               }
-              className={`group absolute overflow-hidden rounded-[26px] bg-white/10 shadow-xl shadow-black/10 ${item.className}`}
+              className={`group absolute overflow-hidden rounded-[26px] bg-white/10 shadow-xl shadow-black/10 ${collageLayout[index]}`}
             >
               <Image
                 src={item.src}

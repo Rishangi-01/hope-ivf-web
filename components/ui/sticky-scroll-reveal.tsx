@@ -64,7 +64,7 @@ export const StickyScroll = ({
       animate={{
         backgroundColor: backgroundColors[activeCard % backgroundColors.length],
       }}
-      aria-label="Medical services"
+      aria-label={content[0].title}
       className="relative flex h-[30rem] justify-center space-x-10 overflow-y-auto scroll-smooth rounded-md p-10 motion-reduce:scroll-auto"
       tabIndex={0}
       ref={ref}

@@ -17,17 +17,27 @@ import {
   MessageCircle,
   Sparkles,
 } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
+import { site } from "@/data";
 
-const article = {
-  category: "Fertility Insights",
-  title: "Understanding Your Fertility Journey: A Guide to Your Next Steps",
-  subtitle:
-    "Explore the essentials of reproductive health, learn about your options, and discover how informed decisions can help you navigate your fertility journey.",
-  image: "/images/home/success-story1.png",
+const articleIcons: Record<string, LucideIcon> = {
+  heart: Heart,
+  "message-circle": MessageCircle,
 };
 
-
 export default function BlogDetailsSec() {
+  const article = site.Insurance.commerce.blogDetails;
+  const blogHref = site.Insurance.commerce.blog.detailsHref;
+  if (!blogHref) {
+    throw new Error("Blog route is missing");
+  }
+  const [gettingStarted, lifestyle, treatmentOptions, questions] = article.tips;
+  const treatmentCards =
+    "cards" in treatmentOptions ? treatmentOptions.cards : undefined;
+  if (!treatmentCards) {
+    throw new Error("Blog article treatment cards are missing");
+  }
+  const articleTitle = `${article.headingFirst}${article.headingHighlight}`;
   const reduceMotion = useReducedMotion();
   const [copied, setCopied] = useState(false);
 
@@ -45,8 +55,8 @@ export default function BlogDetailsSec() {
 
   async function handleShare() {
     const shareData = {
-      title: article.title,
-      text: article.subtitle,
+      title: articleTitle,
+      text: article.introduction,
       url: window.location.href,
     };
 
@@ -78,25 +88,25 @@ export default function BlogDetailsSec() {
             variants={reveal}
           >
             <Link
-              href="/blog"
+              href={blogHref}
               className="group inline-flex items-center gap-2 rounded-full border border-[#8c5b53]/20 bg-white px-5 py-3 text-sm font-semibold text-[#8c5b53] transition-all duration-300 hover:-translate-x-1 hover:bg-[#8c5b53] hover:text-white"
             >
               <ArrowLeft size={17} />
-              Back to Articles
+              {article.backLabel}
             </Link>
 
             <div className="mt-9 flex flex-wrap items-center gap-3 text-xs font-bold uppercase tracking-[0.15em] text-[#8c5b53] sm:gap-4 sm:text-sm">
               <span className="rounded-full bg-[#f2e3dc] px-4 py-2">
-                {article.category}
+                {article.eyebrow}
               </span>
             </div>
 
             <h1 className="mt-7 max-w-5xl font-serif text-4xl leading-[1.12] tracking-tight text-[#713c34] sm:text-5xl md:text-6xl lg:text-[4.5rem]">
-              {article.title}
+              {articleTitle}
             </h1>
 
             <p className="mt-6 max-w-3xl text-base leading-8 text-[#786c67] sm:text-lg lg:text-xl lg:leading-9">
-              {article.subtitle}
+              {article.introduction}
             </p>
           </motion.div>
         </div>
@@ -114,8 +124,8 @@ export default function BlogDetailsSec() {
           className="relative mx-auto aspect-[16/9] max-h-[650px] max-w-[1450px] overflow-hidden rounded-[24px] bg-[#f0dfd7] shadow-[0_25px_80px_rgba(83,48,39,0.12)] sm:rounded-[32px] lg:aspect-[2/0.85]"
         >
           <Image
-            src={article.image}
-            alt="A mother holding her baby, representing family and reproductive health"
+            src={article.image.src}
+            alt={article.image.alt}
             fill
             priority
             sizes="100vw"
@@ -138,27 +148,23 @@ export default function BlogDetailsSec() {
           >
             <section id="introduction" className="scroll-mt-10">
               <p className="mb-5 text-xs font-bold uppercase tracking-[0.2em] text-[#8c5b53] sm:text-sm">
-                A Guide to Getting Started
+                {gettingStarted.title}
               </p>
 
               <h2 className="font-serif text-3xl leading-tight text-[#713c34] sm:text-4xl lg:text-5xl">
-                Understanding your fertility journey
+                {article.articleHeading}
               </h2>
 
-              <p className="mt-6 text-base leading-8 text-[#71635d] sm:text-lg sm:leading-9">
-                Fertility is a personal aspect of health, and every
-                individual or couple may have different questions,
-                circumstances, and goals. Understanding your options
-                can help you have informed conversations with a
-                qualified healthcare professional.
-              </p>
-
-              <p className="mt-5 text-base leading-8 text-[#71635d] sm:text-lg sm:leading-9">
-                A good starting point is to discuss your medical
-                history, concerns, and expectations with your
-                healthcare provider. They can help determine which
-                assessments, if any, may be appropriate for you.
-              </p>
+              {gettingStarted.paragraphs.map((paragraph, index) => (
+                <p
+                  key={paragraph}
+                  className={`text-base leading-8 text-[#71635d] sm:text-lg sm:leading-9 ${
+                    index === 0 ? "mt-6" : "mt-5"
+                  }`}
+                >
+                  {paragraph}
+                </p>
+              ))}
             </section>
 
             <section
@@ -166,30 +172,27 @@ export default function BlogDetailsSec() {
               className="mt-12 scroll-mt-10 border-t border-[#8c5b53]/15 pt-10 sm:mt-16 sm:pt-12"
             >
               <h2 className="font-serif text-3xl leading-tight text-[#713c34] sm:text-4xl">
-                Lifestyle and reproductive health
+                {lifestyle.sectionTitle}
               </h2>
 
-              <p className="mt-6 text-base leading-8 text-[#71635d] sm:text-lg sm:leading-9">
-                General health habits can support overall well-being.
-                Eating a varied, balanced diet, getting adequate rest,
-                avoiding tobacco, and discussing medications or
-                supplements with a clinician can all be useful topics
-                to consider.
-              </p>
-
-              <div className="mt-7 rounded-r-2xl border-l-4 border-[#8c5b53] bg-[#f7ece7] p-6 sm:p-8">
-                <p className="font-serif text-xl leading-relaxed text-[#713c34] sm:text-2xl">
-                  “The right next step begins with reliable
-                  information and care tailored to your needs.”
-                </p>
-              </div>
-
-              <p className="mt-6 text-base leading-8 text-[#71635d] sm:text-lg sm:leading-9">
-                Lifestyle changes cannot guarantee conception.
-                Your age, medical history, and other factors may
-                influence fertility, so personalized guidance is
-                important.
-              </p>
+              {lifestyle.paragraphs.map((paragraph, index) => (
+                <div key={paragraph}>
+                  <p
+                    className={`text-base leading-8 text-[#71635d] sm:text-lg sm:leading-9 ${
+                      index === 0 ? "mt-6" : "mt-6"
+                    }`}
+                  >
+                    {paragraph}
+                  </p>
+                  {index === 0 && (
+                    <div className="mt-7 rounded-r-2xl border-l-4 border-[#8c5b53] bg-[#f7ece7] p-6 sm:p-8">
+                      <p className="font-serif text-xl leading-relaxed text-[#713c34] sm:text-2xl">
+                        “{article.quotation}”
+                      </p>
+                    </div>
+                  )}
+                </div>
+              ))}
             </section>
 
             <section
@@ -197,42 +200,40 @@ export default function BlogDetailsSec() {
               className="mt-12 scroll-mt-10 border-t border-[#8c5b53]/15 pt-10 sm:mt-16 sm:pt-12"
             >
               <h2 className="font-serif text-3xl leading-tight text-[#713c34] sm:text-4xl">
-                Understanding treatment options
+                {treatmentOptions.sectionTitle}
               </h2>
 
-              <p className="mt-6 text-base leading-8 text-[#71635d] sm:text-lg sm:leading-9">
-                Depending on your circumstances, a specialist may
-                discuss diagnostic testing, medication, intrauterine
-                insemination (IUI), in vitro fertilization (IVF), or
-                other approaches. Not every option is appropriate for
-                every person.
-              </p>
+              {treatmentOptions.paragraphs.map((paragraph) => (
+                <p
+                  key={paragraph}
+                  className="mt-6 text-base leading-8 text-[#71635d] sm:text-lg sm:leading-9"
+                >
+                  {paragraph}
+                </p>
+              ))}
 
               <div className="mt-8 grid gap-5 sm:grid-cols-2">
-                <div className="rounded-2xl border border-[#8c5b53]/15 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
-                  <Heart size={27} className="text-[#8c5b53]" />
-                  <h3 className="mt-4 text-xl font-semibold text-[#713c34]">
-                    Personalized guidance
-                  </h3>
-                  <p className="mt-3 text-sm leading-7 text-[#786c67]">
-                    Discuss your health history and potential options
-                    with a qualified fertility specialist.
-                  </p>
-                </div>
+                {treatmentCards.map((card) => {
+                  const Icon = articleIcons[card.icon];
+                  if (!Icon) {
+                    throw new Error(`Unknown blog article icon: ${card.icon}`);
+                  }
 
-                <div className="rounded-2xl border border-[#8c5b53]/15 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
-                  <MessageCircle
-                    size={27}
-                    className="text-[#8c5b53]"
-                  />
-                  <h3 className="mt-4 text-xl font-semibold text-[#713c34]">
-                    Clear communication
-                  </h3>
-                  <p className="mt-3 text-sm leading-7 text-[#786c67]">
-                    Ask about benefits, risks, costs, alternatives,
-                    and what to expect at each stage.
-                  </p>
-                </div>
+                  return (
+                    <div
+                      key={card.title}
+                      className="rounded-2xl border border-[#8c5b53]/15 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+                    >
+                      <Icon size={27} className="text-[#8c5b53]" />
+                      <h3 className="mt-4 text-xl font-semibold text-[#713c34]">
+                        {card.title}
+                      </h3>
+                      <p className="mt-3 text-sm leading-7 text-[#786c67]">
+                        {card.text}
+                      </p>
+                    </div>
+                  );
+                })}
               </div>
             </section>
 
@@ -241,22 +242,15 @@ export default function BlogDetailsSec() {
               className="mt-12 scroll-mt-10 border-t border-[#8c5b53]/15 pt-10 sm:mt-16 sm:pt-12"
             >
               <h2 className="font-serif text-3xl leading-tight text-[#713c34] sm:text-4xl">
-                Questions to ask your specialist
+                {questions.sectionTitle}
               </h2>
 
               <p className="mt-6 text-base leading-8 text-[#71635d] sm:text-lg sm:leading-9">
-                Preparing questions before an appointment can help
-                you understand the available choices and feel more
-                comfortable participating in decisions about your care.
+                {questions.paragraphs[0]}
               </p>
 
               <ul className="mt-6 space-y-4">
-                {[
-                  "Which assessments might be appropriate for my situation?",
-                  "What treatment options could be considered, and why?",
-                  "What are the possible risks, benefits, and costs?",
-                  "Where can I find reliable support and information?",
-                ].map((question) => (
+                {questions.paragraphs.slice(1).map((question) => (
                   <li
                     key={question}
                     className="flex items-start gap-3 text-base leading-7 text-[#71635d] sm:text-lg"
@@ -273,12 +267,9 @@ export default function BlogDetailsSec() {
             <div className="mt-12 rounded-2xl border border-[#8c5b53]/15 bg-white p-6 sm:p-8">
               <p className="text-sm leading-7 text-[#82746e]">
                 <strong className="text-[#713c34]">
-                  Medical disclaimer:
+                  {article.disclaimer.label}
                 </strong>{" "}
-                This article is for general educational purposes only
-                and is not a substitute for medical advice, diagnosis,
-                or treatment. Please consult a qualified healthcare
-                professional for guidance specific to your situation.
+                {article.disclaimer.text}
               </p>
             </div>
           </motion.article>

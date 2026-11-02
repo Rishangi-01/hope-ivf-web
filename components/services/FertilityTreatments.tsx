@@ -8,25 +8,18 @@ import {
   useReducedMotion,
 } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-
-const treatments = [
-  {
-    title: "IVF Treatment",
-    image: "/images/home/wellness6.png",
-    alt: "Patient during an ultrasound consultation",
-    href: "/services/service-details",
-    number: "01",
-  },
-  {
-    title: "IUI Treatment",
-    image: "/images/home/wellness6.png",
-    alt: "Fertility laboratory equipment used in treatment",
-    href: "/services/service-details",
-    number: "02",
-  },
-];
+import { site } from "@/data";
 
 export default function FertilityTreatments() {
+  const plans = site.plans;
+  const treatments = plans.items
+    .slice(0, plans.treatmentCardCount)
+    .map((treatment) => {
+      if (!treatment.treatmentImageAlt) {
+        throw new Error(`Missing treatment image alt text for ${treatment.slug}`);
+      }
+      return treatment;
+    });
   const reduceMotion = useReducedMotion();
 
   return (
@@ -61,10 +54,16 @@ export default function FertilityTreatments() {
           className="mx-auto mb-10 max-w-6xl text-center sm:mb-12 lg:mb-14"
         >
           <h2 className="font-sans text-4xl font-bold leading-[1.1] tracking-[-0.045em] text-[#243a59] sm:text-5xl md:text-6xl lg:text-[4rem]">
-            Personalized Fertility
-            <span className="mt-1 block text-[#8c5b53]">
-              Care for Every Journey
-            </span>
+            {plans.treatmentHeading.map((line, index) => (
+              <span
+                key={line}
+                className={
+                  index > 0 ? "mt-1 block text-[#8c5b53]" : undefined
+                }
+              >
+                {line}
+              </span>
+            ))}
           </h2>
         </motion.div>
 
@@ -94,7 +93,7 @@ export default function FertilityTreatments() {
               <div className="relative aspect-[1.8/1] overflow-hidden bg-[#f1e8e3]">
                 <Image
                   src={treatment.image}
-                  alt={treatment.alt}
+                  alt={treatment.treatmentImageAlt}
                   fill
                   sizes="(max-width: 767px) 100vw, 50vw"
                   className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.06]"
@@ -103,7 +102,7 @@ export default function FertilityTreatments() {
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#47352f]/10 to-transparent opacity-60 transition-opacity duration-500 group-hover:opacity-100" />
 
                 <span className="absolute right-4 top-4 rounded-full border border-white/50 bg-white/80 px-3 py-1 text-xs font-semibold tracking-wider text-[#8c5b53] opacity-0 backdrop-blur-md transition-all duration-300 group-hover:opacity-100">
-                  {treatment.number}
+                  {String(index + 1).padStart(2, "0")}
                 </span>
               </div>
 
@@ -128,8 +127,11 @@ export default function FertilityTreatments() {
                   className="shrink-0"
                 >
                   <Link
-                    href={treatment.href}
-                    aria-label={`Learn more about ${treatment.title}`}
+                    href={plans.serviceDetailsHref}
+                    aria-label={plans.learnMoreLabelTemplate.replace(
+                      "{name}",
+                      treatment.title,
+                    )}
                     className="flex h-12 w-12 items-center justify-center rounded-full bg-[#f5e7e1] text-[#8c5b53] transition-colors duration-300 hover:bg-[#8c5b53] hover:text-white sm:h-14 sm:w-14"
                   >
                     <ArrowRight

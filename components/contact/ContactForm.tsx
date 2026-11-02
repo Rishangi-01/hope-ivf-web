@@ -14,20 +14,16 @@ import {
   MapPin,
   Send,
 } from "lucide-react";
+import { site } from "@/data";
 
 export default function ContactForm() {
+  const content = site.contact;
+  const form = content.form;
+  const fields = form.fields;
   const reduceMotion = useReducedMotion();
-  const [countryCode, setCountryCode] = useState("+91");
+  const [countryCode, setCountryCode] = useState(form.countries[0].code);
   const [isCountryOpen, setIsCountryOpen] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
-
-  const countries = [
-    { code: "+91", name: "India" },
-    { code: "+1", name: "United States" },
-    { code: "+44", name: "United Kingdom" },
-    { code: "+61", name: "Australia" },
-    { code: "+971", name: "UAE" },
-  ];
 
   const fadeUp = {
     hidden: {
@@ -54,8 +50,8 @@ export default function ContactForm() {
       <section className="relative min-h-screen">
         <div className="absolute inset-x-0 top-0 h-[58vh] min-h-[350px] overflow-hidden sm:h-[65vh] lg:h-[72vh]">
           <Image
-            src="/images/about/our-mission.png"
-            alt="A welcoming modern building exterior"
+            src={form.backgroundImage}
+            alt={form.backgroundImageAlt}
             fill
             priority
             sizes="100vw"
@@ -79,9 +75,9 @@ export default function ContactForm() {
           >
 
             <h1 className="mt-7 font-serif text-6xl leading-[1.08] xl:text-7xl">
-              Let&apos;s start a
+              {content.title[0]}
               <br />
-              conversation.
+              {content.title[1]}
             </h1>
 
             <div className="mt-10 space-y-5">
@@ -90,8 +86,8 @@ export default function ContactForm() {
                   <Mail size={21} />
                 </div>
                 <div>
-                  <p className="text-sm text-white/70">Email us</p>
-                  <p className="mt-1 font-medium">hello@example.com</p>
+                  <p className="text-sm text-white/70">{form.emailLabel}</p>
+                  <p className="mt-1 font-medium">{form.emailValue}</p>
                 </div>
               </div>
 
@@ -100,8 +96,8 @@ export default function ContactForm() {
                   <Phone size={21} />
                 </div>
                 <div>
-                  <p className="text-sm text-white/70">Call us</p>
-                  <p className="mt-1 font-medium">+91 98765 43210</p>
+                  <p className="text-sm text-white/70">{form.phoneLabel}</p>
+                  <p className="mt-1 font-medium">{form.phoneValue}</p>
                 </div>
               </div>
             </div>
@@ -124,22 +120,21 @@ export default function ContactForm() {
             {/* Mobile heading */}
             <div className="mb-8 lg:hidden">
               <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#8c5b53]">
-                Get in touch
+                {form.mobileEyebrow}
               </span>
 
               <h1 className="mt-3 font-serif text-4xl leading-tight text-[#342b29] sm:text-5xl">
-                Contact Us
+                {form.heading}
               </h1>
 
               <p className="mt-3 max-w-lg text-sm leading-6 text-[#5c6668] sm:text-base">
-                We&apos;d love to hear from you. Send us a message
-                and let&apos;s start a conversation.
+                {content.text}
               </p>
             </div>
 
             <div className="mb-8 hidden items-center justify-between lg:flex">
               <h2 className="text-xl font-medium tracking-tight text-[#273334] xl:text-2xl">
-                Contact Us
+                {form.heading}
               </h2>
 
               <div className="flex h-11 w-11 items-center justify-center rounded-full bg-white/70 text-[#8c5b53]">
@@ -160,13 +155,11 @@ export default function ContactForm() {
                 />
 
                 <h2 className="mt-6 font-serif text-3xl text-[#713c34] sm:text-4xl">
-                  Thank you!
+                  {site.thankYou.subtitle}
                 </h2>
 
                 <p className="mt-4 max-w-md leading-7 text-[#5c6668]">
-                  Your form passed the client-side submission step.
-                  Connect an email service or backend API to deliver
-                  your message to your team.
+                  {site.thankYou.text.join(" ")}
                 </p>
 
                 <button
@@ -174,7 +167,7 @@ export default function ContactForm() {
                   onClick={() => setIsSubmitted(false)}
                   className="mt-7 rounded-full bg-[#8c5b53] px-7 py-3 font-medium text-white transition-all hover:bg-[#713c34]"
                 >
-                  Send Another Message
+                  {site.thankYou.primaryButton.label}
                 </button>
               </motion.div>
             ) : (
@@ -186,7 +179,8 @@ export default function ContactForm() {
                       htmlFor="firstName"
                       className="mb-3 block text-base font-medium text-[#273334] transition-colors group-focus-within:text-[#8c5b53]"
                     >
-                      First name <span aria-hidden="true">*</span>
+                      {fields.firstName.label}{" "}
+                      <span aria-hidden="true">{form.requiredMarker}</span>
                     </label>
 
                     <input
@@ -194,7 +188,7 @@ export default function ContactForm() {
                       name="firstName"
                       type="text"
                       autoComplete="given-name"
-                      placeholder="Enter your first name"
+                      placeholder={fields.firstName.placeholder}
                       required
                       className="h-[52px] w-full rounded-[11px] border border-[#374344] bg-transparent px-4 text-base text-[#273334] outline-none transition-all duration-300 placeholder:text-sm placeholder:text-[#849092] hover:border-[#8c5b53]/70 focus:border-[#8c5b53] focus:bg-white/50 focus:ring-4 focus:ring-[#8c5b53]/10"
                     />
@@ -206,7 +200,8 @@ export default function ContactForm() {
                       htmlFor="lastName"
                       className="mb-3 block text-base font-medium text-[#273334] transition-colors group-focus-within:text-[#8c5b53]"
                     >
-                      Last name <span aria-hidden="true">*</span>
+                      {fields.lastName.label}{" "}
+                      <span aria-hidden="true">{form.requiredMarker}</span>
                     </label>
 
                     <input
@@ -214,7 +209,7 @@ export default function ContactForm() {
                       name="lastName"
                       type="text"
                       autoComplete="family-name"
-                      placeholder="Enter your last name"
+                      placeholder={fields.lastName.placeholder}
                       required
                       className="h-[52px] w-full rounded-[11px] border border-[#374344] bg-transparent px-4 text-base text-[#273334] outline-none transition-all duration-300 placeholder:text-sm placeholder:text-[#849092] hover:border-[#8c5b53]/70 focus:border-[#8c5b53] focus:bg-white/50 focus:ring-4 focus:ring-[#8c5b53]/10"
                     />
@@ -226,7 +221,8 @@ export default function ContactForm() {
                       htmlFor="email"
                       className="mb-3 block text-base font-medium text-[#273334] transition-colors group-focus-within:text-[#8c5b53]"
                     >
-                      Email <span aria-hidden="true">*</span>
+                      {fields.email.label}{" "}
+                      <span aria-hidden="true">{form.requiredMarker}</span>
                     </label>
 
                     <input
@@ -234,7 +230,7 @@ export default function ContactForm() {
                       name="email"
                       type="email"
                       autoComplete="email"
-                      placeholder="you@example.com"
+                      placeholder={fields.email.placeholder}
                       required
                       className="h-[52px] w-full rounded-[11px] border border-[#374344] bg-transparent px-4 text-base text-[#273334] outline-none transition-all duration-300 placeholder:text-sm placeholder:text-[#849092] hover:border-[#8c5b53]/70 focus:border-[#8c5b53] focus:bg-white/50 focus:ring-4 focus:ring-[#8c5b53]/10"
                     />
@@ -246,13 +242,14 @@ export default function ContactForm() {
                       htmlFor="phone"
                       className="mb-3 block text-base font-medium text-[#273334] transition-colors group-focus-within:text-[#8c5b53]"
                     >
-                      Phone number <span aria-hidden="true">*</span>
+                      {fields.phone.label}{" "}
+                      <span aria-hidden="true">{form.requiredMarker}</span>
                     </label>
 
                     <div className="relative flex h-[52px] items-center rounded-[11px] border border-[#374344] transition-all duration-300 hover:border-[#8c5b53]/70 focus-within:border-[#8c5b53] focus-within:bg-white/50 focus-within:ring-4 focus-within:ring-[#8c5b53]/10">
                       <button
                         type="button"
-                        aria-label="Choose country calling code"
+                        aria-label={fields.phone.countryButtonLabel}
                         aria-expanded={isCountryOpen}
                         onClick={() => setIsCountryOpen(!isCountryOpen)}
                         className="flex h-full shrink-0 items-center gap-2 rounded-l-[11px] px-3 text-[#374344] transition-colors hover:text-[#8c5b53]"
@@ -268,14 +265,14 @@ export default function ContactForm() {
                         type="tel"
                         autoComplete="tel-national"
                         inputMode="tel"
-                        placeholder="Phone number"
+                        placeholder={fields.phone.placeholder}
                         required
                         className="h-full min-w-0 flex-1 rounded-r-[11px] bg-transparent px-2 text-base text-[#273334] outline-none placeholder:text-sm placeholder:text-[#849092]"
                       />
 
                       {isCountryOpen && (
                         <div className="absolute left-0 top-[calc(100%+8px)] z-20 w-56 overflow-hidden rounded-xl border border-[#8c5b53]/15 bg-white py-2 shadow-xl">
-                          {countries.map((country) => (
+                          {form.countries.map((country) => (
                             <button
                               key={country.code}
                               type="button"
@@ -300,14 +297,14 @@ export default function ContactForm() {
                       htmlFor="message"
                       className="mb-3 block text-base font-medium text-[#273334] transition-colors group-focus-within:text-[#8c5b53]"
                     >
-                      Message
+                      {fields.message.label}
                     </label>
 
                     <textarea
                       id="message"
                       name="message"
                       rows={4}
-                      placeholder="Tell us how we can help..."
+                      placeholder={fields.message.placeholder}
                       className="min-h-[115px] w-full resize-y rounded-[11px] border border-[#374344] bg-transparent px-4 py-3 text-base text-[#273334] outline-none transition-all duration-300 placeholder:text-sm placeholder:text-[#849092] hover:border-[#8c5b53]/70 focus:border-[#8c5b53] focus:bg-white/50 focus:ring-4 focus:ring-[#8c5b53]/10 sm:min-h-[130px]"
                     />
                   </div>
@@ -321,7 +318,7 @@ export default function ContactForm() {
                     type="submit"
                     className="group inline-flex min-h-[54px] w-full items-center justify-center gap-3 rounded-full bg-[#8c5b53] px-8 py-4 text-base font-medium text-white shadow-lg shadow-[#8c5b53]/15 transition-all duration-300 hover:bg-[#713c34] hover:shadow-xl sm:w-[270px]"
                   >
-                    Submit Message
+                    {form.submitLabel}
                     <ArrowRight
                       size={19}
                       className="transition-transform duration-300 group-hover:translate-x-1"

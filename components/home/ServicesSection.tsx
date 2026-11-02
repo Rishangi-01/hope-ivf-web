@@ -4,27 +4,15 @@
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
-
-const services = [
-  {
-    number: "01",
-    title: "Individual Therapy"
-  },
-  {
-    number: "02",
-    title: "Family Therapy"
-  },
-  {
-    number: "03",
-    title: "Couples Counseling"
-  },
-  {
-    number: "04",
-    title: "Group Sessions"
-  },
-];
+import { site } from "@/data";
 
 export default function ServicesSection() {
+  const content = site.plans;
+  const services = content.items.slice(0, 4);
+  const imageService = content.items[2];
+  if (!imageService?.homeImageAlt) {
+    throw new Error("Services section image data is missing");
+  }
   const reduceMotion = useReducedMotion();
 
   return (
@@ -38,7 +26,7 @@ export default function ServicesSection() {
           transition={{ duration: reduceMotion ? 0 : 0.7 }}
           className="mb-8 font-serif text-4xl font-normal tracking-tight text-[#263c35] sm:mb-10 sm:text-5xl"
         >
-          Services
+          {content.eyebrow}
         </motion.h2>
 
         
@@ -58,8 +46,8 @@ export default function ServicesSection() {
             className="group relative min-h-[340px] overflow-hidden sm:min-h-[440px] md:min-h-[500px] lg:min-h-[530px]"
           >
             <Image
-              src="/images/home/wellness3.png"
-              alt="Therapist having a supportive conversation with clients"
+              src={imageService.image}
+              alt={imageService.homeImageAlt}
               fill
               sizes="(max-width: 767px) 100vw, 45vw"
               className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.035]"
@@ -73,8 +61,8 @@ export default function ServicesSection() {
             <div className="grid grid-cols-1 gap-x-8 sm:grid-cols-2 sm:gap-x-8 lg:gap-x-10">
               {services.map((service, index) => (
                 <motion.a
-                  key={service.number}
-                  href="/services/service-details"
+                  key={service.slug}
+                  href={content.serviceDetailsHref}
                   initial={{
                     opacity: 0,
                     y: reduceMotion ? 0 : 24,

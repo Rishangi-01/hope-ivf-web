@@ -22,89 +22,30 @@ import {
   Sparkles,
   CheckCircle2,
 } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
+import { site } from "@/data";
 
-const treatments = [
-  {
-    id: "ivf",
-    number: "01",
-    eyebrow: "Advanced Fertility Care",
-    title: "IVF Treatment",
-    subtitle: "A carefully guided journey toward parenthood.",
-    description:
-      "In vitro fertilization (IVF) is a fertility treatment in which eggs and sperm are combined in a laboratory. An embryo may then be transferred into the uterus by a qualified fertility specialist.",
-    image: "/images/home/why-choose.png",
-    alt: "A patient discussing ultrasound results with a healthcare professional",
-    features: [
-      "Individualized treatment planning",
-      "Specialist-led monitoring",
-      "Laboratory-based fertilization",
-      "Guidance throughout the process",
-    ],
-    process: [
-      {
-        title: "Initial consultation",
-        description:
-          "Your specialist reviews your medical history and discusses suitable investigations.",
-      },
-      {
-        title: "Treatment planning",
-        description:
-          "A personalized plan is developed according to your circumstances and clinical findings.",
-      },
-      {
-        title: "Fertilization",
-        description:
-          "Eggs and sperm are brought together in a laboratory, with fertilization monitored by the clinical team.",
-      },
-      {
-        title: "Embryo transfer",
-        description:
-          "When appropriate, an embryo may be transferred into the uterus, followed by clinical guidance and testing.",
-      },
-    ],
-  },
-  {
-    id: "iui",
-    number: "02",
-    eyebrow: "Personalized Fertility Care",
-    title: "IUI Treatment",
-    subtitle: "A less invasive option for selected fertility needs.",
-    description:
-      "Intrauterine insemination (IUI) involves placing prepared sperm directly into the uterus around the time of ovulation. A fertility specialist can help determine whether this approach is suitable for you.",
-    image: "/images/about/our-mission.png",
-    alt: "Fertility laboratory equipment used in reproductive care",
-    features: [
-      "Treatment suitability assessment",
-      "Ovulation timing and monitoring",
-      "Prepared sperm placed in the uterus",
-      "Follow-up guidance from your specialist",
-    ],
-    process: [
-      {
-        title: "Consultation",
-        description:
-          "Your specialist reviews your health history and discusses fertility investigations.",
-      },
-      {
-        title: "Ovulation monitoring",
-        description:
-          "The clinical team identifies the appropriate timing for the procedure.",
-      },
-      {
-        title: "Sperm preparation",
-        description:
-          "A laboratory prepares a sperm sample for the insemination procedure.",
-      },
-      {
-        title: "Insemination and follow-up",
-        description:
-          "Prepared sperm is placed in the uterus, followed by instructions about testing and follow-up.",
-      },
-    ],
-  },
-];
+const introIcons: Record<string, LucideIcon> = {
+  heart: Heart,
+  microscope: Microscope,
+  "shield-check": ShieldCheck,
+};
+
+const treatmentIcons: Record<string, LucideIcon> = {
+  microscope: Microscope,
+  stethoscope: Stethoscope,
+};
 
 export default function FertilityTreatmentsDetails() {
+  const content = site.planDetail;
+  const treatments = content.treatments.map((treatment) => {
+    const plan = site.plans.items.find((item) => item.slug === treatment.slug);
+    if (!plan) {
+      throw new Error(`Missing service plan for ${treatment.slug}`);
+    }
+
+    return { ...treatment, title: plan.title, icon: plan.icon };
+  });
   const reduceMotion = useReducedMotion();
   const [activeFaq, setActiveFaq] = useState<number | null>(0);
 
@@ -135,40 +76,24 @@ export default function FertilityTreatmentsDetails() {
           className="mx-auto max-w-4xl text-center"
         >
           <span className="text-sm font-semibold uppercase tracking-[0.22em] text-[#8c5b53]">
-            Understanding Your Options
+            {content.overviewEyebrow}
           </span>
 
           <h2 className="mt-4 font-serif text-4xl leading-tight tracking-tight text-[#713c34] sm:text-5xl md:text-6xl">
-            Every Journey Is Different
+            {content.overviewTitle}
           </h2>
 
           <p className="mx-auto mt-6 max-w-3xl text-base leading-8 text-[#786761] sm:text-lg">
-            Fertility care begins with understanding your
-            individual needs. Our goal is to help you explore
-            available treatments, understand the process, and
-            make informed decisions together with your clinical team.
+            {content.overviewText}
           </p>
         </motion.div>
 
         <div className="mx-auto mt-12 grid max-w-5xl gap-5 sm:grid-cols-3">
-          {[
-            {
-              icon: Heart,
-              title: "Compassion",
-              text: "Support that respects your feelings and circumstances.",
-            },
-            {
-              icon: Microscope,
-              title: "Clinical Guidance",
-              text: "Understand investigations and treatment options.",
-            },
-            {
-              icon: ShieldCheck,
-              title: "Informed Choices",
-              text: "Discuss benefits, limitations, risks, and costs.",
-            },
-          ].map((item, index) => {
-            const Icon = item.icon;
+          {content.introCards.map((item, index) => {
+            const Icon = introIcons[item.icon];
+            if (!Icon) {
+              throw new Error(`Unknown treatment guidance icon: ${item.icon}`);
+            }
 
             return (
               <motion.div
@@ -212,22 +137,20 @@ export default function FertilityTreatmentsDetails() {
             className="mx-auto mb-12 max-w-3xl text-center sm:mb-16"
           >
             <span className="text-sm font-semibold uppercase tracking-[0.2em] text-[#8c5b53]">
-              Our Treatment Options
+              {content.featuresEyebrow}
             </span>
             <h2 className="mt-4 font-serif text-4xl leading-tight text-[#713c34] sm:text-5xl md:text-6xl">
-              Find the Care That Fits You
+              {content.treatmentSectionTitle}
             </h2>
             <p className="mt-5 text-base leading-8 text-[#786761] sm:text-lg">
-              Learn about two commonly used fertility
-              treatments and discuss their suitability with
-              your fertility specialist.
+              {content.treatmentSectionText}
             </p>
           </motion.div>
 
           <div className="space-y-10 lg:space-y-14">
             {treatments.map((treatment, index) => (
               <motion.article
-                key={treatment.id}
+                key={treatment.slug}
                 variants={reveal}
                 initial="hidden"
                 whileInView="visible"
@@ -241,7 +164,7 @@ export default function FertilityTreatmentsDetails() {
                 >
                   <Image
                     src={treatment.image}
-                    alt={treatment.alt}
+                    alt={treatment.imageAlt}
                     fill
                     sizes="(max-width: 1023px) 100vw, 50vw"
                     className="object-cover transition-transform duration-700 hover:scale-105"
@@ -283,10 +206,10 @@ export default function FertilityTreatmentsDetails() {
                   </div>
 
                   <Link
-                    href="/contact"
+                    href={content.contactHref}
                     className="group mt-8 inline-flex w-fit items-center gap-3 rounded-full bg-[#8c5b53] px-6 py-3.5 font-semibold text-white transition-all duration-300 hover:-translate-y-1 hover:bg-[#70443c]"
                   >
-                    Discuss This Treatment
+                    {site.plans.buttonLabel}
                     <ArrowRight
                       size={18}
                       className="transition-transform group-hover:translate-x-1"
@@ -310,22 +233,20 @@ export default function FertilityTreatmentsDetails() {
             className="mx-auto mb-14 max-w-3xl text-center"
           >
             <span className="text-sm font-semibold uppercase tracking-[0.2em] text-[#8c5b53]">
-              What to Expect
+              {content.processSectionEyebrow}
             </span>
             <h2 className="mt-4 font-serif text-4xl text-[#713c34] sm:text-5xl md:text-6xl">
-              Your Treatment Journey
+              {content.processSectionTitle}
             </h2>
             <p className="mt-5 text-base leading-8 text-[#786761] sm:text-lg">
-              Each treatment follows its own clinical process.
-              Your specialist will explain the steps and timing
-              that apply to your plan.
+              {content.processSectionText}
             </p>
           </motion.div>
 
           <div className="grid gap-10 md:grid-cols-2">
             {treatments.map((treatment, index) => (
               <motion.div
-                key={treatment.id}
+                key={treatment.slug}
                 variants={reveal}
                 initial="hidden"
                 whileInView="visible"
@@ -334,15 +255,17 @@ export default function FertilityTreatmentsDetails() {
               >
                 <div className="flex items-center gap-4">
                   <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#f6e8e2] text-[#8c5b53]">
-                    {index === 0 ? (
-                      <Microscope size={28} />
-                    ) : (
-                      <Stethoscope size={28} />
-                    )}
+                    {(() => {
+                      const Icon = treatmentIcons[treatment.icon];
+                      if (!Icon) {
+                        throw new Error(`Unknown treatment icon: ${treatment.icon}`);
+                      }
+                      return <Icon size={28} />;
+                    })()}
                   </div>
                   <div>
                     <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#8c5b53]">
-                      Treatment {treatment.number}
+                      {content.treatmentPrefix} {treatment.number}
                     </p>
                     <h3 className="mt-1 font-serif text-2xl text-[#713c34] sm:text-3xl">
                       {treatment.title}
@@ -403,20 +326,18 @@ export default function FertilityTreatmentsDetails() {
             <div className="max-w-2xl">
               <Sparkles size={29} className="mb-5 text-[#f5ded4]" />
               <h2 className="font-serif text-3xl leading-tight sm:text-4xl md:text-5xl">
-                Take the Next Step With Confidence
+                {content.supportTitle}
               </h2>
               <p className="mt-4 max-w-xl text-sm leading-7 text-white/85 sm:text-lg sm:leading-8">
-                Have questions about IVF or IUI? Arrange a
-                consultation to discuss your needs, options,
-                potential risks, and next steps.
+                {content.formText}
               </p>
             </div>
 
             <Link
-              href="/book-appointment"
+              href={content.supportButton.href}
               className="group inline-flex shrink-0 items-center gap-3 rounded-full bg-[#fffaf7] px-7 py-4 font-semibold text-[#8c5b53] transition-all duration-300 hover:-translate-y-1 hover:bg-white"
             >
-              Book an Appointment
+              {content.supportButton.label}
               <ArrowRight
                 size={19}
                 className="transition-transform group-hover:translate-x-1"

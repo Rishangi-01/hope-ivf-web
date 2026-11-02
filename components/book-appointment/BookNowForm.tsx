@@ -16,40 +16,27 @@ import {
   UserRound,
   Video,
 } from "lucide-react";
+import { site } from "@/data";
 
-const theme = "#8c5b53";
+const pointIcons = {
+  heart: Heart,
+  "shield-check": ShieldCheck,
+};
 
-const services = [
-  "Fertility Consultation",
-  "IVF Consultation",
-  "IUI Consultation",
-  "PCOS & Reproductive Health",
-  "Pregnancy Consultation",
-  "Follow-up Appointment",
-];
-
-const doctors = [
-  "Any Available Specialist",
-  "Fertility Specialist",
-  "Gynecologist",
-  "Reproductive Health Consultant",
-];
-
-const timeSlots = [
-  "09:00 AM",
-  "10:00 AM",
-  "11:00 AM",
-  "12:00 PM",
-  "02:00 PM",
-  "03:00 PM",
-  "04:00 PM",
-  "05:00 PM",
-];
+const appointmentIcons = {
+  "In-clinic": Heart,
+  Online: Video,
+};
 
 export default function BookNowForm() {
+  const page = site.enquire;
+  const form = site.Insurance.commerce.enquiryNow.section.form;
+  const fields = form.fields;
   const reduceMotion = useReducedMotion();
   const [submitted, setSubmitted] = useState(false);
-  const [appointmentType, setAppointmentType] = useState("In-clinic");
+  const [appointmentType, setAppointmentType] = useState(
+    fields.appointmentType.options[0].value,
+  );
   const [selectedDate, setSelectedDate] = useState("");
   const [selectedTime, setSelectedTime] = useState("");
 
@@ -96,50 +83,43 @@ export default function BookNowForm() {
             className="relative"
           >
             <h1 className="mt-7 max-w-2xl font-serif text-5xl leading-[1.08] tracking-tight text-[#713c34] sm:text-6xl lg:text-6xl xl:text-7xl">
-              Book Your
+              {page.title[0]}
               <br />
-              <span className="italic text-[#8c5b53]">Appointment</span>
+              <span className="italic text-[#8c5b53]">{page.title[1]}</span>
               <br />
-              With Care.
+              {page.highlight}
             </h1>
 
             <p className="mt-6 max-w-xl text-base leading-8 text-[#786c67] sm:text-lg sm:leading-9">
-              Every journey is personal. Take the first step toward
-              understanding your fertility and reproductive health with
-              compassionate, professional guidance.
+              {page.text}
             </p>
 
             
             <div className="mt-8 grid grid-cols-2 gap-4 sm:gap-5">
-              <motion.div
-                whileHover={reduceMotion ? undefined : { y: -4 }}
-                className="rounded-2xl border border-[#8c5b53]/10 bg-white/80 p-4 shadow-sm transition-shadow hover:shadow-lg sm:p-5"
-              >
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#f3e5df] text-[#8c5b53] sm:h-14 sm:w-14">
-                  <Heart size={28} strokeWidth={1.7} />
-                </div>
-                <h2 className="mt-4 font-serif text-xl text-[#713c34] sm:text-2xl">
-                  Personal Care
-                </h2>
-                <p className="mt-2 text-sm leading-6 text-[#82746e]">
-                  Guidance tailored to your needs.
-                </p>
-              </motion.div>
+              {page.points.slice(0, 2).map((point) => {
+                const Icon = pointIcons[point.icon as keyof typeof pointIcons];
+                if (!Icon) {
+                  throw new Error(`Unknown appointment benefit icon: ${point.icon}`);
+                }
 
-              <motion.div
-                whileHover={reduceMotion ? undefined : { y: -4 }}
-                className="rounded-2xl border border-[#8c5b53]/10 bg-white/80 p-4 shadow-sm transition-shadow hover:shadow-lg sm:p-5"
-              >
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#f3e5df] text-[#8c5b53] sm:h-14 sm:w-14">
-                  <ShieldCheck size={28} strokeWidth={1.7} />
-                </div>
-                <h2 className="mt-4 font-serif text-xl text-[#713c34] sm:text-2xl">
-                  Trusted Support
-                </h2>
-                <p className="mt-2 text-sm leading-6 text-[#82746e]">
-                  Professional, respectful care.
-                </p>
-              </motion.div>
+                return (
+                  <motion.div
+                    key={point.title}
+                    whileHover={reduceMotion ? undefined : { y: -4 }}
+                    className="rounded-2xl border border-[#8c5b53]/10 bg-white/80 p-4 shadow-sm transition-shadow hover:shadow-lg sm:p-5"
+                  >
+                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#f3e5df] text-[#8c5b53] sm:h-14 sm:w-14">
+                      <Icon size={28} strokeWidth={1.7} />
+                    </div>
+                    <h2 className="mt-4 font-serif text-xl text-[#713c34] sm:text-2xl">
+                      {point.title}
+                    </h2>
+                    <p className="mt-2 text-sm leading-6 text-[#82746e]">
+                      {point.text.join(" ")}
+                    </p>
+                  </motion.div>
+                );
+              })}
             </div>
           </motion.div>
 
@@ -160,13 +140,13 @@ export default function BookNowForm() {
             <div className="mb-7 flex items-start justify-between gap-4">
               <div>
                 <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#8c5b53] sm:text-sm">
-                  Schedule a Visit
+                  {form.eyebrow}
                 </p>
                 <h2 className="mt-2 font-serif text-3xl leading-tight text-[#713c34] sm:text-4xl">
-                  Let&apos;s Get Started
+                  {form.title}
                 </h2>
                 <p className="mt-2 text-sm leading-6 text-[#82746e] sm:text-base">
-                  Complete the form to request your visit.
+                  {form.description}
                 </p>
               </div>
 
@@ -198,13 +178,11 @@ export default function BookNowForm() {
                 </div>
 
                 <h3 className="mt-6 font-serif text-3xl text-[#713c34] sm:text-4xl">
-                  Request Prepared!
+                  {form.appointment.successTitle}
                 </h3>
 
                 <p className="mt-4 max-w-sm text-sm leading-7 text-[#82746e] sm:text-base">
-                  Your form passed browser validation. To confirm a real
-                  appointment, this page needs to be connected to your booking
-                  system or backend API.
+                  {form.appointment.successText}
                 </p>
 
                 <button
@@ -212,7 +190,7 @@ export default function BookNowForm() {
                   onClick={() => setSubmitted(false)}
                   className="mt-7 rounded-full bg-[#8c5b53] px-7 py-3.5 font-semibold text-white transition-all hover:bg-[#713c34]"
                 >
-                  Book Another Appointment
+                  {form.appointment.successButton}
                 </button>
               </motion.div>
             ) : (
@@ -224,7 +202,7 @@ export default function BookNowForm() {
                       htmlFor="firstName"
                       className="mb-2 block text-sm font-semibold text-[#493a36]"
                     >
-                      First Name *
+                      {fields.fullName.label}
                     </label>
                     <div className="relative">
                       <UserRound
@@ -236,7 +214,7 @@ export default function BookNowForm() {
                         name="firstName"
                         type="text"
                         autoComplete="given-name"
-                        placeholder="Your first name"
+                        placeholder={fields.fullName.placeholder}
                         required
                         className="h-12 w-full rounded-xl border border-[#8c5b53]/20 bg-[#fffdfb] pl-11 pr-4 text-sm outline-none transition-all placeholder:text-[#b2a19b] hover:border-[#8c5b53]/50 focus:border-[#8c5b53] focus:ring-4 focus:ring-[#8c5b53]/10"
                       />
@@ -248,14 +226,14 @@ export default function BookNowForm() {
                       htmlFor="lastName"
                       className="mb-2 block text-sm font-semibold text-[#493a36]"
                     >
-                      Last Name *
+                      {fields.lastName.label}
                     </label>
                     <input
                       id="lastName"
                       name="lastName"
                       type="text"
                       autoComplete="family-name"
-                      placeholder="Your last name"
+                      placeholder={fields.lastName.placeholder}
                       required
                       className="h-12 w-full rounded-xl border border-[#8c5b53]/20 bg-[#fffdfb] px-4 text-sm outline-none transition-all placeholder:text-[#b2a19b] hover:border-[#8c5b53]/50 focus:border-[#8c5b53] focus:ring-4 focus:ring-[#8c5b53]/10"
                     />
@@ -269,7 +247,7 @@ export default function BookNowForm() {
                       htmlFor="email"
                       className="mb-2 block text-sm font-semibold text-[#493a36]"
                     >
-                      Email Address *
+                      {fields.email.label}
                     </label>
                     <div className="relative">
                       <Mail
@@ -281,7 +259,7 @@ export default function BookNowForm() {
                         name="email"
                         type="email"
                         autoComplete="email"
-                        placeholder="you@example.com"
+                        placeholder={fields.email.placeholder}
                         required
                         className="h-12 w-full rounded-xl border border-[#8c5b53]/20 bg-[#fffdfb] pl-11 pr-4 text-sm outline-none transition-all placeholder:text-[#b2a19b] hover:border-[#8c5b53]/50 focus:border-[#8c5b53] focus:ring-4 focus:ring-[#8c5b53]/10"
                       />
@@ -293,7 +271,7 @@ export default function BookNowForm() {
                       htmlFor="phone"
                       className="mb-2 block text-sm font-semibold text-[#493a36]"
                     >
-                      Phone Number *
+                      {fields.phone.label}
                     </label>
                     <div className="relative">
                       <Phone
@@ -306,7 +284,7 @@ export default function BookNowForm() {
                         type="tel"
                         autoComplete="tel"
                         inputMode="tel"
-                        placeholder="+91 98765 43210"
+                        placeholder={fields.phone.placeholder}
                         required
                         className="h-12 w-full rounded-xl border border-[#8c5b53]/20 bg-[#fffdfb] pl-11 pr-4 text-sm outline-none transition-all placeholder:text-[#b2a19b] hover:border-[#8c5b53]/50 focus:border-[#8c5b53] focus:ring-4 focus:ring-[#8c5b53]/10"
                       />
@@ -320,7 +298,7 @@ export default function BookNowForm() {
                     htmlFor="service"
                     className="mb-2 block text-sm font-semibold text-[#493a36]"
                   >
-                    Consultation Type *
+                    {fields.interest.label}
                   </label>
                   <div className="relative">
                     <select
@@ -331,9 +309,9 @@ export default function BookNowForm() {
                       className="h-12 w-full appearance-none rounded-xl border border-[#8c5b53]/20 bg-[#fffdfb] px-4 pr-11 text-sm text-[#493a36] outline-none transition-all hover:border-[#8c5b53]/50 focus:border-[#8c5b53] focus:ring-4 focus:ring-[#8c5b53]/10"
                     >
                       <option value="" disabled>
-                        Select a consultation
+                        {fields.interest.placeholder}
                       </option>
-                      {services.map((service) => (
+                      {fields.interest.options.map((service) => (
                         <option key={service} value={service}>
                           {service}
                         </option>
@@ -352,16 +330,16 @@ export default function BookNowForm() {
                     htmlFor="doctor"
                     className="mb-2 block text-sm font-semibold text-[#493a36]"
                   >
-                    Preferred Specialist
+                    {fields.doctor.label}
                   </label>
                   <div className="relative">
                     <select
                       id="doctor"
                       name="doctor"
-                      defaultValue={doctors[0]}
+                      defaultValue={fields.doctor.options[0]}
                       className="h-12 w-full appearance-none rounded-xl border border-[#8c5b53]/20 bg-[#fffdfb] px-4 pr-11 text-sm text-[#493a36] outline-none transition-all hover:border-[#8c5b53]/50 focus:border-[#8c5b53] focus:ring-4 focus:ring-[#8c5b53]/10"
                     >
-                      {doctors.map((doctor) => (
+                      {fields.doctor.options.map((doctor) => (
                         <option key={doctor} value={doctor}>
                           {doctor}
                         </option>
@@ -381,7 +359,7 @@ export default function BookNowForm() {
                       htmlFor="date"
                       className="mb-2 block text-sm font-semibold text-[#493a36]"
                     >
-                      Preferred Date *
+                      {fields.date.label}
                     </label>
                     <input
                       id="date"
@@ -402,7 +380,7 @@ export default function BookNowForm() {
                       htmlFor="time"
                       className="mb-2 block text-sm font-semibold text-[#493a36]"
                     >
-                      Preferred Time *
+                      {fields.time.label}
                     </label>
                     <div className="relative">
                       <select
@@ -416,10 +394,10 @@ export default function BookNowForm() {
                         className="h-12 w-full appearance-none rounded-xl border border-[#8c5b53]/20 bg-[#fffdfb] px-4 pr-10 text-sm text-[#493a36] outline-none transition-all focus:border-[#8c5b53] focus:ring-4 focus:ring-[#8c5b53]/10"
                       >
                         <option value="" disabled>
-                          Select time
+                          {fields.time.placeholder}
                         </option>
 
-                        {timeSlots.map((slot) => (
+                        {fields.time.options.map((slot) => (
                           <option key={slot} value={slot}>
                             {slot}
                           </option>
@@ -436,22 +414,19 @@ export default function BookNowForm() {
                
                 <fieldset>
                   <legend className="mb-3 text-sm font-semibold text-[#493a36]">
-                    How would you like to meet?
+                    {fields.appointmentType.label}
                   </legend>
                   <div className="grid grid-cols-2 gap-3">
-                    {[
-                      {
-                        value: "In-clinic",
-                        label: "In-clinic Visit",
-                        icon: Heart,
-                      },
-                      {
-                        value: "Online",
-                        label: "Online Consultation",
-                        icon: Video,
-                      },
-                    ].map((option) => {
-                      const Icon = option.icon;
+                    {fields.appointmentType.options.map((option) => {
+                      const Icon =
+                        appointmentIcons[
+                          option.value as keyof typeof appointmentIcons
+                        ];
+                      if (!Icon) {
+                        throw new Error(
+                          `Unknown appointment type: ${option.value}`,
+                        );
+                      }
                       const active = appointmentType === option.value;
 
                       return (
@@ -485,16 +460,13 @@ export default function BookNowForm() {
                     htmlFor="notes"
                     className="mb-2 block text-sm font-semibold text-[#493a36]"
                   >
-                    Additional Notes{" "}
-                    <span className="font-normal text-[#a58a81]">
-                      (Optional)
-                    </span>
+                    {fields.message.label}
                   </label>
                   <textarea
                     id="notes"
                     name="notes"
                     rows={2}
-                    placeholder="Anything you'd like us to know?"
+                    placeholder={fields.message.placeholder}
                     className="min-h-[78px] w-full resize-y rounded-xl border border-[#8c5b53]/20 bg-[#fffdfb] px-4 py-3 text-sm outline-none transition-all placeholder:text-[#b2a19b] hover:border-[#8c5b53]/50 focus:border-[#8c5b53] focus:ring-4 focus:ring-[#8c5b53]/10"
                   />
                 </div>
@@ -506,7 +478,7 @@ export default function BookNowForm() {
                   whileTap={reduceMotion ? undefined : { scale: 0.985 }}
                   className="group flex min-h-[56px] w-full items-center justify-center gap-3 rounded-full bg-[#8c5b53] px-6 py-4 text-base font-semibold text-white shadow-lg shadow-[#8c5b53]/20 transition-all duration-300 hover:bg-[#713c34] hover:shadow-xl focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#8c5b53]/25"
                 >
-                  Request Appointment
+                  {form.appointment.submitLabel}
                   <ArrowRight
                     size={20}
                     className="transition-transform duration-300 group-hover:translate-x-1"
@@ -518,8 +490,7 @@ export default function BookNowForm() {
                     size={15}
                     className="mt-0.5 shrink-0 text-[#8c5b53]"
                   />
-                  Your information should be handled securely and confidentially
-                  by the connected booking system.
+                  {form.privacyNotice}
                 </p>
               </form>
             )}

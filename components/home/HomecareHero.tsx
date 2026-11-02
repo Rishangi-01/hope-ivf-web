@@ -3,9 +3,11 @@
 
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowDownRight, Heart, Plus } from "lucide-react";
+import { Plus } from "lucide-react";
+import { site } from "@/data";
 
 export default function HomecareHero() {
+  const content = site.Insurance.sections.Homecare.variants.InsuranceHomecare1;
   const reduceMotion = useReducedMotion();
 
   const reveal = {
@@ -39,8 +41,8 @@ export default function HomecareHero() {
         className="absolute inset-0"
       >
         <Image
-          src="/images/home/banner2.png"
-          alt="An elderly couple smiling together at home"
+          src={content.image}
+          alt={content.imageAlt}
           fill
           priority
           sizes="100vw"
@@ -76,9 +78,12 @@ export default function HomecareHero() {
             variants={reveal}
             className="mt-4 max-w-[1050px] lg:text-[7rem] font-light leading-[1.14] tracking-[-0.035em] text-white sm:mt-5 lg:leading-[1.17]"
           >
-            Dedicated to Providing the Best
-            <br className="hidden sm:block" />{" "}
-            In-Home Health Care.
+            {content.title.map((line, index) => (
+              <span key={line}>
+                {index > 0 && <br className="hidden sm:block" />}
+                {line}
+              </span>
+            ))}
           </motion.h1>
         </motion.div>
 
@@ -93,7 +98,7 @@ export default function HomecareHero() {
           className="absolute bottom-6 right-6 hidden items-center gap-2 rounded-full border border-white/30 bg-black/15 px-4 py-2.5 text-sm text-white backdrop-blur-md sm:flex lg:bottom-8 lg:right-10"
         >
           <Plus size={16} className="text-white" />
-          <span>Care that feels like home</span>
+          <span>{content.tagline}</span>
         </motion.div>
       </div>
     </section>

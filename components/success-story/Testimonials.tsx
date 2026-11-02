@@ -16,51 +16,11 @@ import {
   Star,
   Sparkles,
 } from "lucide-react";
-
-type Testimonial = {
-  name: string;
-  location: string;
-  treatment: string;
-  quote: string;
-  image: string;
-};
-
-const testimonials: Testimonial[] = [
-  {
-    name: "Priya Sharma",
-    location: "New Delhi, India",
-    treatment: "IVF Treatment",
-    quote:
-      "The entire experience felt thoughtful and supportive. Our care team took time to explain each step, answer our questions, and help us feel informed throughout our journey.",
-    image: "/images/team/team1.png",
-  },
-  {
-    name: "Neha Verma",
-    location: "Noida, India",
-    treatment: "Fertility Consultation",
-    quote:
-      "What mattered most to us was being listened to. Having our concerns addressed with patience and clear guidance made the experience much easier to navigate.",
-    image: "/images/team/team2.png",
-  },
-  {
-    name: "Ananya Kapoor",
-    location: "Gurugram, India",
-    treatment: "IUI Treatment",
-    quote:
-      "From our first appointment, the team helped us understand our options and what to expect. We appreciated the considerate communication and personalized attention.",
-    image: "/images/team/team3.png",
-  },
-  {
-    name: "Meera & Rahul",
-    location: "Ghaziabad, India",
-    treatment: "Fertility Care",
-    quote:
-      "We felt comfortable asking questions and discussing our concerns. The clear explanations and caring approach helped us make decisions with greater confidence.",
-    image: "/images/team/team4.png",
-  },
-];
+import { site } from "@/data";
 
 export default function Testimonials() {
+  const content = site.testimonials;
+  const testimonials = content.items;
   const reduceMotion = useReducedMotion();
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
@@ -89,7 +49,7 @@ export default function Testimonials() {
   return (
     <section
       id="testimonials"
-      aria-label="Patient testimonials"
+      aria-label={content.ariaLabel}
       className="relative flex min-h-screen items-center overflow-hidden bg-[#fffaf7] px-5 py-20 text-[#493b37] sm:px-8 lg:px-14 lg:py-24"
     >
       <div
@@ -113,16 +73,14 @@ export default function Testimonials() {
         >
 
           <h2 className="mt-6 font-serif text-4xl leading-[1.12] tracking-tight text-[#713c34] sm:text-5xl md:text-6xl lg:text-[3.75rem]">
-            Words from the Heart,
+            {content.title}
             <span className="mt-2 block text-[#8c5b53]">
-              Stories That Inspire
+              {content.highlight}
             </span>
           </h2>
 
           <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-[#786761] sm:text-lg sm:leading-8">
-            Every fertility journey is personal. Discover how
-            thoughtful communication, compassionate guidance,
-            and personalized care can make a meaningful difference.
+            {content.text}
           </p>
         </motion.div>
 
@@ -163,7 +121,7 @@ export default function Testimonials() {
               >
                 <Image
                   src={current.image}
-                  alt={`Portrait representing ${current.name}'s testimonial`}
+                  alt={current.imageAlt}
                   fill
                   priority={activeIndex === 0}
                   sizes="(max-width: 1023px) 100vw, 42vw"
@@ -189,7 +147,7 @@ export default function Testimonials() {
             <div className="absolute bottom-0 left-0 right-0 p-6 text-white sm:p-9">
               <div className="mb-3 flex items-center gap-2 text-sm font-medium text-white/90">
                 <Sparkles size={17} />
-                A personal story
+                {content.storyLabel}
               </div>
 
               <AnimatePresence mode="wait">
@@ -204,7 +162,7 @@ export default function Testimonials() {
                     {current.name}
                   </h3>
                   <p className="mt-2 text-sm text-white/85 sm:text-base">
-                    {current.location}
+                    {current.city}
                   </p>
                 </motion.div>
               </AnimatePresence>
@@ -221,7 +179,7 @@ export default function Testimonials() {
 
                 <div
                   className="flex gap-1 text-[#c18a56]"
-                  aria-label="Illustrative five-star rating"
+                  aria-label={content.ratingLabel}
                 >
                   {Array.from({ length: 5 }).map((_, index) => (
                     <Star
@@ -279,7 +237,7 @@ export default function Testimonials() {
                   <button
                     type="button"
                     onClick={previous}
-                    aria-label="Previous testimonial"
+                    aria-label={content.previousLabel}
                     className="flex h-12 w-12 items-center justify-center rounded-full border border-[#8c5b53]/25 text-[#8c5b53] transition-all duration-300 hover:-translate-y-1 hover:bg-[#8c5b53] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8c5b53] focus-visible:ring-offset-2"
                   >
                     <ArrowLeft size={21} />
@@ -288,7 +246,7 @@ export default function Testimonials() {
                   <button
                     type="button"
                     onClick={next}
-                    aria-label="Next testimonial"
+                    aria-label={content.nextLabel}
                     className="flex h-12 w-12 items-center justify-center rounded-full bg-[#8c5b53] text-white shadow-md shadow-[#8c5b53]/20 transition-all duration-300 hover:-translate-y-1 hover:bg-[#70443c] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8c5b53] focus-visible:ring-offset-2"
                   >
                     <ArrowRight size={21} />
@@ -302,7 +260,10 @@ export default function Testimonials() {
                     key={testimonial.name}
                     type="button"
                     onClick={() => setActiveIndex(index)}
-                    aria-label={`Show testimonial ${index + 1}`}
+                    aria-label={content.showLabelTemplate.replace(
+                      "{number}",
+                      String(index + 1),
+                    )}
                     aria-current={activeIndex === index ? "true" : undefined}
                     className={`h-2 rounded-full transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8c5b53] ${
                       activeIndex === index

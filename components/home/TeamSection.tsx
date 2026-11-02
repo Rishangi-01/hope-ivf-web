@@ -3,32 +3,12 @@
 
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowUpRight, HeartPulse, Sparkles } from "lucide-react";
-
-const teamMembers = [
-  {
-    name: "John Doe",
-    role: "Care Coordinator",
-    image: "/images/team/team1.png",
-  },
-  {
-    name: "Jane Smith",
-    role: "Registered Nurse",
-    image: "/images/team/team2.png",
-  },
-  {
-    name: "David Brown",
-    role: "Home Health Aide",
-    image: "/images/team/team3.png",
-  },
-  {
-    name: "Selina Kim",
-    role: "Home Health Aide",
-    image: "/images/team/team4.png",
-  },
-];
+import { ArrowUpRight, HeartPulse } from "lucide-react";
+import { site } from "@/data";
 
 export default function TeamSection() {
+  const content = site.Insurance.sections.Team.variants.InsuranceTeam1;
+  const teamMembers = content.members;
   const shouldReduceMotion = useReducedMotion();
 
   return (
@@ -60,11 +40,11 @@ export default function TeamSection() {
         >
           <span className="inline-flex items-center gap-2 rounded-full bg-[#8c5b53] px-5 py-2.5 text-sm font-semibold tracking-wide text-white shadow-sm sm:text-base">
             <HeartPulse size={18} />
-            Meet the team
+            {content.eyebrow}
           </span>
 
           <h2 className="mt-8 font-serif text-5xl leading-[1.05] tracking-[-0.045em] sm:text-6xl lg:text-7xl xl:text-[84px]">
-            The Heart of Our Care
+            {content.title}
           </h2>
         </motion.div>
 
@@ -93,7 +73,7 @@ export default function TeamSection() {
               <div className="relative aspect-[0.82/1] overflow-hidden rounded-[28px] bg-[#c6c3e9] shadow-[0_12px_35px_rgba(36,94,75,0.10)] transition-shadow duration-500 group-hover:shadow-[0_22px_50px_rgba(36,94,75,0.20)] sm:rounded-[32px] lg:rounded-[30px] xl:rounded-[36px]">
                 <Image
                   src={member.image}
-                  alt={`${member.name}, ${member.role}`}
+                  alt={member.imageAlt}
                   fill
                   sizes="(max-width: 639px) 90vw, (max-width: 1023px) 45vw, 25vw"
                   className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
@@ -115,8 +95,8 @@ export default function TeamSection() {
                 </div>
 
                 <motion.a
-                  href="/teams"
-                  aria-label={`Contact us about ${member.name}`}
+                  href={member.href}
+                  aria-label={member.linkLabel}
                   whileHover={
                     shouldReduceMotion ? undefined : { rotate: 45 }
                   }

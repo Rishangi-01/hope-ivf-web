@@ -3,36 +3,20 @@
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
-
-const services = [
-  {
-    title: "Maternity Care",
-    image: "/images/home/wellness1.png",
-    description: "Compassionate support throughout your pregnancy.",
-  },
-  {
-    title: "Gynecology",
-    image: "/images/home/wellness2.png",
-    description: "Personalized care for women's health at every stage.",
-  },
-  {
-    title: "Pediatric Care",
-    image: "/images/home/wellness3.png",
-    description: "Thoughtful healthcare for infants and growing children.",
-  },
-  {
-    title: "Radiology",
-    image: "/images/home/wellness4.png",
-    description: "Modern diagnostic imaging and clinical support.",
-  },
-  {
-    title: "Physiotherapy",
-    image: "/images/home/wellness5.png",
-    description: "Movement, rehabilitation, and recovery support.",
-  },
-];
+import { site } from "@/data";
 
 export default function MedicalServices() {
+  const plans = site.plans;
+  const services = plans.items
+    .filter((item) => plans.homeServiceSlugs.includes(item.slug))
+    .map((item) => {
+      if (!item.homeImageAlt) {
+        throw new Error(`Missing home image alt text for ${item.slug}`);
+      }
+      return item;
+    });
+  const [highlightFirstWord, ...highlightRemainingWords] =
+    plans.highlight.split(" ");
   const reduceMotion = useReducedMotion();
 
   return (
@@ -52,9 +36,12 @@ export default function MedicalServices() {
               className="shrink-0 pb-5 sm:pb-7"
             >
               <h2 className="max-w-full font-serif text-[30px] font-normal leading-[1.12] tracking-[-0.035em] text-[#352c29] lg:text-5xl">
-                Comprehensive
+                {plans.title}
                 <br />
-                <span className="text-[#8c5b53] text-[35px] lg:text-8xl">Fertility</span> Treatments
+                <span className="text-[#8c5b53] text-[35px] lg:text-8xl">
+                  {highlightFirstWord}
+                </span>{" "}
+                {highlightRemainingWords.join(" ")}
               </h2>
 
               <div className="mt-6 h-px w-full max-w-[300px] bg-[#8c5b53]/40" />
@@ -75,8 +62,8 @@ export default function MedicalServices() {
                 className="group relative h-[220px] overflow-hidden rounded-xl sm:h-[280px] md:h-[min(45vw,420px)] lg:h-[min(45svh,420px)] lg:rounded-lg"
               >
                 <Image
-                  src="/images/home/wellness4.png"
-                  alt="Modern diagnostic imaging equipment"
+                  src={plans.homeImage}
+                  alt={plans.homeImageAlt}
                   fill
                   priority
                   sizes="(max-width: 767px) 50vw, 42vw"
@@ -91,7 +78,7 @@ export default function MedicalServices() {
               {services.map((service, index) => (
                 <motion.a
                   key={service.title}
-                  href="/services/service-details"
+                  href={plans.serviceDetailsHref}
                   initial={{
                     opacity: 0,
                     y: reduceMotion ? 0 : 36,
@@ -115,7 +102,7 @@ export default function MedicalServices() {
                       </h3>
                       <div className="mt-4 h-px w-10 bg-[#8c5b53]/45 transition-all duration-300 group-hover:w-16 group-hover:bg-[#8c5b53]" />
                       <p className="mt-4 max-w-md text-sm leading-6 text-[#665854] sm:text-base">
-                        {service.description}
+                        {service.text}
                       </p>
                     </div>
                     <ArrowUpRight
@@ -126,8 +113,8 @@ export default function MedicalServices() {
 
                   <div className="relative h-48 w-full shrink-0 overflow-hidden rounded-xl bg-[#f3e8e5] sm:h-56 md:h-64 md:w-[42%] lg:h-[min(42svh,520px)] lg:w-[44%] lg:rounded-2xl">
                     <Image
-                      src={service.image}
-                      alt={`${service.title} at Hope IVF`}
+                      src={service.homeImage}
+                      alt={service.homeImageAlt}
                       fill
                       sizes="(max-width: 767px) 100vw, (max-width: 1023px) 42vw, 40vw"
                       className="object-cover transition-transform duration-500 group-hover:scale-110"

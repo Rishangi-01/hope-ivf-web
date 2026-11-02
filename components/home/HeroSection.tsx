@@ -3,9 +3,10 @@
 
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowRight, Heart } from "lucide-react";
+import { site } from "@/data";
 
 export default function HeroSection() {
+  const slide = site.hero.slides[0];
   const shouldReduceMotion = useReducedMotion();
 
   const fadeUp = {
@@ -30,11 +31,11 @@ export default function HeroSection() {
 
       <motion.div className="absolute inset-0 -z-20">
         <Image
-          src="/images/home/banner1.png"
-          alt="Expectant couple sharing a joyful moment during their journey to parenthood"
+          alt={slide.imageAlt}
           fill
           priority
           sizes="100vw"
+          src={slide.image}
           className="object-cover object-[62%_center] sm:object-[60%_center] lg:object-center"
         />
       </motion.div>
@@ -59,9 +60,12 @@ export default function HeroSection() {
             variants={fadeUp}
             className="max-w-[620px] font-serif text-[43px] font-normal leading-[1.08] tracking-[-0.035em] text-[#8c5b53] lg:text-8xl xl:text-7xl"
           >
-            Your Journey
-            <br />
-            to Parenthood
+            {slide.title.map((line, index) => (
+              <span key={line}>
+                {index > 0 && <br />}
+                {line}
+              </span>
+            ))}
           </motion.h1>
         </motion.div>
 

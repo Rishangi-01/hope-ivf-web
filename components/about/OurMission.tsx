@@ -4,8 +4,10 @@
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
+import { site } from "@/data";
 
 export default function OurMission() {
+  const content = site.about.mission;
   const reduceMotion = useReducedMotion();
 
   const smoothTransition = {
@@ -41,8 +43,8 @@ export default function OurMission() {
         >
           <div className="relative aspect-[1.52/1] overflow-hidden rounded-[26px] bg-[#f0e4df] shadow-[0_18px_55px_rgba(90,48,39,0.09)] sm:rounded-[32px] lg:aspect-[1.57/1]">
             <Image
-              src="/images/about/our-mission.png"
-              alt="A healthcare professional caring for a baby"
+              src={content.image}
+              alt={content.imageAlt}
               fill
               sizes="(max-width: 1023px) 100vw, 62vw"
               priority
@@ -84,13 +86,16 @@ export default function OurMission() {
           className="flex flex-col items-start justify-center py-5 lg:py-8"
         >
           <span className="mb-5 text-xs font-semibold uppercase tracking-[0.24em] text-[#8c5b53]/75 sm:text-sm">
-            What guides us
+            {content.eyebrow}
           </span>
 
           <h2 className="max-w-[480px] font-serif text-5xl font-medium leading-[0.98] tracking-[-0.045em] text-[#713c34] sm:text-6xl lg:text-6xl xl:text-[76px]">
-            Our
-            <br />
-            Mission
+            {content.title.map((line, index) => (
+              <span key={line}>
+                {index > 0 && <br />}
+                {line}
+              </span>
+            ))}
           </h2>
 
           <motion.div
@@ -105,12 +110,12 @@ export default function OurMission() {
           />
 
           <motion.a
-            href="/services"
+            href={content.button.href}
             whileHover={reduceMotion ? undefined : { x: 5 }}
             whileTap={reduceMotion ? undefined : { scale: 0.98 }}
             className="group mt-8 inline-flex items-center gap-3 rounded-full border border-[#8c5b53]/30 px-6 py-3.5 text-sm font-semibold text-[#8c5b53] transition-colors duration-300 hover:border-[#8c5b53] hover:bg-[#8c5b53] hover:text-white sm:text-base"
           >
-            Discover our approach
+            {content.button.label}
             <ArrowUpRight
               size={19}
               className="transition-transform duration-300 group-hover:rotate-45"

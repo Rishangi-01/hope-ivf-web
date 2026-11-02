@@ -9,42 +9,20 @@ import {
   FaTiktok,
   FaPinterestP,
 } from "react-icons/fa";
+import type { IconType } from "react-icons";
+import { site } from "@/data";
 
-const socialLinks = [
-  {
-    name: "Instagram",
-    href: "https://www.instagram.com/",
-    icon: FaInstagram,
-  },
-  {
-    name: "YouTube",
-    href: "https://www.youtube.com/",
-    icon: FaYoutube,
-  },
-  {
-    name: "TikTok",
-    href: "https://www.tiktok.com/",
-    icon: FaTiktok,
-  },
-  {
-    name: "Pinterest",
-    href: "https://www.pinterest.com/",
-    icon: FaPinterestP,
-  },
-];
-
-const policyLinks = [
-  { label: "About US", href: "/about-us" },
-  { label: "Our Services", href: "/services" },
-  { label: "Blog", href: "/blog" },
-  {
-    label: "Contact",
-    href: "/contact",
-  },
-];
+const socialIcons: Record<string, IconType> = {
+  instagram: FaInstagram,
+  youtube: FaYoutube,
+  tiktok: FaTiktok,
+  pinterest: FaPinterestP,
+};
 
 export default function Footer() {
   const reduceMotion = useReducedMotion();
+  const socialLinks = site.site.socials;
+  const policyLinks = site.footer.columns[0].links.slice(1);
 
   const reveal = {
     hidden: {
@@ -64,7 +42,7 @@ export default function Footer() {
   return (
     <footer
       className="relative isolate overflow-hidden bg-[#8c5b53] text-[#f7f0e9]"
-      aria-label="Website footer"
+      aria-label={site.footer.ariaLabel}
     >
       {/* Decorative background glow */}
       <div
@@ -81,13 +59,13 @@ export default function Footer() {
           viewport={{ once: true, amount: 0.2 }}
         >
           <Link
-            href="/"
-            aria-label="logo"
+            href={site.nav.links[0].href}
+            aria-label={site.site.name}
             className="inline-block font-sans text-5xl font-normal tracking-[-0.055em] transition-opacity duration-300 hover:opacity-75 sm:text-6xl lg:text-[76px] xl:text-[84px]"
           >
-            Hope IVF 
+            {site.site.name}
           </Link>
-           <p className="text-sm lg:text-lg"> Science Care New Beginnings </p>
+          <p className="text-sm lg:text-lg">{site.footer.about}</p>
         </motion.div>
 
         <div className="mt-16 grid grid-cols-1 gap-12 sm:mt-20 sm:grid-cols-2 sm:gap-10 lg:mt-24 lg:grid-cols-[1fr_1fr] lg:gap-16">
@@ -101,38 +79,44 @@ export default function Footer() {
           >
             <div className="space-y-1 text-base leading-relaxed sm:text-lg">
               <a
-                href="tel:1234567890"
+                href={`tel:${site.site.phones[0].replace(/[^\d+]/g, "")}`}
                 className="block w-fit transition-colors duration-300 hover:text-white"
               >
-                123-456-7890
+                {site.site.phones[0]}
               </a>
 
               <a
-                href="mailto:info@mysite.com"
+                href={`mailto:${site.site.emails[0]}`}
                 className="block w-fit transition-colors duration-300 hover:text-white"
               >
-                info@mysite.com
+                {site.site.emails[0]}
               </a>
             </div>
 
             <address className="mt-7 not-italic text-base leading-relaxed sm:text-lg">
-              500 Terry Francine St.
-              <br />
-              San Francisco, CA 94158
+              {site.site.addressLines.map((line, index) => (
+                <span key={line}>
+                  {index > 0 && <br />}
+                  {line}
+                </span>
+              ))}
             </address>
 
             {/* Social icons */}
             <div className="mt-10 flex flex-wrap items-center gap-3 sm:mt-16">
               {socialLinks.map((social, index) => {
-                const Icon = social.icon;
+                const Icon = socialIcons[social.icon];
+                if (!Icon) {
+                  throw new Error(`Unknown footer social icon: ${social.icon}`);
+                }
 
                 return (
                   <motion.a
-                    key={social.name}
+                    key={social.label}
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label={social.name}
+                    aria-label={social.label}
                     initial={{
                       opacity: 0,
                       y: reduceMotion ? 0 : 12,
@@ -169,7 +153,7 @@ export default function Footer() {
             className="flex flex-col items-start sm:pt-0"
           >
             <nav
-              aria-label="Legal and policy links"
+              aria-label={site.footer.policyAriaLabel}
               className="flex flex-col items-start gap-1.5 text-base sm:text-lg"
             >
               {policyLinks.map((policy, index) => (
@@ -215,7 +199,7 @@ export default function Footer() {
         >
           <div className="flex flex-col gap-3 text-sm leading-relaxed sm:text-base lg:flex-row lg:items-center lg:justify-end lg:pr-[22%]">
             <p>
-              Copyright © 2026. All Rights Reserved. Powered By Lestow.
+              {site.footer.copyright}
             </p>
           </div>
         </motion.div>

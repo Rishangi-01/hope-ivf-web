@@ -2,11 +2,11 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { site } from "@/data";
 
 export default function OurJourney() {
+  const content = site.about;
   const reduceMotion = useReducedMotion();
 
   const reveal = {
@@ -49,7 +49,7 @@ export default function OurJourney() {
         >
           <div className="flex items-center gap-3">
             <span className="font-serif text-base font-semibold text-[#593c35] lg:text-xl">
-              Our Journey
+              {content.eyebrow}
             </span>
 
             <motion.span
@@ -81,8 +81,8 @@ export default function OurJourney() {
             }}
             className="mt-6 font-serif text-7xl leading-[1.04] tracking-[-0.045em] text-[#783f36]"
           >
-            Growing Together
-            <br className="hidden sm:block" /> for a Healthier Future
+            {content.title}
+            <br className="hidden sm:block" /> {content.highlight}
           </motion.h2>
 
           <motion.p
@@ -101,9 +101,7 @@ export default function OurJourney() {
             }}
             className="mt-5 max-w-[460px] text-base leading-7 text-[#75635d] sm:text-lg sm:leading-8"
           >
-            With years of experience in maternal and child care,
-            we have helped countless families welcome happiness
-            and good health.
+            {content.homeText}
           </motion.p>
         </motion.div>
 
@@ -128,8 +126,8 @@ export default function OurJourney() {
         >
           <div className="relative aspect-[1.55/1] overflow-hidden rounded-[26px] bg-[#f1e1da] shadow-[0_20px_55px_rgba(105,64,54,0.10)] sm:rounded-[34px] lg:aspect-[1.53/1] xl:rounded-[40px]">
             <Image
-              src="/images/home/about-baby-hands.png"
-              alt="A parent gently holding their baby's tiny hand"
+              src={content.mainImage}
+              alt={content.mainImageAlt}
               fill
               priority
               sizes="(max-width: 1023px) 100vw, 60vw"

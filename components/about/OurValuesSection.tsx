@@ -99,41 +99,6 @@ export default function OurValuesSection() {
             We are guided by compassion, trust and a deep
             commitment to your well-being.
           </motion.p>
-
-          {/* Learn More button */}
-          <motion.div
-            initial={{
-              opacity: 0,
-              y: reduceMotion ? 0 : 16,
-            }}
-            whileInView={{
-              opacity: 1,
-              y: 0,
-            }}
-            viewport={{ once: true }}
-            transition={{
-              ...transition,
-              delay: reduceMotion ? 0 : 0.35,
-            }}
-            className="mt-7"
-          >
-            <motion.div
-              whileHover={reduceMotion ? undefined : { y: -3 }}
-              whileTap={reduceMotion ? undefined : { scale: 0.97 }}
-            >
-              <Link
-                href="/about-us"
-                className="group inline-flex items-center gap-3 rounded-full bg-[#8c5b53] px-7 py-3.5 text-sm font-semibold text-white shadow-[0_8px_24px_rgba(140,91,83,0.18)] transition-all duration-300 hover:bg-[#70443c] hover:shadow-[0_12px_30px_rgba(140,91,83,0.25)] sm:text-base"
-              >
-                Learn More
-
-                <ArrowRight
-                  size={19}
-                  className="transition-transform duration-300 group-hover:translate-x-1"
-                />
-              </Link>
-            </motion.div>
-          </motion.div>
         </motion.div>
 
         <motion.div

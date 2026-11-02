@@ -23,8 +23,6 @@ const article = {
   title: "Understanding Your Fertility Journey: A Guide to Your Next Steps",
   subtitle:
     "Explore the essentials of reproductive health, learn about your options, and discover how informed decisions can help you navigate your fertility journey.",
-  date: "October 16, 2026",
-  readTime: "7 min read",
   image: "/images/home/success-story1.png",
 };
 
@@ -90,16 +88,6 @@ export default function BlogDetailsSec() {
             <div className="mt-9 flex flex-wrap items-center gap-3 text-xs font-bold uppercase tracking-[0.15em] text-[#8c5b53] sm:gap-4 sm:text-sm">
               <span className="rounded-full bg-[#f2e3dc] px-4 py-2">
                 {article.category}
-              </span>
-
-              <span className="inline-flex items-center gap-2 font-medium normal-case tracking-normal text-[#82746e]">
-                <CalendarDays size={16} />
-                {article.date}
-              </span>
-
-              <span className="inline-flex items-center gap-2 font-medium normal-case tracking-normal text-[#82746e]">
-                <Clock3 size={16} />
-                {article.readTime}
               </span>
             </div>
 

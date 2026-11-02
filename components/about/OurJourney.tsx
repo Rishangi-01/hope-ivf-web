@@ -105,40 +105,6 @@ export default function OurJourney() {
             we have helped countless families welcome happiness
             and good health.
           </motion.p>
-
-          <motion.div
-            initial={{
-              opacity: 0,
-              y: reduceMotion ? 0 : 14,
-            }}
-            whileInView={{
-              opacity: 1,
-              y: 0,
-            }}
-            viewport={{ once: true }}
-            transition={{
-              duration: reduceMotion ? 0 : 0.65,
-              delay: reduceMotion ? 0 : 0.4,
-            }}
-          >
-            <motion.div
-              whileHover={reduceMotion ? undefined : { y: -3 }}
-              whileTap={reduceMotion ? undefined : { scale: 0.97 }}
-              className="mt-7 inline-flex"
-            >
-              <Link
-                href="/about-us"
-                className="group inline-flex items-center gap-3 rounded-full bg-[#8c5b53] px-6 py-3.5 text-sm font-semibold text-white shadow-[0_8px_20px_rgba(140,91,83,0.18)] transition-colors duration-300 hover:bg-[#75473f] sm:px-7 lg:text-xl"
-              >
-                Learn More
-
-                <ArrowRight
-                  size={18}
-                  className="transition-transform duration-300 group-hover:translate-x-1"
-                />
-              </Link>
-            </motion.div>
-          </motion.div>
         </motion.div>
 
         <motion.div

@@ -76,46 +76,12 @@ export default function WellnessGallery() {
                   sizes="(max-width: 639px) 46vw, (max-width: 1023px) 46vw, 25vw"
                   className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.045]"
                 />
-
-                {/* Elegant image overlay on hover */}
+                
                 <div className="absolute inset-0 bg-gradient-to-t from-[#2e211d]/35 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-
-                <motion.div
-                  aria-hidden="true"
-                  className="absolute bottom-4 right-4 grid h-10 w-10 translate-y-3 place-items-center rounded-full bg-white/90 text-[#8c5b53] opacity-0 shadow-md backdrop-blur-sm transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100"
-                >
-                  <ArrowUpRight size={19} />
-                </motion.div>
               </div>
             </motion.div>
           ))}
         </div>
-
-        {/* Call-to-action */}
-        <motion.div
-          initial={{
-            opacity: 0,
-            y: reduceMotion ? 0 : 18,
-          }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{
-            duration: reduceMotion ? 0 : 0.7,
-            delay: 0.2,
-          }}
-          className="mt-8 flex justify-center sm:mt-10 lg:absolute lg:-bottom-1 lg:right-0 lg:mt-0 lg:justify-end"
-        >
-          <a
-            href="#get-started"
-            className="group inline-flex min-h-[58px] items-center justify-center gap-3 rounded-full bg-[#8c5b53] px-8 py-4 text-base font-medium text-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:bg-[#754840] hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8c5b53] focus-visible:ring-offset-4 sm:min-w-[207px] sm:text-lg"
-          >
-            Start Today
-            <ArrowUpRight
-              size={19}
-              className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
-            />
-          </a>
-        </motion.div>
       </div>
     </section>
   );

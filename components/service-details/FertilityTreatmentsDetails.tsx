@@ -283,7 +283,7 @@ export default function FertilityTreatmentsDetails() {
                   </div>
 
                   <Link
-                    href="/contact-us"
+                    href="/contact"
                     className="group mt-8 inline-flex w-fit items-center gap-3 rounded-full bg-[#8c5b53] px-6 py-3.5 font-semibold text-white transition-all duration-300 hover:-translate-y-1 hover:bg-[#70443c]"
                   >
                     Discuss This Treatment

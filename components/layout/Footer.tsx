@@ -6,8 +6,8 @@ import { motion, useReducedMotion } from "framer-motion";
 import {
   FaInstagram,
   FaYoutube,
-  FaTiktok,
-  FaPinterestP,
+  FaFacebookF,
+  FaTwitter,
 } from "react-icons/fa";
 import type { IconType } from "react-icons";
 import { site } from "@/data";
@@ -15,8 +15,8 @@ import { site } from "@/data";
 const socialIcons: Record<string, IconType> = {
   instagram: FaInstagram,
   youtube: FaYoutube,
-  tiktok: FaTiktok,
-  pinterest: FaPinterestP,
+  facebook: FaFacebookF,
+  twitter: FaTwitter,
 };
 
 export default function Footer() {

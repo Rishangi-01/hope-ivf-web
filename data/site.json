@@ -849,7 +849,7 @@
               },
               "phone": {
                 "label": "Phone Number *",
-                "placeholder": "+91 98765 43210"
+                "placeholder": "+1 00000000"
               },
               "interest": {
                 "label": "Consultation Type *",
@@ -995,22 +995,20 @@
               "contactLabel": "Contact Us",
               "contactHref": "/contact",
               "ariaLabel": "Mobile navigation",
-              "phoneLabel": "+91 98765 43210",
-              "phoneHref": "tel:+919876543210",
-              "emailLabel": "hello@hopeivf.com",
-              "emailHref": "mailto:hello@hopeivf.com"
+              "phoneLabel": "+1 00000000",
+              "phoneHref": "tel:+1 00000000",
+              "emailLabel": "info@XYZ.com",
+              "emailHref": "mailto:info@XYZ.com"
             },
             "addressLines": [
-              "500 Terry Francine St.",
-              "San Francisco, CA 94158"
+              "742 Evergreen Terrace (or 123 Main St),",
+              "Springfield, IL (Illinois), 62704, United States"
             ],
             "emails": [
-              "info@mysite.com",
-              "info@mysite.com"
+              "info@XYZ.com"
             ],
             "phones": [
-              "123-456-7890",
-              "123-456-7890"
+              "+1 00000000"
             ],
             "callLabel": "Call Us",
             "bannerImage": "/images/home/banner1.webp",
@@ -1026,14 +1024,14 @@
                 "href": "https://www.youtube.com/"
               },
               {
-                "icon": "tiktok",
-                "label": "TikTok",
-                "href": "https://www.tiktok.com/"
+                "icon": "facebook",
+                "label": "Facebook",
+                "href": "https://www.facebook.com/"
               },
               {
-                "icon": "pinterest",
-                "label": "Pinterest",
-                "href": "https://www.pinterest.com/"
+                "icon": "twitter",
+                "label": "Twitter",
+                "href": "https://www.twitter.com/"
               }
             ],
             "hours": [
@@ -2282,7 +2280,7 @@
               "emailLabel": "Email us",
               "emailValue": "hello@example.com",
               "phoneLabel": "Call us",
-              "phoneValue": "+91 98765 43210",
+              "phoneValue": "+1 00000000",
               "backgroundImage": "/images/about/our-mission.webp",
               "backgroundImageAlt": "A welcoming modern building exterior",
               "fields": {

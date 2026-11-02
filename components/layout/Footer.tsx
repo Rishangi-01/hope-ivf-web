@@ -36,10 +36,10 @@ const socialLinks = [
 const policyLinks = [
   { label: "About US", href: "/about-us" },
   { label: "Our Services", href: "/services" },
-  { label: "BLog", href: "/blog" },
+  { label: "Blog", href: "/blog" },
   {
     label: "Contact",
-    href: "",
+    href: "/contact",
   },
 ];
 

@@ -413,7 +413,7 @@ export default function FertilityTreatmentsDetails() {
             </div>
 
             <Link
-              href="/contact-us"
+              href="/book-appointment"
               className="group inline-flex shrink-0 items-center gap-3 rounded-full bg-[#fffaf7] px-7 py-4 font-semibold text-[#8c5b53] transition-all duration-300 hover:-translate-y-1 hover:bg-white"
             >
               Book an Appointment

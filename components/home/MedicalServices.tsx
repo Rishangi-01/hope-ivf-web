@@ -91,7 +91,7 @@ export default function MedicalServices() {
               {services.map((service, index) => (
                 <motion.a
                   key={service.title}
-                  href="#contact"
+                  href="/services"
                   initial={{
                     opacity: 0,
                     y: reduceMotion ? 0 : 36,

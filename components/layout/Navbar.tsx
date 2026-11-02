@@ -12,6 +12,7 @@ const navLinks = [
   { name: "Our Services", href: "/services" },
   { name: "Success Stories", href: "/success-stories" },
   { name: "Blog", href: "/blog" },
+  { name: "Contact Us", href: "/contact" },
 ];
 
 export default function Navbar() {
@@ -68,10 +69,10 @@ export default function Navbar() {
           transition={{ duration: 0.4, delay: 0.25 }}
         >
           <Link
-            href="/contact"
+            href="/book-appointment"
             className="flex min-h-12 items-center justify-center rounded-full bg-[#fdf2f7] px-7 text-sm font-medium text-[#71504a] shadow-sm transition-colors duration-200 hover:bg-white sm:min-h-14 sm:min-w-[172px] sm:text-base"
           >
-            Contact Us
+            Book Appointment
           </Link>
         </motion.div>
 

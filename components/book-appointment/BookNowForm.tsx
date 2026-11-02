@@ -88,7 +88,7 @@ export default function BookNowForm() {
         />
 
         <div className="relative mx-auto grid w-full max-w-[1450px] grid-cols-1 items-center gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-12 xl:gap-20">
-          {/* LEFT: INTRODUCTION */}
+
           <motion.div
             initial="hidden"
             animate="visible"
@@ -109,7 +109,7 @@ export default function BookNowForm() {
               compassionate, professional guidance.
             </p>
 
-            {/* Trust indicators */}
+            
             <div className="mt-8 grid grid-cols-2 gap-4 sm:gap-5">
               <motion.div
                 whileHover={reduceMotion ? undefined : { y: -4 }}
@@ -156,7 +156,7 @@ export default function BookNowForm() {
             }}
             className="relative rounded-[26px] border border-white bg-[#ffffff]/90 p-5 shadow-[0_25px_90px_rgba(83,48,39,0.12)] backdrop-blur-xl sm:rounded-[32px] sm:p-8 lg:p-7 xl:p-9"
           >
-            {/* Form heading */}
+            
             <div className="mb-7 flex items-start justify-between gap-4">
               <div>
                 <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#8c5b53] sm:text-sm">
@@ -217,7 +217,7 @@ export default function BookNowForm() {
               </motion.div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-5">
-                {/* Name fields */}
+                
                 <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
                   <div>
                     <label
@@ -262,7 +262,7 @@ export default function BookNowForm() {
                   </div>
                 </div>
 
-                {/* Email and phone */}
+                
                 <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
                   <div>
                     <label
@@ -314,7 +314,7 @@ export default function BookNowForm() {
                   </div>
                 </div>
 
-                {/* Service */}
+
                 <div>
                   <label
                     htmlFor="service"
@@ -346,7 +346,7 @@ export default function BookNowForm() {
                   </div>
                 </div>
 
-                {/* Doctor */}
+                
                 <div>
                   <label
                     htmlFor="doctor"
@@ -374,7 +374,7 @@ export default function BookNowForm() {
                   </div>
                 </div>
 
-                {/* Date and time */}
+                
                 <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
                   <div>
                     <label
@@ -433,7 +433,7 @@ export default function BookNowForm() {
                   </div>
                 </div>
 
-                {/* Appointment type */}
+               
                 <fieldset>
                   <legend className="mb-3 text-sm font-semibold text-[#493a36]">
                     How would you like to meet?
@@ -479,7 +479,7 @@ export default function BookNowForm() {
                   />
                 </fieldset>
 
-                {/* Notes */}
+                
                 <div>
                   <label
                     htmlFor="notes"
@@ -499,7 +499,7 @@ export default function BookNowForm() {
                   />
                 </div>
 
-                {/* Submit */}
+                
                 <motion.button
                   type="submit"
                   whileHover={reduceMotion ? undefined : { scale: 1.015 }}

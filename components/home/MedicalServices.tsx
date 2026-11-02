@@ -91,7 +91,7 @@ export default function MedicalServices() {
               {services.map((service, index) => (
                 <motion.a
                   key={service.title}
-                  href="/services"
+                  href="/services/service-details"
                   initial={{
                     opacity: 0,
                     y: reduceMotion ? 0 : 36,
@@ -136,19 +136,6 @@ export default function MedicalServices() {
                   </div>
                 </motion.a>
               ))}
-            </div>
-
-            <div className="pb-1 pt-5 text-center md:pb-0 md:pt-6">
-              <a
-                href="/services"
-                className="group inline-flex items-center gap-2 rounded-full bg-[#8c5b53] px-6 py-3 text-sm font-medium text-white transition-all duration-300 hover:bg-[#754840] hover:shadow-lg hover:shadow-[#8c5b53]/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8c5b53] focus-visible:ring-offset-2"
-              >
-                Explore All Services
-                <ArrowUpRight
-                  size={16}
-                  className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                />
-              </a>
             </div>
           </div>
         </div>

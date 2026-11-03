@@ -46,9 +46,9 @@ export default function ContactForm() {
   }
 
   return (
-    <main className="min-h-screen overflow-hidden bg-[#faf8f6] lg:mt-8">
-      <section className="relative min-h-screen">
-        <div className="absolute inset-x-0 top-0 h-[58vh] min-h-[350px] overflow-hidden sm:h-[65vh] lg:h-[72vh]">
+    <main className="min-h-screen overflow-hidden bg-[#faf8f6] lg:mt-8 w-[100%]">
+      <section id="contact" className="relative min-h-screen w-[100%]">
+        <div className="absolute inset-x-0 top-0 h-[58vh] min-h-[350px] overflow-hidden sm:h-[65vh] lg:h-[100%]">
           <Image
             src={form.backgroundImage}
             alt={form.backgroundImageAlt}
@@ -66,12 +66,12 @@ export default function ContactForm() {
           aria-hidden="true"
           className="pointer-events-none absolute right-[-100px] top-[20%] h-72 w-72 rounded-full bg-[#8c5b53]/10 blur-3xl"
         />
-        <div className="relative mx-auto grid min-h-screen max-w-[1600px] grid-cols-1 items-start px-4 pb-8 pt-[22vh] sm:px-8 sm:pt-[24vh] lg:grid-cols-12 lg:px-12 lg:pt-[22vh]">
+        <div className="relative mx-auto max-w-[1600px] grid min-h-screen grid-cols-1 items-start px-4 pb-8 pt-[22vh] sm:px-8 sm:pt-[24vh] lg:grid-cols-12 lg:px-12 lg:pt-[22vh]">
           <motion.div
             variants={fadeUp}
             initial="hidden"
             animate="visible"
-            className="hidden self-center pr-10 text-white lg:col-span-4 lg:block"
+            className="hidden self-center pr-10 text-[#000] lg:col-span-4 lg:block"
           >
 
             <h1 className="mt-7 font-serif text-6xl leading-[1.08] xl:text-7xl">
@@ -82,11 +82,11 @@ export default function ContactForm() {
 
             <div className="mt-10 space-y-5">
               <div className="flex items-center gap-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full border border-white/30 bg-white/10 backdrop-blur-md">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full border border-[#000] bg-white/10 backdrop-blur-md">
                   <Mail size={21} />
                 </div>
                 <div>
-                  <p className="text-sm text-white/70">{form.emailLabel}</p>
+                  <p className="text-sm text-[[#000]]">{form.emailLabel}</p>
                   <p className="mt-1 font-medium">{form.emailValue}</p>
                 </div>
               </div>
@@ -96,14 +96,14 @@ export default function ContactForm() {
                   <Phone size={21} />
                 </div>
                 <div>
-                  <p className="text-sm text-white/70">{form.phoneLabel}</p>
+                  <p className="text-sm text-[[#000]]">{form.phoneLabel}</p>
                   <p className="mt-1 font-medium">{form.phoneValue}</p>
                 </div>
               </div>
             </div>
           </motion.div>
 
-          {/* Contact Form */}
+          
           <motion.div
             initial={{
               opacity: 0,
@@ -115,7 +115,7 @@ export default function ContactForm() {
               delay: reduceMotion ? 0 : 0.15,
               ease: "easeOut",
             }}
-            className="relative col-span-1 w-full rounded-2xl border border-white/70 bg-[#dce8eb]/95 p-5 shadow-[0_25px_80px_rgba(25,35,36,0.13)] backdrop-blur-xl sm:rounded-[24px] sm:p-8 md:p-10 lg:col-span-8 lg:col-start-5 lg:p-8 xl:p-10"
+            className="relative col-span-1 w-full rounded-2xl border border-[[#000]] bg-[#dce8eb]/95 p-5 shadow-[0_25px_80px_rgba(25,35,36,0.13)] backdrop-blur-xl sm:rounded-[24px] sm:p-8 md:p-10 lg:col-span-8 lg:col-start-5 lg:p-8 xl:p-10"
           >
             {/* Mobile heading */}
             <div className="mb-8 lg:hidden">
@@ -137,7 +137,7 @@ export default function ContactForm() {
                 {form.heading}
               </h2>
 
-              <div className="flex h-11 w-11 items-center justify-center rounded-full bg-white/70 text-[#8c5b53]">
+              <div className="flex h-11 w-11 items-center justify-center rounded-full bg-[[#000]] text-[#8c5b53]">
                 <Send size={21} />
               </div>
             </div>

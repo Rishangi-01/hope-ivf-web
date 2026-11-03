@@ -25,7 +25,7 @@ export default function FertilityTreatments() {
   return (
     <section
       id="fertility-treatments"
-      className="relative isolate flex min-h-screen items-center overflow-hidden bg-[#fffaf7] px-5 py-14 sm:px-8 sm:py-16 lg:px-12 lg:py-12 w-[100%]"
+      className="relative isolate flex min-h-screen items-center overflow-hidden bg-[#fffaf7] py-14 sm:py-16 lg:py-12 px-6 sm:px-6 lg:px-10 xl:px-14 w-[100%]"
     >
       <div
         aria-hidden="true"
@@ -36,7 +36,7 @@ export default function FertilityTreatments() {
         className="pointer-events-none absolute -right-40 bottom-0 -z-10 h-96 w-96 rounded-full bg-[#e9edf8]/60 blur-3xl"
       />
 
-      <div className="mx-auto w-full max-w-[1450px]">
+      <div className="mx-auto w-full max-w-[1600px]">
         <motion.div
           initial={{
             opacity: 0,

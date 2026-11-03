@@ -24,7 +24,7 @@ export default function LatestUpdates() {
   return (
     <section
       id="latest-updates"
-      className="relative flex min-h-screen items-center overflow-hidden bg-[#fffaf7] px-5 py-16 text-[#302d2c] sm:px-8 sm:py-20 lg:px-12 lg:py-24"
+      className="relative flex min-h-screen items-center overflow-hidden bg-[#fffaf7] px-6 sm:px-6 lg:px-10 xl:px-14 py-16 text-[#302d2c] sm:py-20 lg:py-24 w-[100%]"
     >
       <div
         aria-hidden="true"
@@ -36,7 +36,7 @@ export default function LatestUpdates() {
         className="pointer-events-none absolute -bottom-40 -right-32 h-[450px] w-[450px] rounded-full bg-[#ead4ca]/40 blur-3xl"
       />
 
-      <div className="relative mx-auto w-full max-w-[1500px]">
+      <div className="relative mx-auto w-full max-w-[1600px]">
         <motion.div
           initial={{
             opacity: 0,

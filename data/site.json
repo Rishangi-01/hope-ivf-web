@@ -2665,6 +2665,9 @@
       "Gallery": {
         "variants": {
           "InsuranceGallery1": {
+            "title": [
+              "Our Gallery"
+            ],
             "items": [
               {
                 "src": "/images/home/wellness1.webp",
@@ -2681,6 +2684,14 @@
               {
                 "src": "/images/home/wellness4.webp",
                 "alt": "Woman enjoying a quiet moment in nature"
+              },
+              {
+                "src": "/images/home/wellness5.webp",
+                "alt": "Pregnant woman exercising on a balance ball"
+              },
+              {
+                "src": "/images/home/wellness6.webp",
+                "alt": "Expectant couple attending a prenatal appointment"
               }
             ]
           }

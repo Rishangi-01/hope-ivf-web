@@ -74,14 +74,14 @@ export default function BlogDetailsSec() {
 
   return (
     <main className="min-h-screen overflow-hidden bg-[#fffaf7] text-[#342b29] w-[100%]">
-      {/* HERO */}
-      <section className="relative px-5 pb-12 pt-12 sm:px-8 sm:pb-16 sm:pt-16 lg:px-12 lg:pt-20">
+      
+      <section className="relative pb-12 pt-12 sm:pb-16 sm:pt-16 lg:pt-20 px-6 sm:px-6 lg:px-10 xl:px-14">
         <div
           aria-hidden="true"
           className="pointer-events-none absolute -right-32 -top-20 h-96 w-96 rounded-full bg-[#ead4ca]/40 blur-3xl"
         />
 
-        <div className="relative mx-auto max-w-[1250px]">
+        <div className="relative mx-auto max-w-[1600px]">
           <motion.div
             initial="hidden"
             animate="visible"
@@ -121,7 +121,7 @@ export default function BlogDetailsSec() {
           }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: reduceMotion ? 0 : 0.8 }}
-          className="relative mx-auto aspect-[16/9] max-h-[650px] max-w-[1450px] overflow-hidden rounded-[24px] bg-[#f0dfd7] shadow-[0_25px_80px_rgba(83,48,39,0.12)] sm:rounded-[32px] lg:aspect-[2/0.85]"
+          className="relative mx-auto aspect-[16/9] max-h-[650px] max-w-[1600px] overflow-hidden rounded-[24px] bg-[#f0dfd7] shadow-[0_25px_80px_rgba(83,48,39,0.12)] sm:rounded-[32px] lg:aspect-[2/0.85]"
         >
           <Image
             src={article.image.src}
@@ -137,7 +137,7 @@ export default function BlogDetailsSec() {
       </section>
 
       <section className="px-5 py-16 sm:px-8 sm:py-20 lg:px-12 lg:py-24">
-        <div className="mx-auto grid max-w-[1250px] gap-12 lg:gap-16">
+        <div className="mx-auto grid max-w-[1600px] gap-12 lg:gap-16">
 
           <motion.article
             initial="hidden"

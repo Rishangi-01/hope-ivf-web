@@ -65,9 +65,9 @@ export default function FertilityTreatmentsDetails() {
   };
 
   return (
-    <main className="overflow-hidden bg-[#fffaf7] text-[#493b37]">
+    <main className="overflow-hidden bg-[#fffaf7] text-[#493b37] w-[100%] px-6 sm:px-6 lg:px-10 xl:px-14">
 
-      <section className="px-5 py-20 sm:px-8 sm:py-24 lg:px-14">
+      <section className="py-20 sm:py-24">
         <motion.div
           variants={reveal}
           initial="hidden"
@@ -88,7 +88,7 @@ export default function FertilityTreatmentsDetails() {
           </p>
         </motion.div>
 
-        <div className="mx-auto mt-12 grid max-w-5xl gap-5 sm:grid-cols-3">
+        <div className="mx-auto mt-12 grid max-w-5xl gap-5 sm:grid-cols-3 max-w-[1600px]">
           {content.introCards.map((item, index) => {
             const Icon = introIcons[item.icon];
             if (!Icon) {
@@ -126,9 +126,9 @@ export default function FertilityTreatmentsDetails() {
       {/* ================= TREATMENT DETAILS ================= */}
       <section
         id="treatment-options"
-        className="bg-[#f8eee9]/60 px-5 py-20 sm:px-8 sm:py-24 lg:px-14"
+        className="px-5 py-20 sm:px-8 sm:py-24 lg:px-14"
       >
-        <div className="mx-auto max-w-[1400px]">
+        <div className="mx-auto max-w-[1600px]">
           <motion.div
             variants={reveal}
             initial="hidden"
@@ -223,8 +223,8 @@ export default function FertilityTreatmentsDetails() {
       </section>
 
       {/* ================= PROCESS ================= */}
-      <section className="px-5 py-20 sm:px-8 sm:py-24 lg:px-14">
-        <div className="mx-auto max-w-[1250px]">
+      <section className="py-20 sm:py-24">
+        <div className="mx-auto max-w-[1600px]">
           <motion.div
             variants={reveal}
             initial="hidden"
@@ -305,13 +305,13 @@ export default function FertilityTreatmentsDetails() {
       </section>
 
       {/* ================= SUPPORT BANNER ================= */}
-      <section className="px-5 pb-20 sm:px-8 sm:pb-24 lg:px-14">
+      <section className="pb-20 sm:pb-24">
         <motion.div
           variants={reveal}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="relative mx-auto max-w-[1400px] overflow-hidden rounded-[30px] bg-[#8c5b53] px-6 py-12 text-white sm:px-10 sm:py-16 lg:px-16 lg:py-20"
+          className="relative mx-auto max-w-[1600px] overflow-hidden rounded-[30px] bg-[#8c5b53] px-6 py-12 text-white sm:px-10 sm:py-16 lg:px-16 lg:py-20"
         >
           <div
             aria-hidden="true"

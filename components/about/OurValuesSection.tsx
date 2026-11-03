@@ -18,7 +18,7 @@ export default function OurValuesSection() {
   return (
     <section
       id="our-values"
-      className="relative isolate flex min-h-screen items-center overflow-hidden bg-[#fff9f6] px-5 py-12 text-[#8c5b53] sm:px-8 sm:py-16 lg:px-14 lg:py-12 xl:px-16 w-[100%]"
+      className="relative isolate flex min-h-screen items-center overflow-hidden bg-[#fff9f6] py-12 text-[#8c5b53] sm:py-16 lg:py-12 px-6 sm:px-6 lg:px-10 xl:px-14 w-[100%]"
     >
       <div
         aria-hidden="true"
@@ -30,7 +30,7 @@ export default function OurValuesSection() {
         className="pointer-events-none absolute -right-40 bottom-[-20%] -z-10 h-[450px] w-[450px] rounded-full bg-[#f3dfd6]/60 blur-3xl sm:h-[600px] sm:w-[600px]"
       />
 
-      <div className="mx-auto grid w-full max-w-[1800px] grid-cols-1 items-center gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:gap-12 xl:gap-16">
+      <div className="mx-auto grid w-full max-w-[1600px] grid-cols-1 items-center gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:gap-12 xl:gap-16">
         
         <motion.div
           initial={{

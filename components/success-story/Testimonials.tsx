@@ -50,7 +50,7 @@ export default function Testimonials() {
     <section
       id="testimonials"
       aria-label={content.ariaLabel}
-      className="relative flex min-h-screen items-center overflow-hidden bg-[#fffaf7] px-5 py-20 text-[#493b37] sm:px-8 lg:px-14 lg:py-24"
+      className="relative flex min-h-screen items-center overflow-hidden bg-[#fffaf7] px-5 py-20 text-[#493b37] lg:py-24 px-6 sm:px-6 lg:px-10 xl:px-14 w-[100%]"
     >
       <div
         aria-hidden="true"
@@ -62,7 +62,7 @@ export default function Testimonials() {
         className="pointer-events-none absolute -bottom-32 -right-28 h-96 w-96 rounded-full bg-[#ead2c9]/40 blur-3xl"
       />
 
-      <div className="relative mx-auto w-full max-w-[1450px]">
+      <div className="relative mx-auto w-full max-w-[1600px]">
         
         <motion.div
           initial={{ opacity: 0, y: reduceMotion ? 0 : 30 }}

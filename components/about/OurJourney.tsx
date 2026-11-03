@@ -27,7 +27,7 @@ export default function OurJourney() {
   return (
     <section
       id="our-journey"
-      className="relative isolate overflow-hidden bg-[#fffaf7] text-[#8c5b53] w-[100%]"
+      className="relative isolate overflow-hidden bg-[#fffaf7] text-[#8c5b53] w-[100%] px-6 sm:px-6 lg:px-10 xl:px-14"
     >
       <div
         aria-hidden="true"
@@ -39,7 +39,7 @@ export default function OurJourney() {
         className="pointer-events-none absolute -right-32 -top-36 -z-10 h-[400px] w-[400px] rounded-full bg-[#f8e9e1]/65 blur-2xl sm:h-[520px] sm:w-[520px]"
       />
 
-      <div className="mx-auto grid max-w-[1600px] grid-cols-1 items-center gap-10 px-5 py-12 sm:px-8 sm:py-16 lg:grid-cols-[0.88fr_1.12fr] lg:gap-14 lg:px-12 lg:py-16 xl:gap-20 xl:px-16">
+      <div className="mx-auto grid max-w-[1600px] grid-cols-1 items-center gap-10 py-12 sm:py-16 lg:grid-cols-[0.88fr_1.12fr] lg:gap-14 lg:py-16 xl:gap-20">
         <motion.div
           variants={reveal}
           initial="hidden"

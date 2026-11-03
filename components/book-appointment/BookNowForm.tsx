@@ -64,7 +64,7 @@ export default function BookNowForm() {
 
   return (
     <main className="min-h-screen overflow-hidden bg-[#fffaf7] text-[#332a28] w-[100%]">
-      <section className="relative flex min-h-screen items-center px-4 py-12 sm:px-6 sm:py-16 lg:px-10 lg:py-8 xl:px-14">
+      <section id="book-appointment" className="relative flex min-h-screen items-center py-12 sm:py-16 lg:py-8 px-6 sm:px-6 lg:px-10 xl:px-14">
         <div
           aria-hidden="true"
           className="pointer-events-none absolute -left-36 top-10 h-96 w-96 rounded-full bg-[#ead6ce]/45 blur-3xl"
@@ -74,7 +74,7 @@ export default function BookNowForm() {
           className="pointer-events-none absolute -right-32 bottom-0 h-96 w-96 rounded-full bg-[#8c5b53]/10 blur-3xl"
         />
 
-        <div className="relative mx-auto grid w-full max-w-[1450px] grid-cols-1 items-center gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-12 xl:gap-20">
+        <div className="relative mx-auto grid w-full max-w-[1600px] grid-cols-1 items-center gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-12 xl:gap-20">
 
           <motion.div
             initial="hidden"
@@ -82,7 +82,7 @@ export default function BookNowForm() {
             variants={fadeUp}
             className="relative"
           >
-            <h1 className="mt-7 max-w-2xl font-serif text-5xl leading-[1.08] tracking-tight text-[#713c34] sm:text-6xl lg:text-6xl xl:text-7xl">
+            <h1 className="font-serif text-4xl font-normal leading-tight tracking-tight text-[#302624] sm:text-5xl lg:text-6xl">
               {page.title[0]}
               <br />
               <span className="italic text-[#8c5b53]">{page.title[1]}</span>

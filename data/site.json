@@ -2533,6 +2533,10 @@
                   {
                     "label": "Contact",
                     "href": "/contact"
+                  },
+                  {
+                    "label": "Book An Appointment",
+                    "href": "/book-appointment"
                   }
                 ]
               },

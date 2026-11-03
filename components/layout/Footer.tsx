@@ -27,7 +27,6 @@ export default function Footer() {
     ...site.footer.columns[0].links.slice(1).map((link) =>
       link.label === "Contact Us" ? { ...link, label: "Contact" } : link,
     ),
-    { label: "Gallery", href: "#gallery" },
   ];
   const phone = site.site.phones[0];
   const email = site.site.emails[0];

@@ -79,7 +79,7 @@ export default function AboutSection() {
                 },
               },
             }}
-            className="mt-8 font-serif lg:text-[6rem] text-[2rem] font-normal leading-[1.02] tracking-[-0.035em] text-[#fffaf3]"
+            className="mt-8 font-serif lg:text-[5rem] text-[2rem] font-normal leading-[1.02] tracking-[-0.035em] text-[#fffaf3]"
           >
             {homeAbout.title.map((line, index) => (
               <span key={line}>
@@ -91,7 +91,7 @@ export default function AboutSection() {
             ))}
           </motion.h2>
 
-          {/* Decorative line */}
+          
           <motion.div
             initial={{ width: 0 }}
             whileInView={{ width: 72 }}
@@ -104,7 +104,7 @@ export default function AboutSection() {
           />
         </motion.div>
 
-        {/* Right collage */}
+        
         <div className="relative mx-auto h-[480px] w-full max-w-[630px] sm:h-[540px] md:h-[500px] lg:h-[690px]">
           {careImages.map((item, index) => (
             <motion.div

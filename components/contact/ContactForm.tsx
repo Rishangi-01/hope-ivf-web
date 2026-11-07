@@ -1,4 +1,3 @@
-
 "use client";
 
 import Image from "next/image";
@@ -13,6 +12,7 @@ import {
   Phone,
   MapPin,
   Send,
+  LucideMapPin,
 } from "lucide-react";
 import { site } from "@/data";
 
@@ -61,6 +61,7 @@ export default function ContactForm() {
           <div className="absolute inset-0 bg-[#342b29]/10" />
           <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/5" />
         </div>
+        
 
         <div
           aria-hidden="true"
@@ -73,7 +74,6 @@ export default function ContactForm() {
             animate="visible"
             className="hidden self-center pr-10 text-[#000] lg:col-span-4 lg:block"
           >
-
             <h1 className="mt-7 font-serif text-6xl leading-[1.08] xl:text-7xl">
               {content.title[0]}
               <br />
@@ -103,7 +103,6 @@ export default function ContactForm() {
             </div>
           </motion.div>
 
-          
           <motion.div
             initial={{
               opacity: 0,
@@ -117,7 +116,6 @@ export default function ContactForm() {
             }}
             className="relative col-span-1 w-full rounded-2xl border border-[[#000]] bg-[#dce8eb]/95 p-5 shadow-[0_25px_80px_rgba(25,35,36,0.13)] backdrop-blur-xl sm:rounded-[24px] sm:p-8 md:p-10 lg:col-span-8 lg:col-start-5 lg:p-8 xl:p-10"
           >
-            {/* Mobile heading */}
             <div className="mb-8 lg:hidden">
               <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#8c5b53]">
                 {form.mobileEyebrow}
@@ -173,7 +171,6 @@ export default function ContactForm() {
             ) : (
               <form onSubmit={handleSubmit}>
                 <div className="grid grid-cols-1 gap-x-6 gap-y-6 sm:grid-cols-2 sm:gap-y-7">
-                  {/* First name */}
                   <div className="group">
                     <label
                       htmlFor="firstName"
@@ -215,7 +212,6 @@ export default function ContactForm() {
                     />
                   </div>
 
-                  {/* Email */}
                   <div className="group">
                     <label
                       htmlFor="email"
@@ -236,7 +232,6 @@ export default function ContactForm() {
                     />
                   </div>
 
-                  {/* Phone number */}
                   <div className="group">
                     <label
                       htmlFor="phone"
@@ -291,7 +286,6 @@ export default function ContactForm() {
                     </div>
                   </div>
 
-                  {/* Message */}
                   <div className="group sm:col-span-2">
                     <label
                       htmlFor="message"
@@ -329,6 +323,55 @@ export default function ContactForm() {
             )}
           </motion.div>
         </div>
+      </section>
+
+      <section>
+        <motion.div
+          initial={reduceMotion ? false : { opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.15 }}
+          transition={{ duration: 0.7 }}
+          className="group relative my-12 h-[250px]
+            overflow-hidden border border-[#e5ddd0]
+            bg-[#e9e6de] sm:mt-16 sm:h-[320px]
+            lg:my-16 lg:h-[350px]"
+        >
+          <iframe
+            title={`Map showing ${site.site.addressLines.join(" ")}`}
+            src={`https://maps.google.com/maps?q=${encodeURIComponent(site.site.addressLines.join(" "))}&t=&z=13&ie=UTF8&iwloc=&output=embed`}
+            width="100%"
+            height="100%"
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            className="absolute inset-0 h-full w-full
+              grayscale-[0.45] transition-all duration-700
+              group-hover:grayscale-0"
+          />
+
+          <div
+            className="pointer-events-none absolute
+            bottom-4 left-4 right-4 z-10 flex
+            max-w-[320px] items-center gap-3
+            border border-white/60 bg-[#faf8f3]/95
+            p-4 shadow-lg backdrop-blur-md sm:bottom-6 sm:left-6"
+          >
+            <div
+              className="flex h-10 w-10 shrink-0
+              items-center justify-center bg-[#11110f] text-white"
+            >
+              <LucideMapPin size={19} />
+            </div>
+
+            <div>
+              <p className="font-serif text-base">
+                {site.contact.location.mapCard.title}
+              </p>
+              <p className="mt-1 text-xs text-[#81776b]">
+                {site.site.addressLines.join(" ")}
+              </p>
+            </div>
+          </div>
+        </motion.div>
       </section>
     </main>
   );

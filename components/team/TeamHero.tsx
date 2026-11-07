@@ -18,7 +18,7 @@ export default function TeamHero() {
 
   return (
     <main className="overflow-hidden bg-[#fffaf7] text-[#8c5b53] w-[100%]">
-      <section className="relative isolate min-h-[540px] overflow-hidden sm:min-h-[600px] lg:min-h-[min(620px,calc(100svh-76px))] xl:min-h-[650px] px-6 sm:px-6 lg:px-10 xl:px-14">
+      <section className="relative isolate min-h-[540px] overflow-hidden sm:min-h-[600px] lg:min-h-[min(620px,calc(100svh-76px))] xl:min-h-[550px] px-6 sm:px-6 lg:px-10 xl:px-14">
         <motion.div
           initial={{
             opacity: 0,
@@ -44,7 +44,7 @@ export default function TeamHero() {
           />
         </motion.div>
 
-        <div className="mx-auto flex min-h-[540px] max-w-[1600px] items-center py-20 sm:min-h-[600px]  lg:min-h-[min(620px,calc(100svh-76px))] xl:min-h-[650px]">
+        <div className="mx-auto flex min-h-[540px] max-w-[1600px] items-center py-20 sm:min-h-[600px]  lg:min-h-[min(620px,calc(100svh-76px))] xl:min-h-[550px]">
           <motion.div
             initial={{
               opacity: 0,
@@ -60,7 +60,7 @@ export default function TeamHero() {
             }}
             className="max-w-[750px]"
           >
-            <h1 className="font-serif text-[clamp(4.2rem,9vw,8.5rem)] leading-[0.98] tracking-[-0.055em] text-[#7c443a]">
+            <h1 className="font-serif text-[clamp(4.2rem,9vw,7.5rem)] leading-[0.98] tracking-[-0.055em] text-[#7c443a]">
               {site.Insurance.sections.Team.variants.InsuranceTeam1.heroTitle}
             </h1>
 

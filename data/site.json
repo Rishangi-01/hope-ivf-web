@@ -2281,7 +2281,7 @@
               "emailValue": "hello@example.com",
               "phoneLabel": "Call us",
               "phoneValue": "+1 00000000",
-              "backgroundImage": "/images/about/our-mission.webp",
+              "backgroundImage": "/images/home/success-story1.webp",
               "backgroundImageAlt": "A welcoming modern building exterior",
               "fields": {
                 "firstName": {

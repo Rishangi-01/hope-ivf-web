@@ -27,7 +27,7 @@ export default function HomecareHero() {
 
   return (
     <section className="relative isolate min-h-[510px] overflow-hidden bg-[#8c5b53] sm:min-h-[600px] lg:min-h-[680px] w-[100%]">
-      {/* Background image */}
+      
       <motion.div
         initial={{
           opacity: 0,
@@ -85,20 +85,6 @@ export default function HomecareHero() {
               </span>
             ))}
           </motion.h1>
-        </motion.div>
-
-        {/* Bottom decorative accent */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{
-            delay: 0.9,
-            duration: reduceMotion ? 0 : 0.6,
-          }}
-          className="absolute bottom-6 right-6 hidden items-center gap-2 rounded-full border border-white/30 bg-black/15 px-4 py-2.5 text-sm text-white backdrop-blur-md sm:flex lg:bottom-8 lg:right-10"
-        >
-          <Plus size={16} className="text-white" />
-          <span>{content.tagline}</span>
         </motion.div>
       </div>
     </section>

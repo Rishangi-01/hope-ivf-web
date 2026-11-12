@@ -60,7 +60,7 @@ export default function ServicesHero() {
             }}
             className="max-w-[750px]"
           >
-            <h1 className="font-serif text-[clamp(4.2rem,9vw,7.5rem)] leading-[0.98] tracking-[-0.055em] text-[#7c443a]">
+            <h1 className="font-serif text-[clamp(4.2rem,9vw,5.5rem)] leading-[0.98] tracking-[-0.055em] text-[#7c443a]">
               {site.plans.heroTitle}
             </h1>
 

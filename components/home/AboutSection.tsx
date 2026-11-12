@@ -79,7 +79,7 @@ export default function AboutSection() {
                 },
               },
             }}
-            className="mt-8 font-serif lg:text-[5rem] text-[2rem] font-normal leading-[1.02] tracking-[-0.035em] text-[#fffaf3]"
+            className="mt-8 font-serif lg:text-[4rem] text-[2rem] font-normal leading-[1.02] tracking-[-0.035em] text-[#fffaf3]"
           >
             {homeAbout.title.map((line, index) => (
               <span key={line}>
@@ -91,7 +91,31 @@ export default function AboutSection() {
             ))}
           </motion.h2>
 
-          
+          <motion.div
+            variants={{
+              hidden: {
+                opacity: 0,
+                y: reduceMotion ? 0 : 12,
+              },
+              visible: {
+                opacity: 1,
+                y: 0,
+                transition: {
+                  duration: 0.7,
+                  ease: [0.22, 1, 0.36, 1],
+                  delay: 0.2,
+                },
+              },
+            }}
+            className="mt-6 space-y-2 text-base leading-relaxed text-[#f5efe7]/90 sm:text-lg"
+          >
+            {homeAbout.description.map((line) => (
+              <p key={line} className="max-w-[560px]">
+                {line}
+              </p>
+            ))}
+          </motion.div>
+
           <motion.div
             initial={{ width: 0 }}
             whileInView={{ width: 72 }}

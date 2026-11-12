@@ -2,6 +2,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { Plus } from "lucide-react";
 import { site } from "@/data";
@@ -85,6 +86,16 @@ export default function HomecareHero() {
               </span>
             ))}
           </motion.h1>
+
+          <motion.div variants={reveal} className="mt-7 flex flex-wrap gap-4">
+            <Link
+              href={site.nav.button.href}
+              className="inline-flex items-center gap-2 rounded-full bg-[#f0f1d9] px-6 py-3 text-sm font-semibold text-[#5f3832] shadow-sm transition-transform duration-200 hover:-translate-y-0.5 sm:px-7 sm:text-base"
+            >
+              <span>{site.nav.button.label}</span>
+              <Plus className="h-4 w-4" />
+            </Link>
+          </motion.div>
         </motion.div>
       </div>
     </section>

@@ -69,39 +69,98 @@ export default function ContactForm() {
         />
         <div className="relative mx-auto max-w-[1600px] grid min-h-screen grid-cols-1 items-start px-4 pb-8 pt-[22vh] sm:px-8 sm:pt-[24vh] lg:grid-cols-12 lg:px-12 lg:pt-[22vh]">
           <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            animate="visible"
-            className="hidden self-center pr-10 text-[#000] lg:col-span-4 lg:block"
-          >
-            <h1 className="mt-7 font-serif text-6xl leading-[1.08] xl:text-7xl">
-              {content.title[0]}
-              <br />
-              {content.title[1]}
-            </h1>
+  variants={fadeUp}
+  initial="hidden"
+  animate="visible"
+  className="relative z-10 hidden self-center pr-6 text-[#171311] lg:col-span-4 lg:block"
+>
+  <div className="absolute -inset-6 -z-10 rounded-2xl bg-[#f5e9dd]/35 opacity-80 blur-2xl" />
 
-            <div className="mt-10 space-y-5">
-              <div className="flex items-center gap-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full border border-[#000] bg-white/10 backdrop-blur-md">
-                  <Mail size={21} />
-                </div>
-                <div>
-                  <p className="text-sm text-[[#000]]">{form.emailLabel}</p>
-                  <p className="mt-1 font-medium">{form.emailValue}</p>
-                </div>
-              </div>
+ 
+  <h1
+    className="
+      max-w-[560px]
+      font-serif
+      text-[clamp(3.5rem,4.3vw,5.5rem)]
+      font-medium
+      leading-[1.05]
+      tracking-[-0.045em]
+      text-[#171311]
+      [text-shadow:0_2px_12px_rgba(255,255,255,0.35)]
+    "
+  >
+    Let's start a
+    <br />
+    conversation.
+  </h1>
 
-              <div className="flex items-center gap-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full border border-white/30 bg-white/10 backdrop-blur-md">
-                  <Phone size={21} />
-                </div>
-                <div>
-                  <p className="text-sm text-[[#000]]">{form.phoneLabel}</p>
-                  <p className="mt-1 font-medium">{form.phoneValue}</p>
-                </div>
-              </div>
-            </div>
-          </motion.div>
+  {/* Contact Information */}
+  <div className="mt-12 space-y-6">
+
+    {/* Email */}
+    <motion.a
+      href={`mailto:${form.emailValue}`}
+      whileHover={reduceMotion ? undefined : { x: 6 }}
+      className="group flex w-fit items-center gap-5"
+    >
+      <div
+        className="
+          flex h-14 w-14 shrink-0 items-center justify-center
+          rounded-full border border-[#171311]/70
+          bg-white/30 backdrop-blur-md
+          transition-all duration-300
+          group-hover:border-[#8c5b53]
+          group-hover:bg-[#8c5b53]
+          group-hover:text-white
+        "
+      >
+        <Mail size={23} strokeWidth={1.7} />
+      </div>
+
+      <div>
+        <p className="mb-1 text-sm font-semibold tracking-wide text-[#342b29]">
+          Email us
+        </p>
+
+        <p className="text-base font-semibold text-[#171311] sm:text-lg">
+          {form.emailValue}
+        </p>
+      </div>
+    </motion.a>
+
+    {/* Phone */}
+    <motion.a
+      href={`tel:${form.phoneValue}`}
+      whileHover={reduceMotion ? undefined : { x: 6 }}
+      className="group flex w-fit items-center gap-5"
+    >
+      <div
+        className="
+          flex h-14 w-14 shrink-0 items-center justify-center
+          rounded-full border border-white/70
+          bg-white/25 backdrop-blur-md
+          transition-all duration-300
+          group-hover:border-[#8c5b53]
+          group-hover:bg-[#8c5b53]
+          group-hover:text-white
+        "
+      >
+        <Phone size={23} strokeWidth={1.7} />
+      </div>
+
+      <div>
+        <p className="mb-1 text-sm font-semibold tracking-wide text-[#342b29]">
+          Call us
+        </p>
+
+        <p className="text-base font-semibold text-[#171311] sm:text-lg">
+          {form.phoneValue}
+        </p>
+      </div>
+    </motion.a>
+
+  </div>
+</motion.div>
 
           <motion.div
             initial={{

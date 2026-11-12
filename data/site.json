@@ -1170,9 +1170,11 @@
             "homeSection": {
               "eyebrow": "About Us",
               "title": [
-                "Passion-Driven",
-                "Care, Delivered",
-                "to Your Door"
+                "Passion-Driven Care,",
+                "Delivered to Your Door"
+              ],
+              "description": [
+                "We combine advanced fertility expertise with compassionate, patient-first care. From the first consultation to every step of treatment, we support you with clarity and confidence. Our team is dedicated to helping you move forward with hope, comfort, and the best possible care."
               ]
             },
             "eyebrow": "Our Journey",
@@ -2281,7 +2283,7 @@
               "emailValue": "hello@example.com",
               "phoneLabel": "Call us",
               "phoneValue": "+1 00000000",
-              "backgroundImage": "/images/home/success-story1.webp",
+              "backgroundImage": "/images/banner2.jpg",
               "backgroundImageAlt": "A welcoming modern building exterior",
               "fields": {
                 "firstName": {

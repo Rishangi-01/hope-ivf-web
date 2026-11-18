@@ -95,7 +95,7 @@ export default function TeamSection() {
                 </div>
 
                 <motion.a
-                  href="#contact"
+                  href="/teams"
                   aria-label={member.linkLabel}
                   whileHover={
                     shouldReduceMotion ? undefined : { rotate: 45 }

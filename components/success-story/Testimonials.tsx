@@ -247,7 +247,7 @@ export default function Testimonials() {
                     type="button"
                     onClick={next}
                     aria-label={content.nextLabel}
-                    className="flex h-12 w-12 items-center justify-center rounded-full bg-[#8c5b53] text-white shadow-md shadow-[#8c5b53]/20 transition-all duration-300 hover:-translate-y-1 hover:bg-[#70443c] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8c5b53] focus-visible:ring-offset-2"
+                    className="flex h-12 w-12 items-center justify-center rounded-full border border-[#8c5b53]/25 text-[#8c5b53] transition-all duration-300 hover:-translate-y-1 hover:bg-[#70443c] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8c5b53] focus-visible:ring-offset-2"
                   >
                     <ArrowRight size={21} />
                   </button>

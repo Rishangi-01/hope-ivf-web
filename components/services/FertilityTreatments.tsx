@@ -51,9 +51,9 @@ export default function FertilityTreatments() {
             duration: reduceMotion ? 0 : 0.8,
             ease: [0.22, 1, 0.36, 1],
           }}
-          className="mx-auto mb-10 max-w-6xl text-center sm:mb-12 lg:mb-14"
+          className="mx-auto mb-10 max-w-7xl text-center sm:mb-12 lg:mb-14"
         >
-          <h2 className="font-sans text-4xl font-bold leading-[1.1] tracking-[-0.045em] text-[#243a59] sm:text-5xl md:text-6xl lg:text-[4rem]">
+          <h2 className="font-sans text-4xl font-bold leading-[1.1] tracking-[-0.045em] text-[#243a59] sm:text-4xl md:text-5xl lg:text-[3.5rem]">
             {plans.treatmentHeading.map((line, index) => (
               <span
                 key={line}

@@ -10,7 +10,6 @@ import {
   UserRound,
   MonitorCheck,
   UsersRound,
-  ArrowUpRight,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { site } from "@/data";
@@ -167,13 +166,6 @@ export default function WhyChooseUs() {
                     delay: reduceMotion ? 0 : 0.25 + index * 0.12,
                   }}
                   className="mt-5 h-[2px] rounded-full bg-[#8c5b53]/45 transition-all duration-300 group-hover:w-20 group-hover:bg-[#8c5b53]"
-                />
-
-                {/* Decorative arrow */}
-                <ArrowUpRight
-                  aria-hidden="true"
-                  size={19}
-                  className="absolute right-5 top-5 opacity-0 transition-all duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:opacity-70"
                 />
               </motion.article>
             );

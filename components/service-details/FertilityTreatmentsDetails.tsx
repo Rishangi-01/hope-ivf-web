@@ -67,7 +67,7 @@ export default function FertilityTreatmentsDetails() {
   return (
     <main className="overflow-hidden bg-[#fffaf7] text-[#493b37] w-[100%] px-6 sm:px-6 lg:px-10 xl:px-14">
 
-      <section className="py-20 sm:py-24">
+      <section className="py-8 sm:py-12">
         <motion.div
           variants={reveal}
           initial="hidden"
@@ -126,7 +126,7 @@ export default function FertilityTreatmentsDetails() {
       {/* ================= TREATMENT DETAILS ================= */}
       <section
         id="treatment-options"
-        className="px-5 py-20 sm:px-8 sm:py-24 lg:px-14"
+        className="px-5 py-8 sm:px-8 sm:py-12 lg:px-14"
       >
         <div className="mx-auto max-w-[1600px]">
           <motion.div
@@ -223,7 +223,7 @@ export default function FertilityTreatmentsDetails() {
       </section>
 
       {/* ================= PROCESS ================= */}
-      <section className="py-20 sm:py-24">
+      <section className="py-8 sm:py-12">
         <div className="mx-auto max-w-[1600px]">
           <motion.div
             variants={reveal}

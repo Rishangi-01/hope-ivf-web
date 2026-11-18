@@ -48,7 +48,7 @@ export default function LatestUpdates() {
             duration: reduceMotion ? 0 : 0.8,
             ease: "easeOut",
           }}
-          className="mx-auto mb-12 max-w-5xl text-center sm:mb-16 lg:mb-20"
+          className="mx-auto mb-12 max-w-6xl text-center sm:mb-16 lg:mb-20"
         >
 
           <h2 className="text-4xl font-bold leading-[1.1] tracking-tight text-[#172c59] sm:text-5xl md:text-6xl lg:text-[4rem]">
@@ -138,28 +138,6 @@ export default function LatestUpdates() {
             </motion.article>
           ))}
         </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: reduceMotion ? 0 : 15 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{
-            duration: reduceMotion ? 0 : 0.5,
-            delay: reduceMotion ? 0 : 0.2,
-          }}
-          className="mt-12 flex justify-center sm:mt-16"
-        >
-          <Link
-            href={detailsHref}
-            className="group inline-flex items-center gap-3 rounded-full bg-[#8c5b53] px-8 py-4 text-sm font-semibold text-white shadow-lg shadow-[#8c5b53]/20 transition-all duration-300 hover:-translate-y-1 hover:bg-[#70443c] hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8c5b53] focus-visible:ring-offset-4 sm:text-base"
-          >
-            {content.buttonLabel}
-            <ArrowRight
-              size={20}
-              className="transition-transform duration-300 group-hover:translate-x-1"
-            />
-          </Link>
-        </motion.div>
       </div>
     </section>
   );

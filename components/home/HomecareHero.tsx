@@ -27,7 +27,7 @@ export default function HomecareHero() {
   };
 
   return (
-    <section className="relative isolate min-h-[510px] overflow-hidden bg-[#8c5b53] sm:min-h-[600px] lg:min-h-[680px] w-[100%]">
+    <section className="relative isolate min-h-[510px] overflow-hidden bg-[#8c5b53] w-[100%]">
       
       <motion.div
         initial={{
@@ -58,7 +58,7 @@ export default function HomecareHero() {
       <div className="absolute inset-0 bg-[#8c5b53]/10 mix-blend-multiply" />
 
       {/* Main content */}
-      <div className="relative z-10 mx-auto flex min-h-[510px] max-w-[1800px] flex-col justify-start px-5 pb-16 pt-10 sm:min-h-[600px] sm:px-8 sm:pt-12 lg:min-h-[680px] lg:px-[4.2%] lg:pt-10">
+      <div className="relative z-10 mx-auto flex min-h-[510px] max-w-[1800px] flex-col justify-center px-5 pb-16 pt-10 sm:px-8 sm:pt-12 lg:px-[4.2%] lg:pt-10">
         <motion.div
           initial="hidden"
           animate="visible"
@@ -77,7 +77,7 @@ export default function HomecareHero() {
           {/* Main headline */}
           <motion.h1
             variants={reveal}
-            className="mt-4 max-w-[1050px] lg:text-[7rem] font-light leading-[1.14] tracking-[-0.035em] text-white sm:mt-5 lg:leading-[1.17]"
+            className="mt-4 max-w-[1050px] lg:text-[4.5rem] font-light leading-[1.14] tracking-[-0.035em] text-white sm:mt-5 lg:leading-[1.17]"
           >
             {content.title.map((line, index) => (
               <span key={line}>

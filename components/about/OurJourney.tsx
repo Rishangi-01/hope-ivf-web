@@ -79,7 +79,7 @@ export default function OurJourney() {
               delay: reduceMotion ? 0 : 0.12,
               ease: [0.22, 1, 0.36, 1],
             }}
-            className="mt-6 font-serif text-7xl leading-[1.04] tracking-[-0.045em] text-[#783f36]"
+            className="mt-6 font-serif text-4xl lg:text-7xl leading-[1.04] tracking-[-0.045em] text-[#783f36]"
           >
             {content.title}
             <br className="hidden sm:block" /> {content.highlight}

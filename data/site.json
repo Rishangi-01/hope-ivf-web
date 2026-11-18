@@ -583,7 +583,7 @@
         "headingSuffix": " insights",
         "description": "Explore the essentials of reproductive health, learn about your options, and discover how informed decisions can help you navigate your fertility journey.",
         "linkTemplate": "/blog/blog-details",
-        "detailsHref": "/blog/blog-details",
+        "detailsHref": "/blog",
         "readLabelTemplate": "Read {title}",
         "moreDetailsLabel": "More Details",
         "paginationAriaLabel": "Blog pagination",
@@ -992,8 +992,8 @@
             "mobileMenu": {
               "openLabel": "Open navigation menu",
               "closeLabel": "Close navigation menu",
-              "contactLabel": "Contact Us",
-              "contactHref": "/contact",
+              "contactLabel": "Book Appointment",
+              "contactHref": "/book-appointment",
               "ariaLabel": "Mobile navigation",
               "phoneLabel": "+1 00000000",
               "phoneHref": "tel:+1 00000000",
@@ -1852,7 +1852,7 @@
             "text": "Every fertility journey is personal. Discover how thoughtful communication, compassionate guidance, and personalized care can make a meaningful difference.",
             "items": [
               {
-                "name": "Priya Sharma",
+                "name": "Rahul Sharma",
                 "city": "New Delhi, India",
                 "treatment": "IVF Treatment",
                 "rating": 5,
@@ -1870,7 +1870,7 @@
                 "quote": "What mattered most to us was being listened to. Having our concerns addressed with patience and clear guidance made the experience much easier to navigate."
               },
               {
-                "name": "Ananya Kapoor",
+                "name": "Anand Kapoor",
                 "city": "Gurugram, India",
                 "treatment": "IUI Treatment",
                 "rating": 5,
@@ -1879,7 +1879,7 @@
                 "quote": "From our first appointment, the team helped us understand our options and what to expect. We appreciated the considerate communication and personalized attention."
               },
               {
-                "name": "Meera & Rahul",
+                "name": "Meera",
                 "city": "Ghaziabad, India",
                 "treatment": "Fertility Care",
                 "rating": 5,
@@ -2283,6 +2283,7 @@
               "emailValue": "hello@example.com",
               "phoneLabel": "Call us",
               "phoneValue": "+1 00000000",
+              "locationValue": "742 Evergreen Terrace (or 123 Main St), Springfield, IL (Illinois), 62704, United States",
               "backgroundImage": "/images/banner2.jpg",
               "backgroundImageAlt": "A welcoming modern building exterior",
               "fields": {

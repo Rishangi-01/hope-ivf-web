@@ -67,7 +67,7 @@ export default function ContactForm() {
           aria-hidden="true"
           className="pointer-events-none absolute right-[-100px] top-[20%] h-72 w-72 rounded-full bg-[#8c5b53]/10 blur-3xl"
         />
-        <div className="relative mx-auto max-w-[1600px] grid min-h-screen grid-cols-1 items-start px-4 pb-8 pt-[22vh] sm:px-8 sm:pt-[24vh] lg:grid-cols-12 lg:px-12 lg:pt-[22vh]">
+        <div className="relative mx-auto max-w-[1600px] grid min-h-screen grid-cols-1 items-start px-4 pb-8 pt-[16vh] sm:px-8 sm:pt-[24vh] lg:grid-cols-12 lg:px-12 lg:pt-[22vh]">
           <motion.div
   variants={fadeUp}
   initial="hidden"
@@ -155,6 +155,36 @@ export default function ContactForm() {
 
         <p className="text-base font-semibold text-[#171311] sm:text-lg">
           {form.phoneValue}
+        </p>
+      </div>
+    </motion.a>
+
+    {/* Location */}
+    <motion.a
+      whileHover={reduceMotion ? undefined : { x: 6 }}
+      className="group flex w-fit items-center gap-5"
+    >
+      <div
+        className="
+          flex h-14 w-14 shrink-0 items-center justify-center
+          rounded-full border border-white/70
+          bg-white/25 backdrop-blur-md
+          transition-all duration-300
+          group-hover:border-[#8c5b53]
+          group-hover:bg-[#8c5b53]
+          group-hover:text-white
+        "
+      >
+        <MapPin size={23} strokeWidth={1.7} />
+      </div>
+
+      <div>
+        <p className="mb-1 text-sm font-semibold tracking-wide text-[#342b29]">
+          Location
+        </p>
+
+        <p className="text-base font-semibold text-[#171311] sm:text-lg">
+          {form.locationValue}
         </p>
       </div>
     </motion.a>

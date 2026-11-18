@@ -27,6 +27,21 @@ export default function MedicalServices() {
       />
 
       <div className="relative mx-auto py-6 sm:py-10 md:py-8 lg:py-24 max-w-[1600px]">
+        <motion.div
+          initial={{ opacity: 0, y: reduceMotion ? 0 : 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: reduceMotion ? 0 : 0.65 }}
+          className="mb-10 text-center sm:mb-14 lg:mb-16"
+        >
+          <h2 className="font-serif text-4xl font-normal leading-tight tracking-tight text-[#302624] sm:text-5xl lg:text-6xl">
+            {plans.eyebrow}{" "}
+          </h2>
+          <span
+            aria-hidden="true"
+            className="mx-auto mt-4 block h-[3px] w-12 rounded-full bg-[#8c5b53]"
+          />
+        </motion.div>
         <div className="grid grid-cols-1 gap-7 md:grid-cols-[0.9fr_1.1fr] md:gap-5 lg:grid-cols-[0.95fr_1.6fr] lg:gap-12">
           <div className="min-w-0 lg:sticky lg:top-8 lg:h-fit lg:self-start">
             <motion.div

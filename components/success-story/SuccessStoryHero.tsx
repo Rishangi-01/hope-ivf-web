@@ -59,9 +59,9 @@ export default function SuccessStoryHero() {
               ...transition,
               delay: reduceMotion ? 0 : 0.2,
             }}
-            className="max-w-[850px]"
+            className="max-w-[950px]"
           >
-            <h1 className="font-serif text-[clamp(3.2rem,9vw,4rem)] leading-[0.98] tracking-[-0.055em] text-[#7c443a]">
+            <h1 className="font-serif text-[clamp(3.2rem,9vw,3.5rem)] lg:text-[clamp(3.2rem,9vw,4rem)] leading-[0.98] tracking-[-0.055em] text-[#7c443a]">
               {site.testimonials.heroTitle}
             </h1>
 

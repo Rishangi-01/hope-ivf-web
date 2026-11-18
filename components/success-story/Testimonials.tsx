@@ -72,7 +72,7 @@ export default function Testimonials() {
           className="mx-auto mb-12 max-w-4xl text-center sm:mb-16"
         >
 
-          <h2 className="mt-6 font-serif text-4xl leading-[1.12] tracking-tight text-[#713c34] sm:text-5xl md:text-6xl lg:text-[3.75rem]">
+          <h2 className="mt-6 font-serif text-3xl leading-[1.12] tracking-tight text-[#713c34] sm:text-5xl md:text-6xl lg:text-[3.75rem]">
             {content.title}
             <span className="mt-2 block text-[#8c5b53]">
               {content.highlight}

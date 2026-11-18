@@ -61,24 +61,49 @@ export default function ContactForm() {
           <div className="absolute inset-0 bg-[#342b29]/10" />
           <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/5" />
         </div>
-        
 
         <div
           aria-hidden="true"
           className="pointer-events-none absolute right-[-100px] top-[20%] h-72 w-72 rounded-full bg-[#8c5b53]/10 blur-3xl"
         />
-        <div className="relative mx-auto max-w-[1600px] grid min-h-screen grid-cols-1 items-start px-4 pb-8 pt-[16vh] sm:px-8 sm:pt-[24vh] lg:grid-cols-12 lg:px-12 lg:pt-[22vh]">
-          <motion.div
-  variants={fadeUp}
-  initial="hidden"
-  animate="visible"
-  className="relative z-10 hidden self-center pr-6 text-[#171311] lg:col-span-4 lg:block"
->
-  <div className="absolute -inset-6 -z-10 rounded-2xl bg-[#f5e9dd]/35 opacity-80 blur-2xl" />
 
- 
-  <h1
-    className="
+        
+<motion.div
+  initial={{
+    opacity: 0,
+    y: reduceMotion ? 0 : 35,
+  }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true, amount: 0.25 }}
+  transition={{
+    duration: reduceMotion ? 0 : 0.8,
+    ease: "easeOut",
+  }}
+  className="relative mx-auto flex max-w-6xl items-center justify-center gap-5 py-7 text-center sm:gap-8 sm:py-10 lg:py-10"
+>
+  {/* Left Decorative Line */}
+  <span className="h-[2px] w-10 bg-gradient-to-r from-transparent via-[#8c5b53] to-[#8c5b53] sm:w-20 md:w-32" />
+
+  <h2 className="shrink-0 text-4xl font-bold leading-[1.1] tracking-tight text-[#172c59] sm:text-5xl md:text-6xl lg:text-[4rem]">
+    {content.eyebrow}
+  </h2>
+
+  {/* Right Decorative Line */}
+  <span className="h-[2px] w-10 bg-gradient-to-l from-transparent via-[#8c5b53] to-[#8c5b53] sm:w-20 md:w-32" />
+</motion.div>
+
+
+        <div className="relative mx-auto max-w-[1600px] grid min-h-screen grid-cols-1 items-start px-4 pb-8 pt-[8vh] sm:px-8 sm:pt-[8vh] lg:grid-cols-12 lg:px-12 lg:pt-[8vh]">
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            animate="visible"
+            className="relative z-10 hidden self-center pr-6 text-[#171311] lg:col-span-4 lg:block"
+          >
+            <div className="absolute -inset-6 -z-10 rounded-2xl bg-[#f5e9dd]/35 opacity-80 blur-2xl" />
+
+            <h1
+              className="
       max-w-[560px]
       font-serif
       text-[clamp(3.5rem,4.3vw,5.5rem)]
@@ -88,54 +113,53 @@ export default function ContactForm() {
       text-[#171311]
       [text-shadow:0_2px_12px_rgba(255,255,255,0.35)]
     "
-  >
-    Let's start a
-    <br />
-    conversation.
-  </h1>
+            >
+              Let's start a
+              <br />
+              conversation.
+            </h1>
 
-  {/* Contact Information */}
-  <div className="mt-12 space-y-6">
-
-    {/* Email */}
-    <motion.a
-      href={`mailto:${form.emailValue}`}
-      whileHover={reduceMotion ? undefined : { x: 6 }}
-      className="group flex w-fit items-center gap-5"
-    >
-      <div
-        className="
+            {/* Contact Information */}
+            <div className="mt-12 space-y-6">
+              {/* Email */}
+              <motion.a
+                href={`mailto:${form.emailValue}`}
+                whileHover={reduceMotion ? undefined : { x: 6 }}
+                className="group flex w-fit items-center gap-5"
+              >
+                <div
+                  className="
           flex h-14 w-14 shrink-0 items-center justify-center
-          rounded-full border border-[#171311]/70
+          rounded-full border border-white/70
           bg-white/30 backdrop-blur-md
           transition-all duration-300
           group-hover:border-[#8c5b53]
           group-hover:bg-[#8c5b53]
           group-hover:text-white
         "
-      >
-        <Mail size={23} strokeWidth={1.7} />
-      </div>
+                >
+                  <Mail size={23} strokeWidth={1.7} />
+                </div>
 
-      <div>
-        <p className="mb-1 text-sm font-semibold tracking-wide text-[#342b29]">
-          Email us
-        </p>
+                <div>
+                  <p className="mb-1 text-sm font-semibold tracking-wide text-[#342b29]">
+                    Email us
+                  </p>
 
-        <p className="text-base font-semibold text-[#171311] sm:text-lg">
-          {form.emailValue}
-        </p>
-      </div>
-    </motion.a>
+                  <p className="text-base font-semibold text-[#171311] sm:text-lg">
+                    {form.emailValue}
+                  </p>
+                </div>
+              </motion.a>
 
-    {/* Phone */}
-    <motion.a
-      href={`tel:${form.phoneValue}`}
-      whileHover={reduceMotion ? undefined : { x: 6 }}
-      className="group flex w-fit items-center gap-5"
-    >
-      <div
-        className="
+              {/* Phone */}
+              <motion.a
+                href={`tel:${form.phoneValue}`}
+                whileHover={reduceMotion ? undefined : { x: 6 }}
+                className="group flex w-fit items-center gap-5"
+              >
+                <div
+                  className="
           flex h-14 w-14 shrink-0 items-center justify-center
           rounded-full border border-white/70
           bg-white/25 backdrop-blur-md
@@ -144,28 +168,28 @@ export default function ContactForm() {
           group-hover:bg-[#8c5b53]
           group-hover:text-white
         "
-      >
-        <Phone size={23} strokeWidth={1.7} />
-      </div>
+                >
+                  <Phone size={23} strokeWidth={1.7} />
+                </div>
 
-      <div>
-        <p className="mb-1 text-sm font-semibold tracking-wide text-[#342b29]">
-          Call us
-        </p>
+                <div>
+                  <p className="mb-1 text-sm font-semibold tracking-wide text-[#342b29]">
+                    Call us
+                  </p>
 
-        <p className="text-base font-semibold text-[#171311] sm:text-lg">
-          {form.phoneValue}
-        </p>
-      </div>
-    </motion.a>
+                  <p className="text-base font-semibold text-[#171311] sm:text-lg">
+                    {form.phoneValue}
+                  </p>
+                </div>
+              </motion.a>
 
-    {/* Location */}
-    <motion.a
-      whileHover={reduceMotion ? undefined : { x: 6 }}
-      className="group flex w-fit items-center gap-5"
-    >
-      <div
-        className="
+              {/* Location */}
+              <motion.a
+                whileHover={reduceMotion ? undefined : { x: 6 }}
+                className="group flex w-fit items-center gap-5"
+              >
+                <div
+                  className="
           flex h-14 w-14 shrink-0 items-center justify-center
           rounded-full border border-white/70
           bg-white/25 backdrop-blur-md
@@ -174,23 +198,22 @@ export default function ContactForm() {
           group-hover:bg-[#8c5b53]
           group-hover:text-white
         "
-      >
-        <MapPin size={23} strokeWidth={1.7} />
-      </div>
+                >
+                  <MapPin size={23} strokeWidth={1.7} />
+                </div>
 
-      <div>
-        <p className="mb-1 text-sm font-semibold tracking-wide text-[#342b29]">
-          Location
-        </p>
+                <div>
+                  <p className="mb-1 text-sm font-semibold tracking-wide text-[#342b29]">
+                    Location
+                  </p>
 
-        <p className="text-base font-semibold text-[#171311] sm:text-lg">
-          {form.locationValue}
-        </p>
-      </div>
-    </motion.a>
-
-  </div>
-</motion.div>
+                  <p className="text-base font-semibold text-[#171311] sm:text-lg">
+                    {form.locationValue}
+                  </p>
+                </div>
+              </motion.a>
+            </div>
+          </motion.div>
 
           <motion.div
             initial={{

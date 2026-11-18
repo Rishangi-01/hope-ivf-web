@@ -7,6 +7,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import {
   ArrowRight,
   CalendarDays,
+  HeartPulse,
   MessageCircle,
   Sparkles,
 } from "lucide-react";
@@ -37,6 +38,21 @@ export default function LatestUpdates() {
       />
 
       <div className="relative mx-auto w-full max-w-[1600px]">
+        <motion.div
+                  initial={{ opacity: 0, y: reduceMotion ? 0 : 35 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{
+                    duration: reduceMotion ? 0 : 0.8,
+                    ease: [0.22, 1, 0.36, 1],
+                  }}
+                  className="max-w-6xl text-center mx-auto"
+                >
+                  <span className="inline-flex items-center gap-2 rounded-full bg-[#8c5b53] px-5 py-2.5 text-sm font-semibold tracking-wide text-white shadow-sm sm:text-base">
+                    <HeartPulse size={18} />
+                    {content.subtitle}
+                  </span>
+                </motion.div>
         <motion.div
           initial={{
             opacity: 0,

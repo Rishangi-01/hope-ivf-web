@@ -2,20 +2,34 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { AnimatePresence, motion } from "framer-motion";
+import {
+  AnimatePresence,
+  motion,
+  useScroll,
+  useMotionValueEvent,
+} from "framer-motion";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { ArrowRight, Mail, Menu, Phone, X } from "lucide-react";
 import { site } from "@/data";
 
-const normalizePath = (path: string) => path === "/" ? "/" : path.replace(/\/+$/, "");
+const normalizePath = (path: string) =>
+  path === "/" ? "/" : path.replace(/\/+$/, "");
 
 export default function Navbar() {
   const navLinks = site.nav.links;
   const mobileMenu = site.site.mobileMenu;
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
   const pathname = usePathname();
   const currentPath = normalizePath(pathname ?? "/");
+
+  const { scrollY } = useScroll();
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    setIsScrolled(latest > 30);
+  });
 
   const isNavLinkActive = (href: string) => {
     const normalizedHref = normalizePath(href);
@@ -31,8 +45,21 @@ export default function Navbar() {
   };
 
   return (
-    <header className="absolute inset-x-0 top-0 z-50 w-full px-6 sm:px-6 lg:px-10 xl:px-14">
-      <div className="relative mx-auto flex max-w-[1600px] items-center justify-between py-4 lg:py-6">
+    <motion.header
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+      className={`fixed inset-x-0 top-0 z-50 w-full transition-all duration-500 ${
+        isScrolled
+          ? "border-b border-[#8c5b53]/10 bg-white/85 shadow-[0_8px_30px_rgba(0,0,0,0.06)] backdrop-blur-xl"
+          : "border-b border-transparent bg-transparent"
+      }`}
+    >
+      <div
+        className={`relative mx-auto flex max-w-[1600px] items-center justify-between px-6 transition-all duration-500 sm:px-6 lg:px-10 xl:px-14 ${
+          isScrolled ? "py-2 lg:py-3" : "py-4 lg:py-6"
+        }`}
+      >
         <Link
           href={site.nav.links[0].href}
           aria-label={`${site.site.name} home`}
@@ -85,7 +112,7 @@ export default function Navbar() {
           transition={{ duration: 0.4, delay: 0.25 }}
         >
           <Link
-          href={site.nav.button.href}
+            href={site.nav.button.href}
             className="flex min-h-12 items-center justify-center rounded-full bg-[#fdf2f7] px-7 text-sm font-medium text-[#71504a] shadow-sm transition-colors duration-200 hover:bg-white sm:min-h-14 sm:min-w-[172px] sm:text-base"
           >
             {site.nav.button.label}
@@ -159,7 +186,10 @@ export default function Navbar() {
               </Link>
 
               <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-3 text-xs text-slate-500">
-                <a href={mobileMenu.phoneHref} className="flex items-center gap-2">
+                <a
+                  href={mobileMenu.phoneHref}
+                  className="flex items-center gap-2"
+                >
                   <Phone size={14} className="text-[#8c5b53]" />
                   {mobileMenu.phoneLabel}
                 </a>
@@ -175,6 +205,6 @@ export default function Navbar() {
           </motion.nav>
         )}
       </AnimatePresence>
-    </header>
+    </motion.header>
   );
 }

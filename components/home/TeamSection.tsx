@@ -3,7 +3,7 @@
 
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowUpRight, HeartPulse } from "lucide-react";
+import { HeartPulse } from "lucide-react";
 import { site } from "@/data";
 
 export default function TeamSection() {
@@ -93,20 +93,6 @@ export default function TeamSection() {
                     {member.role}
                   </p>
                 </div>
-
-                <motion.a
-                  href="/teams"
-                  aria-label={member.linkLabel}
-                  whileHover={
-                    shouldReduceMotion ? undefined : { rotate: 45 }
-                  }
-                  whileTap={
-                    shouldReduceMotion ? undefined : { scale: 0.9 }
-                  }
-                  className="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[#8c5b53]/25 transition-colors duration-300 group-hover:bg-[#8c5b53] group-hover:text-white sm:h-11 sm:w-11"
-                >
-                  <ArrowUpRight size={21} />
-                </motion.a>
               </div>
 
               <div className="mt-5 h-px w-full origin-left scale-x-0 bg-[#8c5b53]/40 transition-transform duration-500 group-hover:scale-x-100" />
